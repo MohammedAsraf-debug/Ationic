@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Ationic – Get in touch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- PRIMARY META TAGS -->
+    <meta name="description" content="Ationic is a Chennai-based digital marketing agency specializing in SEO, web development, content creation, and performance marketing. 100% online agency serving clients worldwide. தமிழ் & English support available.">
+    <meta name="keywords" content="digital marketing agency Chennai, social media marketing, Meta and Google Ads, content creation, video editing services, web development Chennai, SEO services, Tamil digital marketing agency">
+    <meta name="author" content="Ationic Digital Agency">
+    <meta name="robots" content="index, follow">
+
+    <!-- LANGUAGE TAGS – TAMIL & ENGLISH PRIMARY -->
+    <meta http-equiv="content-language" content="en-us, ta">
+    <meta name="language" content="English, Tamil">
+    <meta name="DC.language" content="en, ta">
+
+    <!-- GEO TAGS – CHENNAI, TAMIL NADU, INDIA -->
+    <meta name="geo.region" content="IN-TN">
+    <meta name="geo.placename" content="Chennai, Tamil Nadu">
+    <meta name="geo.position" content="13.0827;80.2707">
+    <meta name="ICBM" content="13.0827, 80.2707">
+    <meta name="city" content="Chennai">
+    <meta name="country" content="India">
+    <meta name="state" content="Tamil Nadu">
+
+    <!-- ONLINE AGENCY – NO PHYSICAL OFFICE -->
+    <meta name="business-type" content="100% online digital agency">
+    <meta name="service-area" content="Worldwide, India, Chennai, Tamil Nadu">
+    <link rel="icon" href="images/ationic.png">
+    <!-- EmailJS Library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Ationic<span>.</span></a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="page-hero" class="hero-small">
+            <div class="container">
+                <h1 class="reveal">Get in touch</h1>
+                <p class="reveal">Ready to start? Let’s talk about your goals.</p>
+            </div>
+        </section>
+
+        <!-- ========== ATIONIC CONTACT FORM – EMAILJS INTEGRATION ========== -->
+<section id="contact-section" class="section-padding">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- CONTACT FORM -->
+      <div class="contact-form reveal">
+        <h2>Send us a message</h2>
+        
+        <!-- ⚡ EMAILJS FORM – DO NOT CHANGE INPUT NAMES ⚡ -->
+        <form id="ationic-contact-form">
+          
+          <!-- Name Field – MUST match template {{from_name}} -->
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="from_name" 
+              name="from_name" 
+              placeholder="Your full name" 
+              required
+            >
+          </div>
+          
+          <!-- Email Field – MUST match template {{from_email}} -->
+          <div class="form-group">
+            <input 
+              type="email" 
+              id="from_email" 
+              name="from_email" 
+              placeholder="Your email address" 
+              required
+            >
+          </div>
+          
+          <!-- Subject Field – MUST match template {{subject}} -->
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              placeholder="Subject" 
+              value=""
+            >
+          </div>
+
+          <div class="form-group">
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Contact Number" maxlength="10">
+          </div>
+          
+          <!-- Message Field – MUST match template {{message}} -->
+          <div class="form-group">
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="5" 
+              placeholder="Tell us about your project..." 
+              required
+            ></textarea>
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" id="form-submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+          </button>
+          
+          <!-- Live Status Messages -->
+          <div id="form-status" style="margin-top: 20px;"></div>
+        </form>
+      </div>
+      
+      <!-- CONTACT INFO (unchanged - keep your existing) -->
+      <div class="contact-info reveal">
+        <h2>Contact information</h2>
+        <div class="info-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>Call us</h4>
+            <p>+91 8680060912</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email us</h4>
+            <p>ationic.it@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- CTA -->
+        <section id="cta" class="section-padding dark-bg">
+            <div class="container cta-content reveal">
+                <h2>Prefer to book a call?</h2>
+                <p>Choose a time that suits you, and we’ll prepare some ideas.</p>
+                <a href="#" class="btn btn-primary">Schedule now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <!-- same footer as index.html -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">Ationic<span>.</span></a>
+                    <p>Digital agency specialised in performance marketing & web development.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ationic" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Ationic_it" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/ationic" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/ationic_it/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick links</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                        <li><a href="services.html">SEO</a></li>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Content Creation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                      <li><i class="fas fa-phone"></i> +91 8680060912</li>
+                        <li><i class="fas fa-envelope"></i> ationic.it@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ationic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="js/script.js"></script>
+
+<!-- ========== ADDITIONAL HIDDEN CONTENT FOR BETTER SEO ========== -->
+<div class="seo-hidden" aria-hidden="true">
+    digital marketing agency Chennai, SEO company Chennai, web development agency Chennai, video editing services Chennai, content marketing agency Chennai, ecommerce webdevelopment Chennai, Chennai digital agency, Tambaram, T Nagar, Velachery, Adyar, Anna Nagar, Guindy, Porur, OMR, ECR, Siruseri, Sholinganallur, Medavakkam, Madipakkam...
+</div>
+</body>
+</html>
