@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Immersive E-commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>NEXUS</h1>
+        </div>
+        
+        <!-- Desktop Navigation (992px+) -->
+        <div class="nav-links">
+            <a href="index.html" class="${window.location.pathname.includes('index') ? 'active' : ''}">Home</a>
+            <a href="shop.html" class="${window.location.pathname.includes('shop') ? 'active' : ''}">Shop</a>
+            <a href="#features">Features</a>
+            <a href="#ai">AI Assistant</a>
+            <a href="cart.html" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">${cart.length}</span>
+            </a>
+        </div>
+        
+        <!-- Tablet & Mobile Menu Button (991px and below) -->
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+    <!-- Hero Portal Section -->
+    <section class="hero-portal" id="portal">
+        <div class="portal-overlay"></div>
+        <div class="portal-content">
+            <h1 class="morphing-title">NEXUS</h1>
+            <p class="hero-subtitle">Where Products Come Alive</p>
+            <button class="portal-btn" id="enterPortal">
+                <span>Enter Portal</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+        <canvas id="portalCanvas"></canvas>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Immersive Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D Product View</h3>
+                    <p>Rotate, zoom, and explore products in full 3D</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Assistant</h3>
+                    <p>Smart shopping guide powered by AI</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Interactive Gallery</h3>
+                    <p>Products react to your cursor movements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Preview -->
+    <section class="product-preview">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="preview-grid" id="previewGrid">
+                <!-- Products loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Widget -->
+    <div class="ai-widget" id="aiWidget">
+        <div class="ai-header">
+            <div class="ai-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h4>Nexus Assistant</h4>
+            <button class="close-ai"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat">
+            <div class="ai-message">Hello! I'm your shopping assistant. How can I help?</div>
+        </div>
+        <div class="ai-input">
+            <input type="text" placeholder="Ask about products...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NEXUS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

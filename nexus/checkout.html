@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Checkout specific styles */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
+        }
+        
+        .checkout-steps {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .checkout-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--gradient);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border: 3px solid var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active .step-circle {
+            background: var(--gradient);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .checkout-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .cart-summary {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .complete-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .complete-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+        
+        .success-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .success-content {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+        }
+        
+        .success-icon {
+            font-size: 8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            animation: bounce 1s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--gradient);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>NEXUS</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="checkout.html" class="active">Checkout</a>
+                <a href="checkout.html" class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Checkout Container -->
+    <div class="checkout-container">
+        <!-- Checkout Steps -->
+        <div class="checkout-steps">
+            <div class="step active" id="step1">
+                <div class="step-circle">1</div>
+                <h4>Cart</h4>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-circle">2</div>
+                <h4>Shipping</h4>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-circle">3</div>
+                <h4>Payment</h4>
+            </div>
+            <div class="step" id="step4">
+                <div class="step-circle">4</div>
+                <h4>Complete</h4>
+            </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="checkout-form" id="checkoutForm">
+            <!-- Step 1: Cart -->
+            <div class="checkout-step" id="cartStep">
+                <h2>Your Cart</h2>
+                <div class="cart-summary" id="cartSummary">
+                    <!-- Cart items will be loaded here -->
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <a href="shop.html" class="portal-btn" style="margin-top: 2rem;">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Shipping -->
+            <div class="checkout-step" id="shippingStep" style="display: none;">
+                <h2>Shipping Information</h2>
+                <form id="shippingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ZIP Code</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Shipping Method</label>
+                        <select style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white;">
+                            <option>Standard Shipping (5-7 days)</option>
+                            <option>Express Shipping (2-3 days)</option>
+                            <option>Next Day Delivery</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div class="checkout-step" id="paymentStep" style="display: none;">
+                <h2>Payment Details</h2>
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" placeholder="123" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="checkout-navigation">
+            <button class="portal-btn" id="prevBtn" style="display: none;">
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="portal-btn" id="nextBtn">
+                Continue to Shipping <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="complete-btn" id="completeBtn" style="display: none;">
+                <i class="fas fa-lock"></i> Complete Purchase
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Purchase Complete!</h1>
+            <p>Thank you for your order. You will receive a confirmation email shortly.</p>
+            <a href="index.html" class="portal-btn" style="margin-top: 2rem;">
+                Return to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentStep = 1;
+            
+            // Load cart from localStorage or use global cart
+            let cart = JSON.parse(localStorage.getItem('nexusCart')) || window.cart || [];
+            
+            // Update cart count
+            function updateCartCount() {
+                const count = cart.length;
+                document.querySelector('.cart-count').textContent = count;
+                localStorage.setItem('nexusCart', JSON.stringify(cart));
+            }
+            
+            // Load cart items
+            function loadCartItems() {
+                const cartSummary = document.getElementById('cartSummary');
+                if (!cartSummary) return;
+                
+                if (cart.length === 0) {
+                    cartSummary.innerHTML = `
+                        <div class="empty-cart">
+                            <p>Your cart is empty</p>
+                            <a href="shop.html" class="portal-btn" style="margin-top: 2rem;">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let total = 0;
+                cartSummary.innerHTML = cart.map(item => {
+                    total += item.price;
+                    return `
+                        <div class="cart-item">
+                            <div class="item-info">
+                                <div class="item-image">
+                                    <img src="${item.image}" alt="${item.name}">
+                                </div>
+                                <div>
+                                    <h4>${item.name}</h4>
+                                    <p>${item.description}</p>
+                                </div>
+                            </div>
+                            <div class="item-price">
+                                <strong>$${item.price}</strong>
+                                <button class="remove-item" data-id="${item.id}" style="background: none; border: none; color: #ef4444; cursor: pointer; margin-left: 1rem;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('') + `
+                    <div class="total">
+                        <span>Total:</span>
+                        <span>$${total}</span>
+                    </div>
+                `;
+                
+                // Add remove item functionality
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const itemId = parseInt(this.dataset.id);
+                        cart = cart.filter(item => item.id !== itemId);
+                        loadCartItems();
+                        updateCartCount();
+                        
+                        // Animate removal
+                        gsap.to(this.closest('.cart-item'), {
+                            opacity: 0,
+                            x: -100,
+                            duration: 0.5,
+                            onComplete: () => loadCartItems()
+                        });
+                    });
+                });
+            }
+            
+            // Step navigation
+            function showStep(step) {
+                // Hide all steps
+                document.querySelectorAll('.checkout-step').forEach(s => {
+                    s.style.display = 'none';
+                });
+                
+                // Show current step
+                document.getElementById(`${['cart', 'shipping', 'payment'][step-1]}Step`).style.display = 'block';
+                
+                // Update step indicators
+                document.querySelectorAll('.step').forEach((s, i) => {
+                    if (i < step) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+                
+                // Update navigation buttons
+                document.getElementById('prevBtn').style.display = step > 1 ? 'inline-flex' : 'none';
+                document.getElementById('nextBtn').style.display = step < 3 ? 'inline-flex' : 'none';
+                document.getElementById('completeBtn').style.display = step === 3 ? 'block' : 'none';
+                
+                // Update next button text
+                if (step === 1) {
+                    document.getElementById('nextBtn').innerHTML = 'Continue to Shipping <i class="fas fa-arrow-right"></i>';
+                } else if (step === 2) {
+                    document.getElementById('nextBtn').innerHTML = 'Continue to Payment <i class="fas fa-arrow-right"></i>';
+                }
+            }
+            
+            // Next button
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                if (currentStep < 3) {
+                    currentStep++;
+                    showStep(currentStep);
+                    
+                    // Animate transition
+                    gsap.from(`#${['cart', 'shipping', 'payment'][currentStep-1]}Step`, {
+                        x: 100,
+                        opacity: 0,
+                        duration: 0.5
+                    });
+                }
+            });
+            
+            // Previous button
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    showStep(currentStep);
+                    
+                    // Animate transition
+                    gsap.from(`#${['cart', 'shipping', 'payment'][currentStep-1]}Step`, {
+                        x: -100,
+                        opacity: 0,
+                        duration: 0.5
+                    });
+                }
+            });
+            
+            // Complete purchase
+            document.getElementById('completeBtn').addEventListener('click', function() {
+                // Validate forms
+                const shippingForm = document.getElementById('shippingForm');
+                const paymentForm = document.getElementById('paymentForm');
+                
+                if (!shippingForm.checkValidity() || !paymentForm.checkValidity()) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Show success animation
+                document.getElementById('successAnimation').style.display = 'flex';
+                
+                // Create confetti
+                createConfetti();
+                
+                // Play success sound (simulated)
+                playSuccessSound();
+                
+                // Clear cart
+                cart = [];
+                updateCartCount();
+                
+                // Redirect to home after delay
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 5000);
+            });
+            
+            // Confetti animation
+            function createConfetti() {
+                const container = document.getElementById('successAnimation');
+                const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981'];
+                
+                for (let i = 0; i < 150; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 15 + 5 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    
+                    container.appendChild(confetti);
+                    
+                    // Animate confetti
+                    gsap.to(confetti, {
+                        y: window.innerHeight + 100,
+                        x: (Math.random() - 0.5) * 200,
+                        rotation: Math.random() * 360,
+                        duration: Math.random() * 3 + 2,
+                        ease: "power2.out",
+                        delay: Math.random() * 1
+                    });
+                }
+            }
+            
+            // Simulated success sound
+            function playSuccessSound() {
+                // In a real app, you would play an actual sound file
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 523.25; // C5
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.1);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 1);
+            }
+            
+            // Initialize
+            loadCartItems();
+            updateCartCount();
+            showStep(1);
+        });
+    </script>
+</body>
+</html>
