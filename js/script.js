@@ -1,4 +1,12 @@
+// ── EmailJS Config ──
+const SERVICE_ID = 'service_kf8hlym';
+const TEMPLATE_ID = 'template_l3zz2cs';
+const PUBLIC_KEY = 'M3-yivo_eRFPPL1t6';
+
+// ── DOM Ready ──
 document.addEventListener('DOMContentLoaded', () => {
+  try { emailjs.init(PUBLIC_KEY); } catch (e) {}
+  // ── Preloader ──
   const preloader = document.getElementById('preloader');
   if (preloader) {
     window.addEventListener('load', () => preloader.classList.add('fade-out'));
@@ -6,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   document.body.classList.add('loaded');
 
+  // ── Navbar Scroll Effect ──
   const navbar = document.getElementById('navbar');
   let lastScroll = 0;
   window.addEventListener('scroll', () => {
@@ -14,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScroll = y;
   });
 
+  // ── Mobile Menu Toggle ──
   const burger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
   if (burger) {
@@ -31,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Smooth Scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
@@ -44,42 +55,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const revealEls = document.querySelectorAll('.section-head, .service-card, .case-card, .testimonial-card, .pricing-card, .team-card, .blog-card, .process-step, .industry-item, .extra-service, .stat-item, .comparison-table, .about-grid, .about-stat-card');
+  // ── About Tabs ──
+  const aboutTabs = document.querySelectorAll('.about-home-tab');
+  if (aboutTabs.length > 1) {
+    aboutTabs[0].classList.add('active');
+    aboutTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        aboutTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  }
+
+  // ── Scroll Reveal ──
+  const revealSelector = '.section-head, .service-card, .case-card, .testimonial-card, .pricing-card, .team-card, .blog-card, .process-step, .industry-item, .extra-service, .comparison-table, .about-grid, .about-stat-card, .feature-card, .process-card, .about-home-grid, .about-home-tab, .accordion-item, .cta-section-inner, .contact-info-item, .about-home-image-box';
+  const revealEls = document.querySelectorAll(revealSelector);
+  revealEls.forEach(el => el.classList.add('reveal'));
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('reveal', 'active');
+        const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 60;
+        entry.target.style.transitionDelay = delay + 'ms';
+        entry.target.classList.add('active');
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => revealObserver.observe(el));
 
-  const counters = document.querySelectorAll('.counter');
-  const counterObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10);
-        let count = 0;
-        const update = () => {
-          const step = Math.max(1, Math.ceil(target / 60));
-          if (count < target) {
-            count += step;
-            if (count > target) count = target;
-            el.textContent = count;
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = target;
-          }
-        };
-        update();
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.3 });
-  counters.forEach(c => counterObserver.observe(c));
-
+  // ── FAQ Accordion ──
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       const isActive = header.classList.contains('active');
@@ -96,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Back to Top ──
   const backBtn = document.getElementById('backToTop');
   if (backBtn) {
     window.addEventListener('scroll', () => {
@@ -103,6 +108,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+
+  // ── Form Handler ──
+  function handleFormSubmit(formEl, successMsg) {
+    if (!formEl) return;
+    formEl.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.btn');
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
+      document.getElementById('time') && (document.getElementById('time').value = new Date().toLocaleString());
+      if (typeof emailjs !== 'undefined') {
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+          .then(() => {
+            this.innerHTML = '<p style="color:var(--yellow);text-align:center;font-size:1rem;">' + successMsg + '</p>';
+          })
+          .catch(() => {
+            btn.innerHTML = original;
+            btn.disabled = false;
+            const status = document.getElementById('form-status');
+            if (status) status.innerHTML = '<p style="color:#ff6b6b;">Failed to send. Please email us directly at ationic.it@gmail.com.</p>';
+          });
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+      }
+    });
+  }
+
+  // ── Contact Form ──
+  handleFormSubmit(document.getElementById('ationic-contact-form'), 'Thank you! We\'ll reach out within 2 hours.');
+
+  // ── Popup ──
+  let popupTimer = null;
+  const contactPopup = document.getElementById('contactPopup');
+  const popupBg = document.getElementById('popupBg');
+  const popupCloseBtn = document.getElementById('popupClose');
+
+  function showPopup() {
+    if (contactPopup) contactPopup.classList.add('active');
+  }
+  function hidePopup() {
+    if (contactPopup) contactPopup.classList.remove('active');
+  }
+
+  if (contactPopup && !sessionStorage.getItem('popupShown')) {
+    popupTimer = setTimeout(() => { showPopup(); sessionStorage.setItem('popupShown', '1'); }, 10000);
+    function dismissPopup() { hidePopup(); clearTimeout(popupTimer); sessionStorage.setItem('popupShown', '1'); }
+    popupBg?.addEventListener('click', dismissPopup);
+    popupCloseBtn?.addEventListener('click', dismissPopup);
+    document.getElementById('popup-contact-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.btn');
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
+      if (typeof emailjs !== 'undefined') {
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+          .then(() => {
+            this.innerHTML = '<p style="color:var(--yellow);text-align:center;font-size:1rem;">Thank you! We\'ll reach out within 2 hours.</p>';
+            setTimeout(hidePopup, 3000);
+          })
+          .catch(() => {
+            btn.innerHTML = original;
+            btn.disabled = false;
+          });
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+      }
+    });
+  }
+
+  // ── Chart Animation ──
   const dashBars = document.querySelectorAll('.dash-chart__bars span');
   if (dashBars.length) {
     const targets = [];
