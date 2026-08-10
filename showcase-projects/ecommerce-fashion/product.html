@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail | Velour Boutique</title>
+    <meta name="description" content="View product details, images, size and color options, customer reviews, and related items at Velour Boutique.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">V</div>
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Velour Boutique</p>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="container">
+            <span>Free shipping on orders over $100 &bull; Complimentary gift wrapping</span>
+            <span>Sign up for 15% off your first order</span>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <a href="index.html" class="nav-logo">Velour</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="category.html" class="nav-link">Shop</a></li>
+                    <li><a href="product.html" class="nav-link">Product</a></li>
+                    <li><a href="wishlist.html" class="nav-link">Wishlist <span class="wishlist-count">0</span></a></li>
+                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="checkout.html" class="nav-link">Checkout</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="cart.html" class="nav-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="category.html">Shop</a> / <span id="breadcrumbProduct">Product</span>
+            </div>
+            <div class="product-detail" id="productDetail"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Velour</div>
+                    <p>Premium fashion boutique offering curated collections of designer clothing, accessories, and lifestyle pieces.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="category.html?cat=women">Women</a></li>
+                        <li><a href="category.html?cat=men">Men</a></li>
+                        <li><a href="category.html?cat=accessories">Accessories</a></li>
+                        <li><a href="category.html?cat=sale">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="checkout.html">Shipping & Delivery</a></li>
+                        <li><a href="checkout.html">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>hello@velourboutique.com</li>
+                        <li>1 (800) 555-0199</li>
+                        <li>245 Madison Avenue<br>New York, NY 10016</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project.</p>
+                <p>&copy; 2026 Velour Boutique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showProduct(id) {
+            const p = products.find(pr => pr.id === id);
+            if (!p) { document.getElementById('productDetail').innerHTML = '<p style="text-align:center;padding:80px 0;color:var(--muted);">Product not found. <a href="category.html">Browse products</a></p>'; return; }
+            document.getElementById('breadcrumbProduct').textContent = p.name;
+            const displayPrice = p.sale ? `<span class="sale">$${p.sale}</span><span class="original">$${p.price}</span>` : `$${p.price}`;
+            const stars = '\u2605'.repeat(Math.floor(p.rating)) + (p.rating % 1 >= 0.5 ? '\u00BD' : '');
+            const inWishlist = state.wishlist.includes(p.id);
+            const detail = document.getElementById('productDetail');
+            detail.innerHTML = `
+                <div class="product-gallery">
+                    <div class="gallery-img"><span>${p.img}</span></div>
+                    <div class="gallery-img"><span>${p.img} (side)</span></div>
+                    <div class="gallery-img"><span>${p.img} (detail)</span></div>
+                    <div class="gallery-img"><span>${p.img} (back)</span></div>
+                </div>
+                <div class="product-info">
+                    <h1>${p.name}</h1>
+                    <div class="brand">${p.brand}</div>
+                    <div class="price">${displayPrice}</div>
+                    <div class="rating">${stars} <span>${p.rating} (${p.reviews} reviews)</span></div>
+                    <p class="desc">${p.desc}</p>
+                    <div class="option-group">
+                        <label>Size</label>
+                        <div class="size-selector">${p.sizes.map(s => `<span class="size-opt" data-size="${s}">${s}</span>`).join('')}</div>
+                    </div>
+                    <div class="option-group">
+                        <label>Color</label>
+                        <div class="color-selector">${p.colors.map(c => `<span class="color-opt" style="background:${c}" data-color="${c}"></span>`).join('')}</div>
+                    </div>
+                    <div class="option-group">
+                        <label>Quantity</label>
+                        <div class="qty-selector">
+                            <button class="qty-btn" id="qtyMinus">\u2212</button>
+                            <input type="number" id="qtyInput" value="1" min="1" max="10">
+                            <button class="qty-btn" id="qtyPlus">+</button>
+                        </div>
+                    </div>
+                    <div class="product-actions-bar">
+                        <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+                        <button class="btn-icon ${inWishlist ? 'active' : ''}" id="wishlistBtn" title="Wishlist">${inWishlist ? '\u2665' : '\u2661'}</button>
+                        <button class="btn-icon" title="Share"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="product-meta">
+                        <p><strong>SKU:</strong> VEL-${String(p.id).padStart(4, '0')}</p>
+                        <p><strong>Category:</strong> ${p.category}</p>
+                        <p><strong>Care:</strong> ${p.care}</p>
+                    </div>
+                    <div class="size-guide">
+                        <h3>Size Guide</h3>
+                        <table><tr><th>Size</th><th>Bust (in)</th><th>Waist (in)</th><th>Hips (in)</th></tr>
+                            <tr><td>XS</td><td>32-33</td><td>24-25</td><td>34-35</td></tr>
+                            <tr><td>S</td><td>34-35</td><td>26-27</td><td>36-37</td></tr>
+                            <tr><td>M</td><td>36-37</td><td>28-29</td><td>38-39</td></tr>
+                            <tr><td>L</td><td>38-39</td><td>30-31</td><td>40-41</td></tr>
+                            <tr><td>XL</td><td>40-41</td><td>32-33</td><td>42-43</td></tr>
+                            <tr><td>2XL</td><td>42-43</td><td>34-35</td><td>44-45</td></tr>
+                            <tr><td>3XL</td><td>44-45</td><td>36-37</td><td>46-47</td></tr>
+                        </table>
+                    </div>
+                    <div class="care-instructions">
+                        <h3>Care Instructions</h3>
+                        <ul>${p.care.split('. ').filter(Boolean).map(c => `<li>${c}.</li>`).join('')}</ul>
+                    </div>
+                    <div class="reviews-section">
+                        <h3>Customer Reviews</h3>
+                        ${reviews.filter(r => r.productId === p.id).map(r => `
+                            <div class="review-card">
+                                <div class="review-header"><span class="review-name">${r.name}</span><span class="review-date">${r.date}</span></div>
+                                <div class="review-stars">${'\u2605'.repeat(r.stars)}${'\u2606'.repeat(5 - r.stars)}</div>
+                                <div class="review-text">"${r.text}"</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="related-section">
+                        <h3>Complete the Look</h3>
+                        <div class="products-grid">${products.filter(r => r.id !== p.id && r.category === p.category).slice(0, 4).map(r => renderProductCard(r)).join('')}</div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => {
+                document.querySelectorAll('.size-opt').forEach(el => el.addEventListener('click', function() { document.querySelectorAll('.size-opt').forEach(s => s.classList.remove('active')); this.classList.add('active'); }));
+                document.querySelectorAll('.color-opt').forEach(el => el.addEventListener('click', function() { document.querySelectorAll('.color-opt').forEach(s => s.classList.remove('active')); this.classList.add('active'); }));
+                document.getElementById('qtyMinus').addEventListener('click', () => { const inp = document.getElementById('qtyInput'); if (parseInt(inp.value) > 1) inp.value = parseInt(inp.value) - 1; });
+                document.getElementById('qtyPlus').addEventListener('click', () => { const inp = document.getElementById('qtyInput'); if (parseInt(inp.value) < 10) inp.value = parseInt(inp.value) + 1; });
+                document.getElementById('addToCartBtn').addEventListener('click', () => {
+                    const size = document.querySelector('.size-opt.active')?.dataset.size || p.sizes[0];
+                    const color = document.querySelector('.color-opt.active')?.dataset.color || p.colors[0];
+                    const qty = parseInt(document.getElementById('qtyInput').value) || 1;
+                    for (let i = 0; i < qty; i++) addToCart(p.id, size, color);
+                    updateCounts();
+                    const btn = document.getElementById('addToCartBtn');
+                    const orig = btn.textContent;
+                    btn.textContent = 'Added! \u2713';
+                    btn.style.background = '#22c55e';
+                    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
+                });
+                document.getElementById('wishlistBtn').addEventListener('click', function() {
+                    toggleWishlist(p.id);
+                    this.classList.toggle('active');
+                    this.textContent = this.classList.contains('active') ? '\u2665' : '\u2661';
+                });
+            }, 50);
+        }
+
+        const id = parseInt(new URLSearchParams(window.location.search).get('id')) || 1;
+        showProduct(id);
+    </script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige Properties | Luxury Real Estate by Ationic</title>
+    <meta name="description" content="Prestige Properties by Ationic Digital Agency. Find luxury apartments, villas, penthouses, and townhouses in Manhattan, Brooklyn, LA, Miami, and more.">
+    <meta name="keywords" content="Prestige Properties, luxury real estate, apartments for sale, villas, penthouses, Manhattan real estate, Ationic">
+    <meta name="author" content="Ationic Digital Agency">
+    <meta property="og:title" content="Prestige Properties | Luxury Real Estate">
+    <meta property="og:description" content="Find your dream home with Prestige Properties. Luxury listings across America's finest cities.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Prestige Properties</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Prestige Properties Home">
+                    <span class="logo-icon"><i class="fas fa-building"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Prestige</span>
+                        <span class="logo-subtitle">Properties</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li><a href="listings.html" class="nav-link">Listings</a></li>
+                        <li><a href="property-detail.html" class="nav-link">Property</a></li>
+                        <li><a href="agents.html" class="nav-link">Agents</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">Since 2012</span>
+                <h1 class="hero-title">Find Your Dream Home</h1>
+                <p class="hero-subtitle">Discover exceptional properties in America's most coveted locations. From Manhattan penthouses to California villas.</p>
+                <form class="hero-search" id="heroSearch" role="search" aria-label="Property search">
+                    <div class="search-group">
+                        <label for="searchLocation" class="sr-only">Location</label>
+                        <i class="fas fa-map-marker-alt search-icon"></i>
+                        <select id="searchLocation" name="location">
+                            <option value="">All Locations</option>
+                            <option value="manhattan">Manhattan, NY</option>
+                            <option value="brooklyn">Brooklyn, NY</option>
+                            <option value="la">Los Angeles, CA</option>
+                            <option value="miami">Miami, FL</option>
+                            <option value="chicago">Chicago, IL</option>
+                            <option value="sf">San Francisco, CA</option>
+                            <option value="seattle">Seattle, WA</option>
+                            <option value="boston">Boston, MA</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <label for="searchType" class="sr-only">Property Type</label>
+                        <i class="fas fa-home search-icon"></i>
+                        <select id="searchType" name="type">
+                            <option value="">All Types</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="villa">Villa</option>
+                            <option value="townhouse">Townhouse</option>
+                            <option value="penthouse">Penthouse</option>
+                            <option value="studio">Studio</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <label for="searchPrice" class="sr-only">Price Range</label>
+                        <i class="fas fa-dollar-sign search-icon"></i>
+                        <select id="searchPrice" name="price">
+                            <option value="">Any Price</option>
+                            <option value="0-500000">Under $500k</option>
+                            <option value="500000-1000000">$500k - $1M</option>
+                            <option value="1000000-2000000">$1M - $2M</option>
+                            <option value="2000000-5000000">$2M - $5M</option>
+                            <option value="5000000-10000000">$5M - $10M</option>
+                            <option value="10000000">$10M+</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-search">
+                        <i class="fas fa-search"></i> Search Properties
+                    </button>
+                </form>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-count="1500">0</span>
+                        <span class="hero-stat-label">Properties Sold</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-count="50">0</span>
+                        <span class="hero-stat-label">Cities Served</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-count="98">0</span>
+                        <span class="hero-stat-label">% Satisfaction</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-count="45">0</span>
+                        <span class="hero-stat-label">Award-Winning Agents</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="properties section" id="properties">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Featured Listings</span>
+                <h2 class="section-title">Discover Premium Properties</h2>
+                <p class="section-desc">Curated selection of the finest homes across the United States.</p>
+            </div>
+            <div class="property-filters" id="propertyFilters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="apartment">Apartments</button>
+                <button class="filter-btn" data-filter="villa">Villas</button>
+                <button class="filter-btn" data-filter="townhouse">Townhouses</button>
+                <button class="filter-btn" data-filter="penthouse">Penthouses</button>
+                <button class="filter-btn" data-filter="studio">Studios</button>
+            </div>
+            <div class="properties-grid" id="propertiesGrid"></div>
+            <div class="properties-cta">
+                <a href="listings.html" class="btn btn-outline">
+                    <i class="fas fa-th-list"></i> View All Properties
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="propertyModal" role="dialog" aria-modal="true" aria-label="Property details">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <section class="agents section" id="agents">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Team</span>
+                <h2 class="section-title">Meet Our Expert Agents</h2>
+                <p class="section-desc">Dedicated professionals committed to finding your perfect property.</p>
+            </div>
+            <div class="agents-grid" id="agentsGrid"></div>
+            <div class="properties-cta">
+                <a href="agents.html" class="btn btn-outline">
+                    <i class="fas fa-users"></i> Meet All Agents
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">Prestige Properties made buying our first home seamless. Our agent James walked us through every step and found us the perfect Brooklyn brownstone.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div>
+                            <span class="testimonial-name">Rebecca & Kevin Chen</span>
+                            <span class="testimonial-role">Brooklyn, NY</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">We sold our Miami condo in just 12 days above asking price. The marketing campaign was exceptional and their network of buyers is unmatched.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <span class="testimonial-name">Michael Rodriguez</span>
+                            <span class="testimonial-role">Miami, FL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">Samantha helped us find our dream penthouse in Manhattan. Her knowledge of the luxury market is incredible. Truly a white-glove experience.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DW</div>
+                        <div>
+                            <span class="testimonial-name">David & Wendy Park</span>
+                            <span class="testimonial-role">Manhattan, NY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta section" style="background:var(--bg-dark);text-align:center;padding:80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get Started</span>
+                <h2 class="section-title">Ready to Find Your Dream Home?</h2>
+                <p class="section-desc">Our expert agents are ready to help you every step of the way. Schedule a consultation today.</p>
+            </div>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary btn-lg" style="padding:16px 36px;font-size:1rem;">
+                    <i class="fas fa-paper-plane"></i> Contact an Agent
+                </a>
+                <a href="listings.html" class="btn btn-outline btn-lg" style="padding:16px 36px;font-size:1rem;">
+                    <i class="fas fa-search"></i> Browse Listings
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-desc">Everything you need to know about buying, financing, and closing on your property.</p>
+            </div>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-building"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Prestige</span>
+                            <span class="logo-subtitle">Properties</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Prestige Properties is a full-service luxury real estate agency specializing in premium residential properties across the United States. Part of the Ationic Digital Agency network.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="property-detail.html">Property Detail</a></li>
+                        <li><a href="agents.html">Agents</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Property Types</h4>
+                    <ul>
+                        <li><a href="listings.html?type=apartment">Apartments</a></li>
+                        <li><a href="listings.html?type=villa">Villas</a></li>
+                        <li><a href="listings.html?type=townhouse">Townhouses</a></li>
+                        <li><a href="listings.html?type=penthouse">Penthouses</a></li>
+                        <li><a href="listings.html?type=studio">Studios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="listings.html?location=manhattan">Manhattan, NY</a></li>
+                        <li><a href="listings.html?location=brooklyn">Brooklyn, NY</a></li>
+                        <li><a href="listings.html?location=la">Los Angeles, CA</a></li>
+                        <li><a href="listings.html?location=miami">Miami, FL</a></li>
+                        <li><a href="listings.html?location=sf">San Francisco, CA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Prestige Properties. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var properties = [
+            { id: 1, name: 'The Madison Penthouse', type: 'penthouse', price: 8950000, location: 'Manhattan, NY', beds: 5, baths: 4, sqft: 4200, status: 'featured', desc: 'A breathtaking penthouse atop the iconic Madison Tower offering panoramic views of Central Park and the Manhattan skyline.', features: ['Private Terrace', 'Chef\'s Kitchen', 'Italian Marble', 'Smart Home System', 'Wine Cellar', '24/7 Concierge'] },
+            { id: 2, name: 'Brooklyn Heights Brownstone', type: 'townhouse', price: 3200000, location: 'Brooklyn, NY', beds: 4, baths: 3, sqft: 2800, status: 'sale', desc: 'Stunning restored brownstone in the heart of Brooklyn Heights. Original exposed brick, modern amenities, private garden, and rooftop deck with skyline views.', features: ['Private Garden', 'Rooftop Deck', 'Exposed Brick', 'Modern Kitchen', 'Fireplace', 'Wine Cellar'] },
+            { id: 3, name: 'Beverly Hills Villa', type: 'villa', price: 12400000, location: 'Los Angeles, CA', beds: 6, baths: 5, sqft: 6500, status: 'featured', desc: 'Mediterranean-inspired estate nestled in the hills of Beverly Hills. Infinity pool, outdoor kitchen, home theater, and resort-style landscaping.', features: ['Infinity Pool', 'Outdoor Kitchen', 'Home Theater', 'Wine Cellar', 'Tennis Court', 'Guest House'] },
+            { id: 4, name: 'South Beach Penthouse', type: 'penthouse', price: 5600000, location: 'Miami, FL', beds: 3, baths: 3, sqft: 2400, status: 'sale', desc: 'Modern waterfront penthouse with floor-to-ceiling windows overlooking Biscayne Bay.', features: ['Waterfront Views', 'Private Boat Dock', 'Resort Pool', 'Fitness Center', 'Valet Parking', 'Spa Access'] },
+            { id: 5, name: 'Lincoln Park Apartment', type: 'apartment', price: 875000, location: 'Chicago, IL', beds: 2, baths: 2, sqft: 1400, status: 'sale', desc: 'Elegant apartment in Chicago\'s prestigious Lincoln Park neighborhood.', features: ['Hardwood Floors', 'Custom Cabinetry', 'Deeded Parking', 'In-Unit Laundry', 'Storage Unit', 'Rooftop Access'] },
+            { id: 6, name: 'Pacific Heights Estate', type: 'villa', price: 7800000, location: 'San Francisco, CA', beds: 5, baths: 4, sqft: 4800, status: 'sold', desc: 'Grand Victorian estate in Pacific Heights with sweeping views of the Golden Gate Bridge.', features: ['Bay Views', 'Victorian Architecture', 'Garden Courtyard', 'Chef\'s Kitchen', 'Library', 'Garage'] }
+        ];
+
+        var agents = [
+            { name: 'Samantha Blake', title: 'Senior Luxury Specialist', initials: 'SB', exp: '14 years', spec: 'Luxury Penthouses & Estates', phone: '(212) 555-0101', email: 'samantha@prestigeproperties.com', sold: 342, rating: 4.9 },
+            { name: 'James Mitchell', title: 'Executive Agent', initials: 'JM', exp: '11 years', spec: 'Brooklyn & Manhattan Residential', phone: '(212) 555-0102', email: 'james@prestigeproperties.com', sold: 287, rating: 4.8 },
+            { name: 'Isabella Torres', title: 'Villa & Estate Specialist', initials: 'IT', exp: '9 years', spec: 'Luxury Villas & Waterfront', phone: '(212) 555-0103', email: 'isabella@prestigeproperties.com', sold: 198, rating: 4.7 }
+        ];
+
+        var faqs = [
+            { q: 'What is the first step in the home-buying process?', a: 'The first step is to get pre-approved for a mortgage. This helps you understand your budget and shows sellers you are a serious buyer.' },
+            { q: 'How much down payment do I need?', a: 'Down payment requirements vary by loan type. Conventional loans typically require 5-20% down. FHA loans may require as little as 3.5%.' },
+            { q: 'What are closing costs and how much are they?', a: 'Closing costs typically range from 2-5% of the purchase price and include loan origination fees, appraisal, title insurance, escrow fees, and transfer taxes.' },
+            { q: 'How long does the home-buying process take?', a: 'On average, the home-buying process takes 30-60 days from accepted offer to closing. Cash purchases can close in as little as 14 days.' },
+            { q: 'Should I get a home inspection?', a: 'Absolutely. A professional home inspection is critical to identify potential issues with the property.' },
+            { q: 'What is earnest money?', a: 'Earnest money is a deposit (typically 1-3% of the purchase price) that shows the seller you are serious about buying.' }
+        ];
+
+        var propertiesGrid = document.getElementById('propertiesGrid');
+        var modal = document.getElementById('propertyModal');
+        var modalBody = document.getElementById('modalBody');
+        var modalClose = document.getElementById('modalClose');
+        var modalOverlay = document.getElementById('modalOverlay');
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var faqList = document.getElementById('faqList');
+        var agentsGrid = document.getElementById('agentsGrid');
+        var contactForm = document.getElementById('contactForm');
+        var heroSearch = document.getElementById('heroSearch');
+
+        function getTypeIcon(type) {
+            var icons = { apartment: 'fa-building', villa: 'fa-tree', townhouse: 'fa-house-chimney', penthouse: 'fa-crown', studio: 'fa-door-open' };
+            return icons[type] || 'fa-home';
+        }
+
+        function renderProperties(filter) {
+            propertiesGrid.innerHTML = '';
+            var filtered = filter && filter !== 'all' ? properties.filter(function(p) { return p.type === filter; }) : properties;
+            filtered.forEach(function(p, i) {
+                var badgeClass = p.status === 'featured' ? 'badge-featured' : p.status === 'sold' ? 'badge-sold' : 'badge-sale';
+                var badgeText = p.status === 'featured' ? 'Featured' : p.status === 'sold' ? 'Sold' : 'For Sale';
+                var icon = getTypeIcon(p.type);
+                var card = document.createElement('div');
+                card.className = 'property-card';
+                card.style.animationDelay = (i * 0.05) + 's';
+                card.innerHTML =
+                    '<div class="property-image">' +
+                        '<div class="property-image-placeholder"><i class="fas ' + icon + '"></i></div>' +
+                        '<span class="property-badge ' + badgeClass + '">' + badgeText + '</span>' +
+                        '<div class="property-overlay">' +
+                            '<button class="btn-details" data-id="' + p.id + '"><i class="fas fa-eye"></i> View Details</button>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="property-info">' +
+                        '<p class="property-location"><i class="fas fa-map-marker-alt"></i>' + p.location + '</p>' +
+                        '<h3 class="property-name">' + p.name + '</h3>' +
+                        '<p class="property-price">' + window.formatter.format(p.price) + '</p>' +
+                        '<div class="property-specs">' +
+                            '<span><i class="fas fa-bed"></i> ' + (p.beds || 'Studio') + (p.beds ? ' Beds' : '') + '</span>' +
+                            '<span><i class="fas fa-bath"></i> ' + p.baths + ' Baths</span>' +
+                            '<span><i class="fas fa-vector-square"></i> ' + p.sqft.toLocaleString() + ' sqft</span>' +
+                        '</div>' +
+                    '</div>';
+                propertiesGrid.appendChild(card);
+            });
+            document.querySelectorAll('.btn-details').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = parseInt(this.getAttribute('data-id'));
+                    var prop = properties.find(function(p) { return p.id === id; });
+                    if (prop) openModal(prop);
+                });
+            });
+        }
+
+        function openModal(prop) {
+            var featuresHtml = prop.features.map(function(f) { return '<li>' + f + '</li>'; }).join('');
+            modalBody.innerHTML =
+                '<div class="modal-gallery">' +
+                    '<div class="modal-gallery-placeholder">' +
+                        '<i class="fas ' + getTypeIcon(prop.type) + '"></i>' +
+                        '<p>Property Gallery</p>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="modal-details">' +
+                    '<div class="modal-header">' +
+                        '<h2 class="modal-title">' + prop.name + '</h2>' +
+                        '<span class="modal-price">' + window.formatter.format(prop.price) + '</span>' +
+                    '</div>' +
+                    '<div class="modal-meta">' +
+                        '<span class="modal-meta-item"><i class="fas fa-map-marker-alt"></i>' + prop.location + '</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-bed"></i> ' + (prop.beds || 'Studio') + (prop.beds ? ' Beds' : '') + '</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-bath"></i> ' + prop.baths + ' Baths</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-vector-square"></i> ' + prop.sqft.toLocaleString() + ' sqft</span>' +
+                    '</div>' +
+                    '<p class="modal-description">' + prop.desc + '</p>' +
+                    '<h3 style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:12px;">Features &amp; Amenities</h3>' +
+                    '<ul class="modal-features">' + featuresHtml + '</ul>' +
+                    '<h3 style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:12px;">Resources</h3>' +
+                    '<div class="modal-extras">' +
+                        '<div class="modal-extra-card"><i class="fas fa-draw-polygon"></i><h4>Floor Plan</h4><p>View floor plans</p></div>' +
+                        '<div class="modal-extra-card"><i class="fas fa-map-marked-alt"></i><h4>Location Map</h4><p>View on map</p></div>' +
+                        '<div class="modal-extra-card"><i class="fas fa-video"></i><h4>Virtual Tour</h4><p>360&deg; tour available</p></div>' +
+                    '</div>' +
+                    '<div class="modal-actions">' +
+                        '<a href="property-detail.html?id=' + prop.id + '" class="btn btn-primary"><i class="fas fa-info-circle"></i> Full Details</a>' +
+                        '<button class="btn btn-outline" id="modalSchedule"><i class="fas fa-calendar"></i> Schedule Tour</button>' +
+                    '</div>' +
+                '</div>';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('modalSchedule').addEventListener('click', function() {
+                alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your exclusive tour of ' + prop.name + '.');
+            });
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                renderProperties(btn.getAttribute('data-filter'));
+            });
+        });
+
+        function renderAgents() {
+            agentsGrid.innerHTML = '';
+            agents.forEach(function(a) {
+                var stars = '';
+                var full = Math.floor(a.rating);
+                for (var i = 0; i < full; i++) { stars += '<i class="fas fa-star"></i>'; }
+                var card = document.createElement('div');
+                card.className = 'agent-card fade-up';
+                card.innerHTML =
+                    '<div class="agent-photo">' + a.initials + '</div>' +
+                    '<h3 class="agent-name">' + a.name + '</h3>' +
+                    '<p class="agent-title">' + a.title + '</p>' +
+                    '<p class="agent-rating">' + stars + ' ' + a.rating + '</p>' +
+                    '<div class="agent-stats">' +
+                        '<span><i class="fas fa-briefcase"></i> ' + a.exp + '</span>' +
+                        '<span><i class="fas fa-home"></i> ' + a.sold + ' Sold</span>' +
+                    '</div>' +
+                    '<p class="agent-contact"><i class="fas fa-tag"></i> ' + a.spec + '</p>' +
+                    '<p class="agent-contact"><i class="fas fa-phone"></i> ' + a.phone + '</p>' +
+                    '<p class="agent-contact"><i class="fas fa-envelope"></i> ' + a.email + '</p>' +
+                    '<a href="contact.html" class="btn btn-outline btn-agent"><i class="fas fa-comment"></i> Contact Agent</a>';
+                agentsGrid.appendChild(card);
+            });
+        }
+
+        function renderFaqs() {
+            faqList.innerHTML = '';
+            faqs.forEach(function(faq) {
+                var item = document.createElement('div');
+                item.className = 'faq-item';
+                item.innerHTML =
+                    '<button class="faq-question">' +
+                        '<span>' + faq.q + '</span>' +
+                        '<i class="fas fa-chevron-down"></i>' +
+                    '</button>' +
+                    '<div class="faq-answer"><p>' + faq.a + '</p></div>';
+                item.querySelector('.faq-question').addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+                faqList.appendChild(item);
+            });
+        }
+
+        if (heroSearch) {
+            heroSearch.addEventListener('submit', function(e) {
+                e.preventDefault();
+                window.location.href = 'listings.html' +
+                    '?location=' + encodeURIComponent(document.getElementById('searchLocation').value) +
+                    '&type=' + encodeURIComponent(document.getElementById('searchType').value) +
+                    '&price=' + encodeURIComponent(document.getElementById('searchPrice').value);
+            });
+        }
+
+        renderProperties('all');
+        renderAgents();
+        renderFaqs();
+        window.setupObserver('.agent-card, .testimonial-card, .contact-info-card');
+        setTimeout(window.animateCounters, 600);
+    })();
+    </script>
+</body>
+</html>

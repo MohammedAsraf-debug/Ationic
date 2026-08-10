@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — Nexus SaaS | Ationic Showcase</title>
+  <meta name="description" content="Detailed analytics for Nexus SaaS Dashboard: revenue trends, user growth, subscription breakdown, and projections.">
+  <meta name="author" content="Ationic Digital Agency">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-analytics">
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    <p class="loader-text">Loading Nexus Dashboard...</p>
+  </div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">N</div>
+        <div class="brand-text">
+          <span class="brand-name">Nexus</span>
+          <span class="brand-sub">SaaS Analytics</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="analytics.html" class="nav-item active">
+          <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+          <span class="nav-label">Analytics</span>
+        </a>
+        <a href="users.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-users"></i></span>
+          <span class="nav-label">Users</span>
+        </a>
+        <a href="billing.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+          <span class="nav-label">Billing</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-cog"></i></span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="dark-toggle" id="darkToggle">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-label">Dark Mode</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title">Analytics</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search anything..." id="globalSearch">
+          </div>
+          <div class="notification-bell">
+            <i class="fas fa-bell"></i>
+            <span class="notification-dot"></span>
+          </div>
+          <div class="avatar">JD</div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="stats-grid">
+          <div class="stat-card" data-delay="0">
+            <div class="stat-icon revenue-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Total Revenue</span>
+              <span class="stat-value" data-target="284500" data-prefix="$">$0</span>
+              <span class="stat-change positive">+12.5%</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="100">
+            <div class="stat-icon users-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">User Growth</span>
+              <span class="stat-value" data-target="18.4" data-suffix="%" data-fixed="1">0%</span>
+              <span class="stat-change positive">+3.2% vs Q2</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="200">
+            <div class="stat-icon mrr-icon"><i class="fas fa-arrow-up"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Avg Revenue Per User</span>
+              <span class="stat-value" data-target="22.15" data-prefix="$">$0</span>
+              <span class="stat-change positive">+5.7%</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="300">
+            <div class="stat-icon churn-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Projected MRR</span>
+              <span class="stat-value" data-target="48500" data-prefix="$">$0</span>
+              <span class="stat-change positive">+14.6% EOY</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Revenue Line Chart</h3>
+              <div class="chart-period">
+                <button class="period-btn active" data-period="12m">12 Months</button>
+                <button class="period-btn" data-period="6m">6 Months</button>
+                <button class="period-btn" data-period="30d">30 Days</button>
+              </div>
+            </div>
+            <div class="chart-body">
+              <canvas id="analyticsRevenueChart" width="700" height="300"></canvas>
+            </div>
+          </div>
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>User Growth (Area Chart)</h3>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+                <span class="legend-item"><span class="legend-dot projected"></span> Projected</span>
+              </div>
+            </div>
+            <div class="chart-body">
+              <canvas id="analyticsUsersChart" width="700" height="300"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card subscription-card">
+            <div class="card-header">
+              <h3>Subscription Breakdown</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="analyticsSubChart" width="200" height="200"></canvas>
+              <div class="subscription-legend">
+                <div class="sub-legend-item">
+                  <span class="sub-dot basic"></span>
+                  <span class="sub-name">Basic</span>
+                  <span class="sub-percent">35%</span>
+                </div>
+                <div class="sub-legend-item">
+                  <span class="sub-dot pro"></span>
+                  <span class="sub-name">Pro</span>
+                  <span class="sub-percent">45%</span>
+                </div>
+                <div class="sub-legend-item">
+                  <span class="sub-dot enterprise"></span>
+                  <span class="sub-name">Enterprise</span>
+                  <span class="sub-percent">20%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Growth Projections</h3>
+            </div>
+            <div class="card-body">
+              <div class="projection-list">
+                <div class="projection-item">
+                  <span class="projection-label">Q3 2025 Est. Revenue</span>
+                  <span class="projection-value">$138,000</span>
+                  <span class="projection-change positive">+11.2%</span>
+                </div>
+                <div class="projection-item">
+                  <span class="projection-label">Q4 2025 Est. Revenue</span>
+                  <span class="projection-value">$155,000</span>
+                  <span class="projection-change positive">+12.3%</span>
+                </div>
+                <div class="projection-item">
+                  <span class="projection-label">Year-End Users</span>
+                  <span class="projection-value">14,800</span>
+                  <span class="projection-change positive">+15.2%</span>
+                </div>
+                <div class="projection-item">
+                  <span class="projection-label">ARPU Target</span>
+                  <span class="projection-value">$24.50</span>
+                  <span class="projection-change positive">+10.6%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initAnalyticsPage();
+    });
+  </script>
+</body>
+</html>

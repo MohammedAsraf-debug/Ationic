@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing — Nexus SaaS | Ationic Showcase</title>
+  <meta name="description" content="Billing and subscription management for Nexus SaaS Dashboard: invoices, payment history, and pricing plans.">
+  <meta name="author" content="Ationic Digital Agency">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-billing">
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    <p class="loader-text">Loading Nexus Dashboard...</p>
+  </div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">N</div>
+        <div class="brand-text">
+          <span class="brand-name">Nexus</span>
+          <span class="brand-sub">SaaS Analytics</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+          <span class="nav-label">Analytics</span>
+        </a>
+        <a href="users.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-users"></i></span>
+          <span class="nav-label">Users</span>
+        </a>
+        <a href="billing.html" class="nav-item active">
+          <span class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+          <span class="nav-label">Billing</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-cog"></i></span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="dark-toggle" id="darkToggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-label">Dark Mode</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title">Billing</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search invoices..."></div>
+          <div class="notification-bell"><i class="fas fa-bell"></i><span class="notification-dot"></span></div>
+          <div class="avatar">JD</div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="stats-grid">
+          <div class="stat-card" data-delay="0">
+            <div class="stat-icon revenue-icon"><i class="fas fa-coins"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Total Revenue</span>
+              <span class="stat-value" data-target="284500" data-prefix="$">$0</span>
+              <span class="stat-change positive">+12.5%</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="100">
+            <div class="stat-icon users-icon"><i class="fas fa-file-invoice"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Invoices (This Month)</span>
+              <span class="stat-value" data-target="42">0</span>
+              <span class="stat-change positive">+3</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="200">
+            <div class="stat-icon mrr-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Paid</span>
+              <span class="stat-value" data-target="28">0</span>
+              <span class="stat-change positive">66.7% paid</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="300">
+            <div class="stat-icon churn-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Pending / Overdue</span>
+              <span class="stat-value" data-target="14">0</span>
+              <span class="stat-change negative">33.3% outstanding</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Invoices</h3>
+            <div class="invoice-controls">
+              <input type="text" class="invoice-search" id="billingSearch" placeholder="Search invoices...">
+              <select class="invoice-filter" id="billingFilter">
+                <option value="all">All Status</option>
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+                <option value="overdue">Overdue</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-wrapper">
+              <table class="invoices-table">
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="billingInvoiceBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Pricing Plans</h3>
+          </div>
+          <div class="card-body">
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <h4 class="pricing-name">Basic</h4>
+                <p class="pricing-price"><span class="pricing-amount">$29</span>/mo</p>
+                <ul class="pricing-features">
+                  <li><i class="fas fa-check"></i> Up to 1,000 users</li>
+                  <li><i class="fas fa-check"></i> Basic analytics</li>
+                  <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+                <span class="status-badge active" style="margin-top:12px;display:inline-block">35% of users</span>
+              </div>
+              <div class="pricing-card featured">
+                <h4 class="pricing-name">Pro</h4>
+                <p class="pricing-price"><span class="pricing-amount">$99</span>/mo</p>
+                <ul class="pricing-features">
+                  <li><i class="fas fa-check"></i> Up to 10,000 users</li>
+                  <li><i class="fas fa-check"></i> Advanced analytics</li>
+                  <li><i class="fas fa-check"></i> Priority support</li>
+                  <li><i class="fas fa-check"></i> Custom integrations</li>
+                </ul>
+                <span class="status-badge active" style="margin-top:12px;display:inline-block">45% of users</span>
+              </div>
+              <div class="pricing-card">
+                <h4 class="pricing-name">Enterprise</h4>
+                <p class="pricing-price"><span class="pricing-amount">$299</span>/mo</p>
+                <ul class="pricing-features">
+                  <li><i class="fas fa-check"></i> Unlimited users</li>
+                  <li><i class="fas fa-check"></i> Full analytics suite</li>
+                  <li><i class="fas fa-check"></i> Dedicated support</li>
+                  <li><i class="fas fa-check"></i> Custom integrations</li>
+                  <li><i class="fas fa-check"></i> SLA guarantee</li>
+                </ul>
+                <span class="status-badge active" style="margin-top:12px;display:inline-block">20% of users</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initBillingPage();
+    });
+  </script>
+</body>
+</html>

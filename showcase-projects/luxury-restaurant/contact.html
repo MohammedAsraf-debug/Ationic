@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Le Château Noir - Reserve your table, find our address, phone, email, and hours in Paris.">
+    <meta name="author" content="Ationic Digital Agency">
+    <title>Contact & Reservations | Le Château Noir</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">Le Château <span>Noir</span></a>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="chef.html">Chef</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="contact.html" class="nav-cta">Reserve</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section" id="reservation">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Reservations</span>
+            <h2>Book Your Experience</h2>
+            <p>Reserve your table at Le Château Noir. We accommodate parties from 2 to 12 guests.</p>
+        </div>
+        <form class="reservation-form" id="reservationForm" data-aos="fade-up">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="resDate">Date</label>
+                    <input type="date" id="resDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="resTime">Time</label>
+                    <input type="time" id="resTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="resGuests">Guests</label>
+                    <select id="resGuests" required>
+                        <option value="">Select</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                        <option value="6">6 Guests</option>
+                        <option value="7">7 Guests</option>
+                        <option value="8">8 Guests</option>
+                        <option value="9">9 Guests</option>
+                        <option value="10">10 Guests</option>
+                        <option value="11">11 Guests</option>
+                        <option value="12">12 Guests</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="resName">Full Name</label>
+                    <input type="text" id="resName" placeholder="e.g. Jean Dupont" required>
+                </div>
+                <div class="form-group">
+                    <label for="resEmail">Email</label>
+                    <input type="email" id="resEmail" placeholder="jean@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="resPhone">Phone</label>
+                    <input type="tel" id="resPhone" placeholder="+33 1 23 45 67 89" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="resDietary">Dietary Preferences</label>
+                    <select id="resDietary">
+                        <option value="">None</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="pescatarian">Pescatarian</option>
+                        <option value="lactose-free">Lactose-Free</option>
+                        <option value="nut-allergy">Nut Allergy</option>
+                        <option value="shellfish-allergy">Shellfish Allergy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resSpecial">Special Requests</label>
+                    <textarea id="resSpecial" rows="3" placeholder="Allergies, celebrations, seating preferences..."></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Confirm Reservation</button>
+        </form>
+    </div>
+</section>
+
+<div class="modal" id="confirmModal">
+    <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-icon"><i class="fas fa-check"></i></div>
+        <h3>Reservation Confirmed</h3>
+        <div id="confirmDetails"></div>
+        <p class="modal-note">A confirmation email has been sent to your email address. We look forward to welcoming you.</p>
+        <button class="btn btn-primary" id="modalOkBtn">Perfect</button>
+    </div>
+</div>
+
+<section class="section section-dark" id="contact">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Get in Touch</span>
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-grid" data-aos="fade-up">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>112 Avenue des Champs-Élysées<br>75008 Paris, France</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+33 1 45 67 89 00</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>reservations@lechateau-noir.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h4>Hours</h4>
+                        <p>Tuesday - Saturday: 19:00 - 22:30<br>Friday & Saturday Lunch: 12:00 - 14:00<br>Closed Sunday & Monday</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map">
+                <div class="map-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <p>112 Avenue des Champs-Élysées, Paris</p>
+                    <span class="map-sub">Google Maps integration here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Le Château Noir</h3>
+                <p>An Unforgettable Dining Experience</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Reservations</a></li>
+                    <li><a href="events.html">Private Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li>112 Av. des Champs-Élysées</li>
+                    <li>75008 Paris, France</li>
+                    <li>+33 1 45 67 89 00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created by Ationic as a Showcase Project</p>
+            <p>&copy; 2026 Le Château Noir. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function() {
+    var resForm = document.getElementById('reservationForm');
+    var confirmModal = document.getElementById('confirmModal');
+    var confirmDetails = document.getElementById('confirmDetails');
+    var modalClose = document.getElementById('modalClose');
+    var modalOkBtn = document.getElementById('modalOkBtn');
+
+    resForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var date = document.getElementById('resDate').value;
+        var time = document.getElementById('resTime').value;
+        var guests = document.getElementById('resGuests').value;
+        var name = document.getElementById('resName').value;
+        var email = document.getElementById('resEmail').value;
+        var phone = document.getElementById('resPhone').value;
+        var dietary = document.getElementById('resDietary').value;
+        var special = document.getElementById('resSpecial').value;
+
+        var formattedDate = new Date(date + 'T' + time);
+        var dateStr = formattedDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        var timeStr = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+        confirmDetails.innerHTML =
+            '<p><strong>' + name + '</strong></p>' +
+            '<p>' + dateStr + ' at ' + timeStr + '</p>' +
+            '<p>' + guests + ' guest' + (guests > 1 ? 's' : '') + '</p>' +
+            '<p>Email: ' + email + ' | Phone: ' + phone + '</p>' +
+            (dietary ? '<p>Dietary: ' + dietary + '</p>' : '') +
+            (special ? '<p>Special Requests: ' + special + '</p>' : '');
+
+        confirmModal.classList.add('active');
+    });
+
+    function closeModal() {
+        confirmModal.classList.remove('active');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOkBtn.addEventListener('click', closeModal);
+    confirmModal.addEventListener('click', function(e) {
+        if (e.target === confirmModal) closeModal();
+    });
+})();
+</script>
+</body>
+</html>

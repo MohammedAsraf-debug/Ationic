@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Velour Boutique</title>
+    <meta name="description" content="Browse Velour Boutique's curated collection of premium fashion for women, men, and accessories.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">V</div>
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Velour Boutique</p>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="container">
+            <span>Free shipping on orders over $100 &bull; Complimentary gift wrapping</span>
+            <span>Sign up for 15% off your first order</span>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <a href="index.html" class="nav-logo">Velour</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="category.html" class="nav-link">Shop</a></li>
+                    <li><a href="product.html" class="nav-link">Product</a></li>
+                    <li><a href="wishlist.html" class="nav-link">Wishlist <span class="wishlist-count">0</span></a></li>
+                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="checkout.html" class="nav-link">Checkout</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="cart.html" class="nav-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="category-banner">
+            <div class="container">
+                <span class="section-tag" id="categoryTag">Shop</span>
+                <h1 class="category-title" id="categoryTitle">Category</h1>
+                <p class="category-desc" id="categoryDesc">Browse our curated selection.</p>
+                <span class="category-count" id="categoryCount">0 products</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="shop-layout">
+                <aside class="shop-filters">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <label><input type="checkbox" data-filter="category" value="women"> Women</label>
+                        <label><input type="checkbox" data-filter="category" value="men"> Men</label>
+                        <label><input type="checkbox" data-filter="category" value="accessories"> Accessories</label>
+                        <label><input type="checkbox" data-filter="category" value="sale"> Sale</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <label><input type="radio" name="price" data-filter="price" value="all" checked> All Prices</label>
+                        <label><input type="radio" name="price" data-filter="price" value="0-50"> Under $50</label>
+                        <label><input type="radio" name="price" data-filter="price" value="50-100"> $50 - $100</label>
+                        <label><input type="radio" name="price" data-filter="price" value="100-200"> $100 - $200</label>
+                        <label><input type="radio" name="price" data-filter="price" value="200-500"> $200 - $500</label>
+                        <label><input type="radio" name="price" data-filter="price" value="500"> $500+</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Size</h4>
+                        <div class="size-options">
+                            <label><input type="checkbox" data-filter="size" value="XS"> XS</label>
+                            <label><input type="checkbox" data-filter="size" value="S"> S</label>
+                            <label><input type="checkbox" data-filter="size" value="M"> M</label>
+                            <label><input type="checkbox" data-filter="size" value="L"> L</label>
+                            <label><input type="checkbox" data-filter="size" value="XL"> XL</label>
+                            <label><input type="checkbox" data-filter="size" value="XXL"> 2XL</label>
+                            <label><input type="checkbox" data-filter="size" value="3XL"> 3XL</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <label><input type="checkbox" data-filter="rating" value="4"> 4★ & Up</label>
+                        <label><input type="checkbox" data-filter="rating" value="3"> 3★ & Up</label>
+                    </div>
+                    <button class="btn btn-primary btn-full" id="clearFilters">Clear All Filters</button>
+                </aside>
+                <div class="shop-main">
+                    <div class="shop-toolbar">
+                        <span id="resultCount">0 products</span>
+                        <select id="sortSelect">
+                            <option value="newest">Sort: Newest</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating">Best Rated</option>
+                        </select>
+                    </div>
+                    <div class="products-grid" id="categoryGrid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Velour</div>
+                    <p>Premium fashion boutique offering curated collections of designer clothing, accessories, and lifestyle pieces.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="category.html?cat=women">Women</a></li>
+                        <li><a href="category.html?cat=men">Men</a></li>
+                        <li><a href="category.html?cat=accessories">Accessories</a></li>
+                        <li><a href="category.html?cat=sale">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="checkout.html">Shipping & Delivery</a></li>
+                        <li><a href="checkout.html">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>hello@velourboutique.com</li>
+                        <li>1 (800) 555-0199</li>
+                        <li>245 Madison Avenue<br>New York, NY 10016</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project.</p>
+                <p>&copy; 2026 Velour Boutique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let currentCategory = params.get('cat') || 'women';
+
+        function renderCategory(cat) {
+            const catInfo = categories[cat] || { title: 'Shop', desc: '' };
+            document.getElementById('categoryTitle').textContent = catInfo.title;
+            document.getElementById('categoryDesc').textContent = catInfo.desc;
+            document.getElementById('categoryTag').textContent = cat === 'sale' ? 'Sale' : 'Shop ' + catInfo.title;
+            let filtered = cat === 'sale' ? products.filter(p => p.sale) : products.filter(p => p.category === cat);
+            document.getElementById('categoryCount').textContent = filtered.length + ' products';
+            document.getElementById('resultCount').textContent = filtered.length + ' products';
+            document.getElementById('categoryGrid').innerHTML = filtered.map(p => renderProductCard(p)).join('');
+        }
+
+        function applyFilters() {
+            let filtered = [...products];
+            const catChecks = [...document.querySelectorAll('[data-filter="category"]:checked')].map(c => c.value);
+            if (catChecks.length > 0) filtered = filtered.filter(p => catChecks.includes(p.category));
+            else filtered = currentCategory === 'sale' ? products.filter(p => p.sale) : products.filter(p => p.category === currentCategory);
+
+            const priceChecked = document.querySelector('[name="price"]:checked');
+            if (priceChecked && priceChecked.value !== 'all') {
+                const [min, max] = priceChecked.value.split('-').map(Number);
+                filtered = filtered.filter(p => { const val = p.sale || p.price; if (max) return val >= min && val <= max; return val >= min; });
+            }
+            const sizeChecks = [...document.querySelectorAll('[data-filter="size"]:checked')].map(c => c.value);
+            if (sizeChecks.length > 0) filtered = filtered.filter(p => p.sizes.some(s => sizeChecks.includes(s)));
+            const ratingChecks = [...document.querySelectorAll('[data-filter="rating"]:checked')].map(c => parseInt(c.value));
+            if (ratingChecks.length > 0) { const minRating = Math.min(...ratingChecks); filtered = filtered.filter(p => p.rating >= minRating); }
+            const sort = document.getElementById('sortSelect').value;
+            if (sort === 'price-asc') filtered.sort((a, b) => (a.sale || a.price) - (b.sale || b.price));
+            else if (sort === 'price-desc') filtered.sort((a, b) => (b.sale || b.price) - (a.sale || a.price));
+            else if (sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+            else filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            document.getElementById('resultCount').textContent = filtered.length + ' products';
+            document.getElementById('categoryGrid').innerHTML = filtered.map(p => renderProductCard(p)).join('');
+        }
+
+        renderCategory(currentCategory);
+        document.querySelectorAll('.shop-filters input, .shop-filters select').forEach(el => el.addEventListener('change', applyFilters));
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            document.querySelectorAll('.shop-filters input').forEach(i => { i.checked = false; if (i.type === 'radio') i.checked = i.value === 'all'; });
+            applyFilters();
+        });
+        document.getElementById('sortSelect').addEventListener('change', applyFilters);
+    </script>
+</body>
+</html>

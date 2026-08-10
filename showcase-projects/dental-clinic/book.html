@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book an appointment at BrightSmile Dental Clinic. Choose your date, time, doctor, and treatment.">
+    <meta name="author" content="Ationic Digital Agency">
+    <title>Book Appointment | BrightSmile Dental Clinic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">BrightSmile <span>Dental</span></a>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="doctors.html">Doctors</a></li>
+            <li><a href="treatments.html">Treatments</a></li>
+            <li><a href="book.html" class="active">Book Now</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="book.html" class="nav-cta">Book Appointment</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="emergency-banner" id="emergencyBanner">
+    <div class="container">
+        <p><i class="fas fa-exclamation-triangle"></i> <strong>Emergency?</strong> Same-day appointments available. Call <a href="tel:+15551234567">(555) 123-4567</a></p>
+    </div>
+</section>
+
+<section class="section" id="appointment">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Booking</span>
+            <h2>Book an Appointment</h2>
+            <p>Schedule your visit with BrightSmile Dental. We'll confirm within 2 hours during business hours.</p>
+        </div>
+        <form class="appointment-form" id="appointmentForm" data-aos="fade-up">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="aptName">Full Name</label>
+                    <input type="text" id="aptName" placeholder="e.g. John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="aptPhone">Phone</label>
+                    <input type="tel" id="aptPhone" placeholder="(555) 123-4567" required>
+                </div>
+                <div class="form-group">
+                    <label for="aptEmail">Email</label>
+                    <input type="email" id="aptEmail" placeholder="john@example.com" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="aptDate">Preferred Date</label>
+                    <input type="date" id="aptDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="aptTime">Preferred Time</label>
+                    <select id="aptTime" required>
+                        <option value="">Select a time slot</option>
+                        <option value="08:00">8:00 AM</option>
+                        <option value="08:30">8:30 AM</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="09:30">9:30 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:30">10:30 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="11:30">11:30 AM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="14:30">2:30 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="15:30">3:30 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="16:30">4:30 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="aptDoctor">Select Doctor</label>
+                    <select id="aptDoctor" required>
+                        <option value="">Select doctor</option>
+                        <option value="mitchell">Dr. Sarah Mitchell - Orthodontics</option>
+                        <option value="chen">Dr. James Chen - Implantology</option>
+                        <option value="rodriguez">Dr. Emily Rodriguez - Pediatric Dentistry</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="aptTreatment">Treatment Type</label>
+                    <select id="aptTreatment" required>
+                        <option value="">Select treatment</option>
+                        <option value="checkup">General Checkup & Cleaning</option>
+                        <option value="whitening">Teeth Whitening</option>
+                        <option value="implant">Dental Implant Consultation</option>
+                        <option value="ortho">Orthodontic Consultation</option>
+                        <option value="root-canal">Root Canal</option>
+                        <option value="veneer">Veneers</option>
+                        <option value="pediatric">Pediatric Dentistry</option>
+                        <option value="emergency">Emergency Visit</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="aptNotes">Additional Notes</label>
+                    <textarea id="aptNotes" rows="3" placeholder="Any concerns, medical conditions, or special requirements..."></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Book Appointment</button>
+        </form>
+    </div>
+</section>
+
+<div class="modal" id="confirmModal">
+    <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-icon"><i class="fas fa-check"></i></div>
+        <h3>Appointment Booked!</h3>
+        <div id="confirmDetails"></div>
+        <p class="modal-note">Your appointment ID: <strong id="appointmentId"></strong>. We'll send a confirmation to your email shortly.</p>
+        <button class="btn btn-primary" id="modalOkBtn">Got it</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>BrightSmile <span>Dental</span></h3>
+                <p>Your Smile, Our Passion</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="book.html">Book Appointment</a></li>
+                    <li><a href="treatments.html">Treatments</a></li>
+                    <li><a href="doctors.html">Our Doctors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li>2500 Wilshire Blvd, Suite 120</li>
+                    <li>Los Angeles, CA 90057</li>
+                    <li>(555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created by Ationic as a Showcase Project</p>
+            <p>&copy; 2026 BrightSmile Dental Clinic. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function() {
+    var aptForm = document.getElementById('appointmentForm');
+    var confirmModal = document.getElementById('confirmModal');
+    var confirmDetails = document.getElementById('confirmDetails');
+    var appointmentIdEl = document.getElementById('appointmentId');
+    var modalClose = document.getElementById('modalClose');
+    var modalOkBtn = document.getElementById('modalOkBtn');
+
+    function generateAppointmentId() {
+        var prefix = 'BSC';
+        var num = Math.floor(10000 + Math.random() * 90000);
+        return prefix + num;
+    }
+
+    aptForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var name = document.getElementById('aptName').value;
+        var phone = document.getElementById('aptPhone').value;
+        var email = document.getElementById('aptEmail').value;
+        var date = document.getElementById('aptDate').value;
+        var time = document.getElementById('aptTime').value;
+        var doctor = document.getElementById('aptDoctor').value;
+        var treatment = document.getElementById('aptTreatment').value;
+        var notes = document.getElementById('aptNotes').value;
+
+        var treatmentLabels = {
+            'checkup': 'General Checkup & Cleaning',
+            'whitening': 'Teeth Whitening',
+            'implant': 'Dental Implant Consultation',
+            'ortho': 'Orthodontic Consultation',
+            'root-canal': 'Root Canal',
+            'veneer': 'Veneers',
+            'pediatric': 'Pediatric Dentistry',
+            'emergency': 'Emergency Visit',
+            'other': 'Other'
+        };
+
+        var doctorLabels = {
+            'mitchell': 'Dr. Sarah Mitchell',
+            'chen': 'Dr. James Chen',
+            'rodriguez': 'Dr. Emily Rodriguez'
+        };
+
+        var formattedDate = new Date(date + 'T' + time);
+        var dateStr = formattedDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        var timeStr = formattedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+        var apptId = generateAppointmentId();
+        appointmentIdEl.textContent = apptId;
+
+        confirmDetails.innerHTML =
+            '<p><strong>' + name + '</strong></p>' +
+            '<p>' + dateStr + ' at ' + timeStr + '</p>' +
+            '<p>Doctor: ' + (doctorLabels[doctor] || doctor) + '</p>' +
+            '<p>Treatment: ' + (treatmentLabels[treatment] || treatment) + '</p>' +
+            '<p>Email: ' + email + ' | Phone: ' + phone + '</p>' +
+            (notes ? '<p>Notes: ' + notes + '</p>' : '');
+
+        confirmModal.classList.add('active');
+    });
+
+    function closeModal() {
+        confirmModal.classList.remove('active');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOkBtn.addEventListener('click', closeModal);
+    confirmModal.addEventListener('click', function(e) {
+        if (e.target === confirmModal) closeModal();
+    });
+})();
+</script>
+</body>
+</html>

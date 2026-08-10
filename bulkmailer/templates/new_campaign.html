@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}New Campaign{% endblock %}
+{% block content %}
+
+<h2>New Campaign</h2>
+
+<form method="POST" enctype="multipart/form-data" class="campaign-form">
+    <label>Subject</label>
+    <input type="text" name="subject" required placeholder="e.g. Special offer for {name}!">
+
+    <label>Message</label>
+    <textarea name="message" rows="8" required placeholder="Hi {name},&#10;&#10;Write your message here. Use {name} anywhere to personalize it."></textarea>
+    <small>Use <code>{name}</code> in subject or message — it'll be replaced per recipient.</small>
+
+    <label>Send using</label>
+    <div class="radio-group">
+        <label class="radio-option">
+            <input type="radio" name="send_method" value="own_smtp" {% if smtp_account %}checked{% endif %} {% if not smtp_account %}disabled{% endif %}>
+            Your Gmail {% if smtp_account %}({{ smtp_account.smtp_email }}){% else %}— <a href="{{ url_for('connect_smtp') }}">connect first</a>{% endif %}
+        </label>
+        <label class="radio-option">
+            <input type="radio" name="send_method" value="shared_service" {% if not smtp_account %}checked{% endif %}>
+            Our shared service (limited daily pool)
+        </label>
+    </div>
+
+    <label>Recipients — upload CSV (columns: email, name)</label>
+    <input type="file" name="csv_file" accept=".csv">
+
+    <label>...or paste emails (one per line: <code>email,name</code>)</label>
+    <textarea name="pasted_emails" rows="6" placeholder="john@example.com,John&#10;jane@example.com,Jane"></textarea>
+
+    <button type="submit" class="btn-primary">Start Campaign</button>
+</form>
+
+{% endblock %}

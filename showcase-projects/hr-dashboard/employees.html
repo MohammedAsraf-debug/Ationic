@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employees — Atlas HR | Ationic Showcase</title>
+  <meta name="description" content="Employee directory for Atlas HR Portal with search, filtering, and detailed employee cards.">
+  <meta name="author" content="Ationic Digital Agency">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-employees">
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    <p class="loader-text">Loading Atlas HR Portal...</p>
+  </div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-users" style="color:#fff"></i></div>
+        <div class="brand-text">
+          <span class="brand-name">Atlas</span>
+          <span class="brand-sub">HR Portal</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="employees.html" class="nav-item active">
+          <span class="nav-icon"><i class="fas fa-user-friends"></i></span>
+          <span class="nav-label">Employees</span>
+        </a>
+        <a href="attendance.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-clock"></i></span>
+          <span class="nav-label">Attendance</span>
+        </a>
+        <a href="leave.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+          <span class="nav-label">Leave</span>
+        </a>
+        <a href="payroll.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
+          <span class="nav-label">Payroll</span>
+        </a>
+        <a href="reports.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+          <span class="nav-label">Reports</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="dark-toggle" id="darkToggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-label">Dark Mode</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title">Employees</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search employees..."></div>
+          <div class="notification-bell"><i class="fas fa-bell"></i><span class="notification-dot"></span></div>
+          <div class="avatar">AH</div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="card">
+          <div class="card-header">
+            <h3>Employee Directory</h3>
+            <div class="employee-controls">
+              <input type="text" class="emp-search" id="empSearch" placeholder="Search by name...">
+              <select class="emp-filter" id="deptFilter">
+                <option value="all">All Departments</option>
+                <option value="engineering">Engineering</option>
+                <option value="marketing">Marketing</option>
+                <option value="sales">Sales</option>
+                <option value="operations">Operations</option>
+                <option value="hr">Human Resources</option>
+                <option value="finance">Finance</option>
+              </select>
+              <select class="emp-filter" id="statusFilter">
+                <option value="all">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="on-leave">On Leave</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="employee-grid" id="employeeGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initHREmployeesPage();
+    });
+  </script>
+</body>
+</html>

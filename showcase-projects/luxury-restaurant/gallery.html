@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery of Le Château Noir - Explore our interior, culinary presentations, and event photography.">
+    <meta name="author" content="Ationic Digital Agency">
+    <title>Gallery | Le Château Noir</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">Le Château <span>Noir</span></a>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="chef.html">Chef</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="nav-cta">Reserve</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section section-dark" id="gallery">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Moments</span>
+            <h2>Gallery</h2>
+            <p>A glimpse into the world of Le Château Noir.</p>
+        </div>
+        <div class="gallery-tabs" data-aos="fade-up">
+            <button class="gallery-tab active" data-filter="all">All</button>
+            <button class="gallery-tab" data-filter="interior">Interior</button>
+            <button class="gallery-tab" data-filter="plates">Plates</button>
+            <button class="gallery-tab" data-filter="events">Events</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid" data-aos="fade-up"></div>
+    </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+        <div class="lightbox-placeholder">
+            <div class="placeholder-icon"><i class="fas fa-image"></i></div>
+            <p id="lightboxCaption"></p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Le Château Noir</h3>
+                <p>An Unforgettable Dining Experience</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Reservations</a></li>
+                    <li><a href="events.html">Private Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li>112 Av. des Champs-Élysées</li>
+                    <li>75008 Paris, France</li>
+                    <li>+33 1 45 67 89 00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created by Ationic as a Showcase Project</p>
+            <p>&copy; 2026 Le Château Noir. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function() {
+    var galleryData = [
+        { category: 'interior', label: 'Main Dining Hall' },
+        { category: 'interior', label: 'Private Salon' },
+        { category: 'interior', label: 'Wine Cellar' },
+        { category: 'interior', label: 'Lobby & Reception' },
+        { category: 'plates', label: 'Lobster Presentation' },
+        { category: 'plates', label: 'Duck Confit' },
+        { category: 'plates', label: 'Chocolate Soufflé' },
+        { category: 'plates', label: 'Tartare de Thon Rouge' },
+        { category: 'events', label: 'Wedding Reception' },
+        { category: 'events', label: 'Wine Tasting Evening' },
+        { category: 'events', label: 'Corporate Dinner' },
+        { category: 'events', label: 'Cooking Class' }
+    ];
+
+    var galleryGrid = document.getElementById('galleryGrid');
+    var lightbox = document.getElementById('lightbox');
+    var lightboxCaption = document.getElementById('lightboxCaption');
+    var lightboxClose = lightbox.querySelector('.lightbox-close');
+
+    function renderGallery(category) {
+        var items = category === 'all' ? galleryData : galleryData.filter(function(item) { return item.category === category; });
+        var html = '';
+        items.forEach(function(item) {
+            html += '<div class="gallery-item" data-category="' + item.category + '">' +
+                '<div class="placeholder-icon"><i class="fas fa-image"></i></div>' +
+                '<span>' + item.label + '</span>' +
+                '</div>';
+        });
+        galleryGrid.innerHTML = html;
+
+        galleryGrid.querySelectorAll('.gallery-item').forEach(function(el) {
+            el.addEventListener('click', function() {
+                var label = el.querySelector('span').textContent;
+                lightboxCaption.textContent = label;
+                lightbox.classList.add('active');
+            });
+        });
+    }
+
+    var galleryTabs = document.querySelectorAll('.gallery-tab');
+    galleryTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            galleryTabs.forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            renderGallery(tab.getAttribute('data-filter'));
+        });
+    });
+
+    lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+        }
+    });
+
+    renderGallery('all');
+})();
+</script>
+</body>
+</html>

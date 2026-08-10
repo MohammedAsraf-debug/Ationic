@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinControl — Expenses | Finance Dashboard by Ationic</title>
+  <meta name="description" content="FinControl expense management by Ationic. Track expense categories, department spending, and budget vs actual analysis.">
+  <meta name="keywords" content="finance dashboard, expense tracker, budget analysis, department spending, Ationic">
+  <meta name="author" content="Ationic Digital Agency">
+  <meta property="og:title" content="FinControl — Expenses">
+  <meta property="og:description" content="Premium expense management dashboard by Ationic with category breakdown and budget comparison.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">FinControl<span class="loader-dot">.</span></p>
+  </div>
+
+  <div class="dashboard" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">FC</div>
+        <span class="brand-name">FinControl</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </a>
+        <a href="income.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Income</span>
+        </a>
+        <a href="expenses.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M6 13h5a3.5 3.5 0 0 1 0 7H7"/></svg>
+          <span>Expenses</span>
+        </a>
+        <a href="reports.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar">JD</div>
+          <div class="user-info">
+            <span class="user-name">James Donovan</span>
+            <span class="user-role">CFO</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search transactions..." id="globalSearch">
+        </div>
+        <div class="topbar-actions">
+          <div class="topbar-date">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="currentDate"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="section active">
+        <div class="section-header">
+          <h1>Expense Management</h1>
+          <p class="section-subtitle">Monitor and optimize your spending across categories</p>
+        </div>
+
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="card-icon expense-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M6 13h5a3.5 3.5 0 0 1 0 7H7"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Total Expenses</span>
+              <span class="card-value" data-target="312800">$0</span>
+              <span class="card-change negative">+5.1% vs last year</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon margin-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76A6 6 0 0 0 7.76 16.24"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Avg Monthly Spend</span>
+              <span class="card-value" data-target="26067">$0</span>
+              <span class="card-change negative">+3.8% vs last year</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon profit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Budget Utilization</span>
+              <span class="card-value">87.4%</span>
+              <span class="card-change positive">Within budget</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon income-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Largest Category</span>
+              <span class="card-value">Payroll</span>
+              <span class="card-change negative">42% of total</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Expense Categories</h3>
+              <span class="card-badge">Donut Breakdown</span>
+            </div>
+            <div class="chart-container donut-container" id="expenseDonut">
+              <div class="donut-center">
+                <span class="donut-total">$312.8K</span>
+                <span class="donut-label">Total Expenses</span>
+              </div>
+            </div>
+            <div class="chart-legend" id="expenseDonutLegend"></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Department Spending</h3>
+              <span class="card-badge">Actual vs Budget</span>
+            </div>
+            <div class="sources-detail">
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#ef4444"></span>Payroll</div>
+                <div class="source-bar"><div class="source-fill" style="width:42%"></div></div>
+                <div class="source-pct">42%</div>
+                <div class="source-amount">$131,376</div>
+              </div>
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#f59e0b"></span>Operations</div>
+                <div class="source-bar"><div class="source-fill" style="width:18%"></div></div>
+                <div class="source-pct">18%</div>
+                <div class="source-amount">$56,304</div>
+              </div>
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#3b82f6"></span>Marketing</div>
+                <div class="source-bar"><div class="source-fill" style="width:15%"></div></div>
+                <div class="source-pct">15%</div>
+                <div class="source-amount">$46,920</div>
+              </div>
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#22c55e"></span>Tech & Infrastructure</div>
+                <div class="source-bar"><div class="source-fill" style="width:12%"></div></div>
+                <div class="source-pct">12%</div>
+                <div class="source-amount">$37,536</div>
+              </div>
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#8b5cf6"></span>Administrative</div>
+                <div class="source-bar"><div class="source-fill" style="width:8%"></div></div>
+                <div class="source-pct">8%</div>
+                <div class="source-amount">$25,024</div>
+              </div>
+              <div class="source-row">
+                <div class="source-info"><span class="source-dot" style="background:#ec4899"></span>Other</div>
+                <div class="source-bar"><div class="source-fill" style="width:5%"></div></div>
+                <div class="source-pct">5%</div>
+                <div class="source-amount">$15,640</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Budget vs Actual by Department</h3>
+            <span class="card-badge">FY 2026</span>
+          </div>
+          <div class="budget-list">
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">Engineering</span><span class="budget-amounts">$98K / $112K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:87.5%"></div></div>
+              <div class="budget-variance positive">-12.5% under</div>
+            </div>
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">Marketing</span><span class="budget-amounts">$67K / $72K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:93.1%"></div></div>
+              <div class="budget-variance positive">-6.9% under</div>
+            </div>
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">Operations</span><span class="budget-amounts">$45K / $48K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:93.8%"></div></div>
+              <div class="budget-variance positive">-4.2% under</div>
+            </div>
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">Sales</span><span class="budget-amounts">$52K / $50K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:104%"></div></div>
+              <div class="budget-variance negative">+4.0% over</div>
+            </div>
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">HR</span><span class="budget-amounts">$28K / $30K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:93.3%"></div></div>
+              <div class="budget-variance positive">-6.7% under</div>
+            </div>
+            <div class="budget-item">
+              <div class="budget-info"><span class="budget-dept">R&D</span><span class="budget-amounts">$38K / $40K</span></div>
+              <div class="budget-bar"><div class="budget-fill" style="width:95%"></div></div>
+              <div class="budget-variance positive">-5.0% under</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Expense Transactions</h3>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>2026-07-21</td><td>AWS Cloud Infrastructure</td><td>Tech</td><td class="negative">-$4,800</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                <tr><td>2026-07-20</td><td>Google Ads Campaign</td><td>Marketing</td><td class="negative">-$6,200</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+                <tr><td>2026-07-18</td><td>Office Lease Payment</td><td>Operations</td><td class="negative">-$11,500</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                <tr><td>2026-07-17</td><td>Payroll - July</td><td>Payroll</td><td class="negative">-$42,000</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                <tr><td>2026-07-16</td><td>LinkedIn Ad Campaign</td><td>Marketing</td><td class="negative">-$3,400</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                <tr><td>2026-07-15</td><td>Software Subscriptions (Slack, Notion)</td><td>Tech</td><td class="negative">-$1,800</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                <tr><td>2026-07-14</td><td>Utilities & Internet</td><td>Operations</td><td class="negative">-$2,100</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="dashboard-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+        <p>&copy; 2026 Ationic Digital Agency. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    animateCounters();
+    (function() {
+      var container = document.getElementById('expenseDonut');
+      if (!container) return;
+      var donutEl = document.getElementById('donutChart');
+      if (!donutEl) {
+        var fake = document.createElement('div');
+        fake.id = 'donutChart';
+        fake.style.cssText = 'width:100%;height:260px;';
+        container.appendChild(fake);
+      }
+      var legendEl = document.getElementById('expenseDonutLegend');
+      var origLegend = document.getElementById('donutLegend');
+      if (!origLegend) {
+        var fl = document.createElement('div');
+        fl.id = 'donutLegend';
+        document.body.appendChild(fl);
+      }
+      renderDonutChart();
+      if (legendEl && origLegend) legendEl.innerHTML = origLegend.innerHTML;
+    })();
+    animateBars();
+  </script>
+</body>
+</html>

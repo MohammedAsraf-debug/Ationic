@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans | Iron Forge Fitness</title>
+    <meta name="description" content="Choose your membership plan at Iron Forge Fitness. Starter, Pro, or Elite. No hidden fees, no long-term contracts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Iron Forge Fitness</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Iron Forge Fitness Home">
+                    <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Iron Forge</span>
+                        <span class="logo-subtitle">Fitness</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="membership.html" class="nav-link active">Membership</a></li>
+                        <li><a href="trainers.html" class="nav-link">Trainers</a></li>
+                        <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding:140px 0 60px;text-align:center;position:relative;background:var(--bg);">
+        <div class="container">
+            <span class="hero-badge">Membership</span>
+            <h1 class="hero-title" style="font-size:4rem;">Choose Your <span class="text-accent">Edge</span></h1>
+            <p class="hero-desc" style="max-width:600px;margin:0 auto;">Flexible plans built for every fitness level. No hidden fees, no long-term contracts. Free 3-day trial for all new members.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="plans-grid">
+                <div class="plan-card fade-up">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Starter</h3>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>
+                            <span class="plan-amount">29</span>
+                            <span class="plan-period">/month</span>
+                        </div>
+                        <p class="plan-yearly">$299/year - Save 14%</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Gym Access (5am-11pm)</li>
+                        <li><i class="fas fa-check"></i> Cardio &amp; Strength Equipment</li>
+                        <li><i class="fas fa-check"></i> Locker Room Access</li>
+                        <li><i class="fas fa-check"></i> 2 Group Classes / Week</li>
+                        <li><i class="fas fa-times"></i> Personal Training</li>
+                        <li><i class="fas fa-times"></i> Nutrition Coaching</li>
+                        <li><i class="fas fa-times"></i> Sauna &amp; Steam Room</li>
+                    </ul>
+                    <button class="btn btn-outline btn-plan" onclick="alert('Thank you for your interest! Visit us for a free 3-day trial.')">Get Started</button>
+                </div>
+                <div class="plan-card plan-featured fade-up">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Pro</h3>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>
+                            <span class="plan-amount">59</span>
+                            <span class="plan-period">/month</span>
+                        </div>
+                        <p class="plan-yearly">$599/year - Save 15%</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Unlimited Gym Access</li>
+                        <li><i class="fas fa-check"></i> All Equipment &amp; Zones</li>
+                        <li><i class="fas fa-check"></i> Locker Room &amp; Towel Service</li>
+                        <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
+                        <li><i class="fas fa-check"></i> 2 Personal Training Sessions</li>
+                        <li><i class="fas fa-check"></i> Nutrition Starter Plan</li>
+                        <li><i class="fas fa-times"></i> Sauna &amp; Steam Room</li>
+                    </ul>
+                    <button class="btn btn-primary btn-plan" onclick="alert('Thank you for your interest! Visit us for a free 3-day trial.')">Get Started</button>
+                </div>
+                <div class="plan-card fade-up">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Elite</h3>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>
+                            <span class="plan-amount">99</span>
+                            <span class="plan-period">/month</span>
+                        </div>
+                        <p class="plan-yearly">$999/year - Save 16%</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 24/7 Premium Access</li>
+                        <li><i class="fas fa-check"></i> All Equipment &amp; Zones</li>
+                        <li><i class="fas fa-check"></i> Premium Locker &amp; Towel Service</li>
+                        <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
+                        <li><i class="fas fa-check"></i> 8 Personal Training Sessions</li>
+                        <li><i class="fas fa-check"></i> Full Nutrition Coaching</li>
+                        <li><i class="fas fa-check"></i> Sauna, Steam &amp; Recovery</li>
+                    </ul>
+                    <button class="btn btn-outline btn-plan" onclick="alert('Thank you for your interest! Visit us for a free 3-day trial.')">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--section-alt);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Comparison</span>
+                <h2 class="section-title">Plan <span class="text-accent">Features</span></h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;background:var(--card-bg);border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-border);">
+                    <thead>
+                        <tr style="background:var(--dark);">
+                            <th style="padding:16px 20px;text-align:left;font-family:var(--font-heading);text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;">Feature</th>
+                            <th style="padding:16px 20px;text-align:center;font-family:var(--font-heading);text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;">Starter</th>
+                            <th style="padding:16px 20px;text-align:center;font-family:var(--font-heading);text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;color:var(--primary);">Pro</th>
+                            <th style="padding:16px 20px;text-align:center;font-family:var(--font-heading);text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;">Elite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Price</td><td style="padding:14px 20px;text-align:center;font-weight:600;">$29/mo</td><td style="padding:14px 20px;text-align:center;font-weight:600;color:var(--primary);">$59/mo</td><td style="padding:14px 20px;text-align:center;font-weight:600;">$99/mo</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Gym Access</td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-check" style="color:var(--secondary);"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-check" style="color:var(--secondary);"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-check" style="color:var(--secondary);"></i> 24/7</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Group Classes / Week</td><td style="padding:14px 20px;text-align:center;">2</td><td style="padding:14px 20px;text-align:center;">Unlimited</td><td style="padding:14px 20px;text-align:center;">Unlimited</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Personal Training</td><td style="padding:14px 20px;text-align:center;">—</td><td style="padding:14px 20px;text-align:center;">2 sessions</td><td style="padding:14px 20px;text-align:center;">8 sessions</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Nutrition Coaching</td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-times" style="color:var(--text-muted);opacity:0.4;"></i></td><td style="padding:14px 20px;text-align:center;">Starter Plan</td><td style="padding:14px 20px;text-align:center;">Full Coaching</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Locker &amp; Towel Service</td><td style="padding:14px 20px;text-align:center;">Basic</td><td style="padding:14px 20px;text-align:center;">Premium</td><td style="padding:14px 20px;text-align:center;">Premium</td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Sauna &amp; Steam Room</td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-times" style="color:var(--text-muted);opacity:0.4;"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-times" style="color:var(--text-muted);opacity:0.4;"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-check" style="color:var(--secondary);"></i></td></tr>
+                        <tr style="border-top:1px solid var(--card-border);"><td style="padding:14px 20px;color:var(--text-muted);">Recovery Zone</td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-times" style="color:var(--text-muted);opacity:0.4;"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-times" style="color:var(--text-muted);opacity:0.4;"></i></td><td style="padding:14px 20px;text-align:center;"><i class="fas fa-check" style="color:var(--secondary);"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Free Trial</span>
+                <h2 class="section-title">Not Sure Yet? <span class="text-accent">Try Us Free</span></h2>
+                <p class="section-desc">Sign up for a free 3-day trial and experience Iron Forge Fitness for yourself.</p>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-lg" style="padding:16px 36px;font-size:1rem;">
+                <i class="fas fa-bolt"></i> Claim Your Free Trial
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Iron Forge</span>
+                            <span class="logo-subtitle">Fitness</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Iron Forge Fitness is a premium fitness facility in Chicago, IL. Part of the Ationic Digital Agency network.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="trainers.html">Trainers</a></li>
+                        <li><a href="schedule.html">Class Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Classes</h4>
+                    <ul>
+                        <li><a href="schedule.html">Yoga</a></li>
+                        <li><a href="schedule.html">Spinning</a></li>
+                        <li><a href="schedule.html">HIIT</a></li>
+                        <li><a href="schedule.html">Boxing</a></li>
+                        <li><a href="schedule.html">CrossFit</a></li>
+                        <li><a href="schedule.html">Pilates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Iron Forge Fitness. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+        window.setupObserver('.plan-card, .contact-info-card');
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ationic Technical SEO Audit Report - Executive summary with score gauge, category scores overview, and issue count by severity for example.com.">
+  <meta name="keywords" content="technical SEO audit, SEO report, executive summary, website audit, SEO health score, Ationic">
+  <meta name="author" content="Ationic">
+  <meta property="og:title" content="Ationic Technical SEO Audit Report - Executive Summary">
+  <meta property="og:description" content="Executive summary of the comprehensive technical SEO audit for example.com.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ationic.com/showcase/technical-seo-report">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ationic Technical SEO Audit Report">
+  <meta name="twitter:description" content="Professional technical SEO audit by Ationic.">
+  <link rel="canonical" href="https://ationic.com/showcase/technical-seo-report">
+  <title>Technical SEO Report - Executive Summary</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="app-loader" class="app-loader">
+    <div class="loader-spinner"></div>
+    <p>Generating Technical SEO Report...</p>
+  </div>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Technical SEO Report</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Executive Summary</a>
+        <a href="issues.html" class="nav-link">Issues</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="report-page" id="app" style="display:none;">
+    <header class="report-header">
+      <div class="header-badge">PREPARED BY ATIONIC</div>
+      <h1 class="report-title">Technical SEO Audit Report</h1>
+      <div class="report-meta">
+        <div class="meta-block">
+          <span class="meta-label">Website</span>
+          <span class="meta-value">example.com</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report Date</span>
+          <span class="meta-value" id="report-date"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report ID</span>
+          <span class="meta-value" id="report-id"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Prepared By</span>
+          <span class="meta-value">Ationic Digital Agency</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section executive-summary">
+      <h2 class="section-title">01. Executive Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-content">
+          <p class="summary-text">
+            This technical SEO audit was conducted on <strong>example.com</strong> to evaluate the website's search engine performance across six critical categories: Crawlability, Indexation, Site Structure, Performance, Mobile Usability, and Security. The audit identified <strong>12 issues</strong> in total, including <strong>3 critical</strong> issues that require immediate attention. The overall SEO health score is <strong>68 out of 100</strong>, placing the site in the amber zone. Key concerns include duplicate content, a missing XML sitemap, and poor Core Web Vitals on mobile devices. Addressing the prioritized recommendations will significantly improve organic search visibility, user experience, and technical compliance.
+          </p>
+          <div class="summary-stats">
+            <div class="stat-block">
+              <span class="stat-number">68</span>
+              <span class="stat-label">Overall Score</span>
+              <span class="stat-sub">/100 - Amber Zone</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-number critical">3</span>
+              <span class="stat-label">Critical Issues</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-number">12</span>
+              <span class="stat-label">Total Issues</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-gauge">
+          <div class="gauge-container">
+            <svg class="gauge-svg" viewBox="0 0 200 120">
+              <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke-width="18" stroke-linecap="round"/>
+              <path class="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke-width="18" stroke-linecap="round" stroke-dasharray="251.33" stroke-dashoffset="80"/>
+            </svg>
+            <div class="gauge-text">
+              <span class="gauge-score" id="gauge-score">0</span>
+              <span class="gauge-label">SEO Health</span>
+            </div>
+          </div>
+          <div class="gauge-legend">
+            <span class="gauge-dot red"></span> 0-49 Poor
+            <span class="gauge-dot amber"></span> 50-79 Needs Work
+            <span class="gauge-dot green"></span> 80-100 Good
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section score-overview-section">
+      <h2 class="section-title">02. Score Overview</h2>
+      <div class="scores-grid">
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Crawlability</span>
+            <span class="cat-score good">82%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill good" style="width:0%"></div></div>
+        </div>
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Indexation</span>
+            <span class="cat-score yellow">74%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill yellow" style="width:0%"></div></div>
+        </div>
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Site Structure</span>
+            <span class="cat-score yellow">65%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill yellow" style="width:0%"></div></div>
+        </div>
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Performance</span>
+            <span class="cat-score red">58%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill red" style="width:0%"></div></div>
+        </div>
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Mobile</span>
+            <span class="cat-score yellow">71%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill yellow" style="width:0%"></div></div>
+        </div>
+        <div class="score-category">
+          <div class="cat-header">
+            <span class="cat-name">Security</span>
+            <span class="cat-score good">95%</span>
+          </div>
+          <div class="cat-bar"><div class="cat-fill good" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="radar-chart-section">
+        <h3 class="sub-title">Category Score Radar</h3>
+        <div class="radar-wrapper">
+          <svg class="radar-svg" viewBox="0 0 300 300">
+            <circle cx="150" cy="150" r="120" fill="none" class="radar-grid"/>
+            <circle cx="150" cy="150" r="90" fill="none" class="radar-grid"/>
+            <circle cx="150" cy="150" r="60" fill="none" class="radar-grid"/>
+            <circle cx="150" cy="150" r="30" fill="none" class="radar-grid"/>
+            <line x1="150" y1="30" x2="150" y2="270" class="radar-axis"/>
+            <line x1="30" y1="150" x2="270" y2="150" class="radar-axis"/>
+            <line x1="65" y1="65" x2="235" y2="235" class="radar-axis"/>
+            <line x1="235" y1="65" x2="65" y2="235" class="radar-axis"/>
+            <polygon class="radar-polygon-data"
+              points="150,51.6 226.9,105.6 217.5,189 150,219.6 76.2,192.6 51.3,93"
+              style="opacity:0; transition: opacity 1.5s ease;"/>
+            <polygon class="radar-points"
+              points="150,51.6 226.9,105.6 217.5,189 150,219.6 76.2,192.6 51.3,93"
+              style="opacity:0; transition: opacity 1.5s ease;"/>
+            <text x="150" y="22" text-anchor="middle" class="radar-label">Crawlability</text>
+            <text x="248" y="102" text-anchor="start" class="radar-label">Indexation</text>
+            <text x="240" y="198" text-anchor="start" class="radar-label">Structure</text>
+            <text x="150" y="238" text-anchor="middle" class="radar-label">Performance</text>
+            <text x="52" y="200" text-anchor="end" class="radar-label">Mobile</text>
+            <text x="28" y="90" text-anchor="end" class="radar-label">Security</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <footer class="report-footer">
+      <div class="footer-divider"></div>
+      <p class="footer-text">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      <p class="footer-confidential">CONFIDENTIAL - This report is prepared for demonstration purposes only.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

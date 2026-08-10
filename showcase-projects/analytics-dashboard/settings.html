@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsightPro — Settings | Analytics Dashboard by Ationic</title>
+  <meta name="description" content="InsightPro analytics settings by Ationic. Configure dashboard, tracking, data refresh, and notification preferences.">
+  <meta name="keywords" content="analytics dashboard, settings, tracking configuration, data refresh, notifications, Ationic">
+  <meta name="author" content="Ationic Digital Agency">
+  <meta property="og:title" content="InsightPro — Dashboard Settings">
+  <meta property="og:description" content="Configure your InsightPro analytics dashboard preferences, tracking, and data settings.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">InsightPro<span class="loader-dot">.</span></p>
+  </div>
+
+  <div class="dashboard" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">IP</div>
+        <span class="brand-name">InsightPro</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </a>
+        <a href="traffic.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Traffic</span>
+        </a>
+        <a href="conversions.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>Conversions</span>
+        </a>
+        <a href="reports.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="realtime-counter" id="realtimeCounter">
+          <span class="realtime-dot"></span>
+          <span class="realtime-label">Live Visitors</span>
+          <span class="realtime-value" id="liveCount">247</span>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-avatar">SM</div>
+          <div class="user-info">
+            <span class="user-name">Sarah Mitchell</span>
+            <span class="user-role">Analytics Manager</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search settings...">
+        </div>
+        <div class="topbar-actions">
+          <div class="date-range-picker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Settings</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="section active">
+        <div class="section-header">
+          <h1>Settings</h1>
+          <p class="section-subtitle">Configure your dashboard preferences and tracking configuration</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Dashboard Preferences</h3>
+          </div>
+          <div class="settings-group">
+            <div class="setting-row">
+              <span>Default Date Range</span>
+              <select class="filter-select">
+                <option>Last 7 Days</option>
+                <option selected>Last 30 Days</option>
+                <option>Last 90 Days</option>
+                <option>Last Year</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Default View</span>
+              <select class="filter-select">
+                <option>Overview</option>
+                <option>Traffic</option>
+                <option>Conversions</option>
+                <option>Reports</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Time Zone</span>
+              <select class="filter-select">
+                <option>UTC (Coordinated Universal Time)</option>
+                <option selected>America/New_York (EST/EDT)</option>
+                <option>America/Chicago (CST/CDT)</option>
+                <option>America/Los_Angeles (PST/PDT)</option>
+                <option>Europe/London (GMT/BST)</option>
+                <option>Asia/Tokyo (JST)</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Number Format</span>
+              <select class="filter-select">
+                <option>1,234.56 (US)</option>
+                <option>1.234,56 (EU)</option>
+                <option>1 234,56 (FR)</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Compact Mode</span>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Tracking Configuration</h3>
+          </div>
+          <div class="settings-group">
+            <div class="setting-row">
+              <span>Tracking ID</span>
+              <input type="text" class="filter-input" value="UA-12345-678" style="width:180px;font-family:monospace" readonly>
+            </div>
+            <div class="setting-row">
+              <span>Track Page Views</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Track Events</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Track Scroll Depth</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Cross-Domain Tracking</span>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Anonymize IP</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Data Refresh</h3>
+          </div>
+          <div class="settings-group">
+            <div class="setting-row">
+              <span>Auto-Refresh Interval</span>
+              <select class="filter-select">
+                <option>Real-time</option>
+                <option selected>Every 5 minutes</option>
+                <option>Every 15 minutes</option>
+                <option>Every 30 minutes</option>
+                <option>Every hour</option>
+                <option>Manual only</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Data Freshness</span>
+              <select class="filter-select">
+                <option>Real-time (1-2 min delay)</option>
+                <option selected>Near real-time (5-10 min delay)</option>
+                <option>Standard (30-60 min delay)</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <span>Historical Data Range</span>
+              <select class="filter-select">
+                <option>Last 12 Months</option>
+                <option>Last 24 Months</option>
+                <option selected>Last 36 Months</option>
+                <option>All Data</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Notifications</h3>
+          </div>
+          <div class="settings-group">
+            <div class="setting-row">
+              <span>Email Reports</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Traffic Spike Alerts</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Conversion Drop Alerts</span>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row">
+              <span>Weekly Summary</span>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Account</h3>
+          </div>
+          <div class="settings-group">
+            <div class="setting-row">
+              <span>Full Name</span>
+              <input type="text" class="filter-input" value="Sarah Mitchell" style="width:200px">
+            </div>
+            <div class="setting-row">
+              <span>Email Address</span>
+              <input type="email" class="filter-input" value="sarah.mitchell@insightpro.io" style="width:260px">
+            </div>
+            <div class="setting-row">
+              <span>Company</span>
+              <input type="text" class="filter-input" value="InsightPro Analytics" style="width:220px">
+            </div>
+            <div class="setting-row">
+              <span>Website Domain</span>
+              <input type="text" class="filter-input" value="insightpro.io" style="width:200px">
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;justify-content:flex-end">
+          <button class="btn btn-outline">Reset to Defaults</button>
+          <button class="btn btn-primary">Save Settings</button>
+        </div>
+      </section>
+
+      <footer class="dashboard-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+        <p>&copy; 2026 Ationic Digital Agency. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    startRealtimeCounter();
+  </script>
+</body>
+</html>

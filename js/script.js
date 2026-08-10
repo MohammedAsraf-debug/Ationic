@@ -119,6 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.innerHTML = 'Sending...';
       btn.disabled = true;
       document.getElementById('time') && (document.getElementById('time').value = new Date().toLocaleString());
+      const subj = document.getElementById('subject');
+      const custom = document.getElementById('subject_custom');
+      if (subj && subj.value === 'custom' && custom && custom.value.trim()) {
+        subj.value = 'Custom: ' + custom.value.trim();
+      }
       if (typeof emailjs !== 'undefined') {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
           .then(() => {
@@ -128,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = original;
             btn.disabled = false;
             const status = document.getElementById('form-status');
-            if (status) status.innerHTML = '<p style="color:#ff6b6b;">Failed to send. Please email us directly at ationic.it@gmail.com.</p>';
+            if (status) status.innerHTML = '<p style="color:#ff6b6b;">Failed to send. Please email us directly at hello@ationic.agency.</p>';
           });
       } else {
         btn.innerHTML = original;
@@ -202,5 +207,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3 });
     const chart = document.querySelector('.dash-chart');
     if (chart) dashObserver.observe(chart);
+  }
+});
+
+/* ── Custom Select ── */
+function toggleSelect(el) {
+  const parent = el.closest('.custom-select');
+  if (!parent) return;
+  const isOpen = parent.classList.contains('open');
+  document.querySelectorAll('.custom-select.open').forEach(s => s.classList.remove('open'));
+  if (!isOpen) parent.classList.add('open');
+}
+
+function selectOption(el) {
+  const parent = el.closest('.custom-select');
+  if (!parent) return;
+  const val = el.dataset.value;
+  const text = el.textContent.trim();
+  parent.querySelectorAll('.custom-select__option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const trigger = parent.querySelector('.custom-select__text');
+  if (trigger) {
+    trigger.textContent = text;
+    if (val === '') {
+      trigger.classList.add('placeholder');
+    } else {
+      trigger.classList.remove('placeholder');
+    }
+  }
+  const hidden = parent.querySelector('input[type="hidden"]');
+  if (hidden) hidden.value = val;
+  parent.classList.remove('open');
+  const customGroup = document.getElementById('custom-service-group');
+  const customInput = document.getElementById('subject_custom');
+  if (customGroup && customInput) {
+    customGroup.style.display = val === 'custom' ? 'block' : 'none';
+    if (val !== 'custom') customInput.value = '';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.custom-select')) {
+    document.querySelectorAll('.custom-select.open').forEach(s => s.classList.remove('open'));
   }
 });

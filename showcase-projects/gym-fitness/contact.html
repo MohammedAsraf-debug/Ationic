@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Iron Forge Fitness</title>
+    <meta name="description" content="Contact Iron Forge Fitness. Visit us at 1200 W Madison Street, Chicago, or call (312) 555-0456. Open daily 5am-11pm.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Iron Forge Fitness</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Iron Forge Fitness Home">
+                    <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Iron Forge</span>
+                        <span class="logo-subtitle">Fitness</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="membership.html" class="nav-link">Membership</a></li>
+                        <li><a href="trainers.html" class="nav-link">Trainers</a></li>
+                        <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+                        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding:140px 0 60px;text-align:center;position:relative;background:var(--section-alt);">
+        <div class="container">
+            <span class="hero-badge">Get In Touch</span>
+            <h1 class="hero-title" style="font-size:4rem;">Ready to <span class="text-accent">Transform</span>?</h1>
+            <p class="hero-desc" style="max-width:600px;margin:0 auto;">Visit us, call us, or send a message. Your fitness journey starts today.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;background:var(--section-alt);">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>1200 W Madison Street, Suite 100<br>Chicago, IL 60607</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-phone"></i>
+                        <h4>Call Us</h4>
+                        <p>(312) 555-0456</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>hello@ironforgefitness.com</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-clock"></i>
+                        <h4>Hours</h4>
+                        <p>Mon - Sun: 5:00 AM - 11:00 PM</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-map"></i>
+                        <h4>Find Us</h4>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Iron Forge Fitness<br>1200 W Madison Street, Chicago<br><span style="opacity:0.5;font-size:0.75rem;">Google Maps Placeholder</span></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactPhone">Phone</label>
+                            <input type="tel" id="contactPhone" name="phone" placeholder="(312) 555-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInterest">Interest</label>
+                            <select id="contactInterest" name="interest">
+                                <option value="">Select an option</option>
+                                <option value="membership">Membership Inquiry</option>
+                                <option value="training">Personal Training</option>
+                                <option value="classes">Group Classes</option>
+                                <option value="nutrition">Nutrition Coaching</option>
+                                <option value="corporate">Corporate Membership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" rows="4" placeholder="Tell us about your fitness goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked <span class="text-accent">Questions</span></h2>
+            </div>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Iron Forge</span>
+                            <span class="logo-subtitle">Fitness</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Iron Forge Fitness is a premium fitness facility in Chicago, IL. Part of the Ationic Digital Agency network.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="trainers.html">Trainers</a></li>
+                        <li><a href="schedule.html">Class Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Classes</h4>
+                    <ul>
+                        <li><a href="schedule.html">Yoga</a></li>
+                        <li><a href="schedule.html">Spinning</a></li>
+                        <li><a href="schedule.html">HIIT</a></li>
+                        <li><a href="schedule.html">Boxing</a></li>
+                        <li><a href="schedule.html">CrossFit</a></li>
+                        <li><a href="schedule.html">Pilates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Iron Forge Fitness. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var faqs = [
+            { q: 'What membership options are available?', a: 'We offer three membership tiers: Starter ($29/mo) for gym access and 2 classes/week, Pro ($59/mo) for unlimited everything plus 2 PT sessions, and Elite ($99/mo) with 24/7 access, 8 PT sessions, and full recovery amenities.' },
+            { q: 'Is there a cancellation policy?', a: 'We offer a 30-day cancellation policy. You can cancel anytime with 30 days notice. There are no long-term contracts on our monthly plans.' },
+            { q: 'What are your operating hours?', a: 'We are open 7 days a week from 5:00 AM to 11:00 PM. Elite members receive 24/7 access to the main gym floor.' },
+            { q: 'Do you offer personal training?', a: 'Yes! Personal training sessions are included in Pro (2 sessions) and Elite (8 sessions) plans.' },
+            { q: 'Can I try the gym before joining?', a: 'Absolutely! We offer a free 3-day trial pass for all prospective members.' },
+            { q: 'Do you have locker rooms and showers?', a: 'Yes, we have premium locker rooms with showers, towel service, and complimentary toiletries.' },
+            { q: 'Do you offer nutrition coaching?', a: 'Yes! Jessica Park, our Registered Dietitian, offers nutrition coaching as part of our Elite plan.' },
+            { q: 'Is there parking available?', a: 'We have a complimentary parking lot for members with 50 spaces.' }
+        ];
+
+        var faqList = document.getElementById('faqList');
+        faqList.innerHTML = '';
+        faqs.forEach(function(faq) {
+            var item = document.createElement('div');
+            item.className = 'faq-item';
+            item.innerHTML =
+                '<button class="faq-question">' +
+                    '<span>' + faq.q + '</span>' +
+                    '<i class="fas fa-chevron-down"></i>' +
+                '</button>' +
+                '<div class="faq-answer"><p>' + faq.a + '</p></div>';
+            item.querySelector('.faq-question').addEventListener('click', function() {
+                item.classList.toggle('active');
+            });
+            faqList.appendChild(item);
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('contactName').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            if (!name || !email || !message) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert('Thank you, ' + name + '! Your message has been received. A member of the Iron Forge Fitness team will reach out within 24 hours.');
+            this.reset();
+        });
+
+        window.setupObserver('.fade-up');
+    })();
+    </script>
+</body>
+</html>

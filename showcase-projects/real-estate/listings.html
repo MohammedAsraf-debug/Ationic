@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings | Prestige Properties</title>
+    <meta name="description" content="Browse our complete collection of luxury properties. Search by location, type, price, beds, and baths.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Prestige Properties</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Prestige Properties Home">
+                    <span class="logo-icon"><i class="fas fa-building"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Prestige</span>
+                        <span class="logo-subtitle">Properties</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="listings.html" class="nav-link active">Listings</a></li>
+                        <li><a href="property-detail.html" class="nav-link">Property</a></li>
+                        <li><a href="agents.html" class="nav-link">Agents</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding:140px 0 60px;background:var(--primary);text-align:center;position:relative;">
+        <div class="container">
+            <span class="hero-badge" style="border-color:var(--accent);color:var(--accent);">Browse Properties</span>
+            <h1 style="font-family:var(--font-serif);font-size:3.5rem;color:var(--white);margin-bottom:12px;">All Listings</h1>
+            <p style="color:rgba(255,255,255,0.7);font-size:1.1rem;max-width:600px;margin:0 auto;">Explore our complete portfolio of luxury properties across America's finest cities.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:40px;">
+        <div class="container">
+            <div class="listings-toolbar" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:32px;">
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <select id="listFilterType" style="background:var(--card-bg);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-sans);">
+                        <option value="all">All Types</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="villa">Villa</option>
+                        <option value="townhouse">Townhouse</option>
+                        <option value="penthouse">Penthouse</option>
+                        <option value="studio">Studio</option>
+                    </select>
+                    <select id="listFilterBeds" style="background:var(--card-bg);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-sans);">
+                        <option value="0">Any Beds</option>
+                        <option value="1">1+ Beds</option>
+                        <option value="2">2+ Beds</option>
+                        <option value="3">3+ Beds</option>
+                        <option value="4">4+ Beds</option>
+                        <option value="5">5+ Beds</option>
+                    </select>
+                    <select id="listFilterBaths" style="background:var(--card-bg);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-sans);">
+                        <option value="0">Any Baths</option>
+                        <option value="1">1+ Baths</option>
+                        <option value="2">2+ Baths</option>
+                        <option value="3">3+ Baths</option>
+                        <option value="4">4+ Baths</option>
+                    </select>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:0.85rem;color:var(--text-light);" id="resultCount">12 properties</span>
+                    <select id="listSortBy" style="background:var(--card-bg);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-sans);">
+                        <option value="default">Sort by: Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                </div>
+            </div>
+            <div class="properties-grid" id="listingsGrid"></div>
+        </div>
+    </section>
+
+    <div class="modal" id="propertyModal" role="dialog" aria-modal="true" aria-label="Property details">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-building"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Prestige</span>
+                            <span class="logo-subtitle">Properties</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Prestige Properties is a full-service luxury real estate agency specializing in premium residential properties across the United States. Part of the Ationic Digital Agency network.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="property-detail.html">Property Detail</a></li>
+                        <li><a href="agents.html">Agents</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Property Types</h4>
+                    <ul>
+                        <li><a href="listings.html?type=apartment">Apartments</a></li>
+                        <li><a href="listings.html?type=villa">Villas</a></li>
+                        <li><a href="listings.html?type=townhouse">Townhouses</a></li>
+                        <li><a href="listings.html?type=penthouse">Penthouses</a></li>
+                        <li><a href="listings.html?type=studio">Studios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="listings.html?location=manhattan">Manhattan, NY</a></li>
+                        <li><a href="listings.html?location=brooklyn">Brooklyn, NY</a></li>
+                        <li><a href="listings.html?location=la">Los Angeles, CA</a></li>
+                        <li><a href="listings.html?location=miami">Miami, FL</a></li>
+                        <li><a href="listings.html?location=sf">San Francisco, CA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Prestige Properties. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var properties = [
+            { id: 1, name: 'The Madison Penthouse', type: 'penthouse', price: 8950000, location: 'Manhattan, NY', beds: 5, baths: 4, sqft: 4200, status: 'featured', desc: 'A breathtaking penthouse atop the iconic Madison Tower offering panoramic views of Central Park and the Manhattan skyline. Features include a private terrace, chef\'s kitchen, and custom Italian marble finishes throughout.', features: ['Private Terrace', 'Chef\'s Kitchen', 'Italian Marble', 'Smart Home System', 'Wine Cellar', '24/7 Concierge'] },
+            { id: 2, name: 'Brooklyn Heights Brownstone', type: 'townhouse', price: 3200000, location: 'Brooklyn, NY', beds: 4, baths: 3, sqft: 2800, status: 'sale', desc: 'Stunning restored brownstone in the heart of Brooklyn Heights. Original exposed brick, modern amenities, private garden, and rooftop deck with skyline views.', features: ['Private Garden', 'Rooftop Deck', 'Exposed Brick', 'Modern Kitchen', 'Fireplace', 'Wine Cellar'] },
+            { id: 3, name: 'Beverly Hills Villa', type: 'villa', price: 12400000, location: 'Los Angeles, CA', beds: 6, baths: 5, sqft: 6500, status: 'featured', desc: 'Mediterranean-inspired estate nestled in the hills of Beverly Hills. Infinity pool, outdoor kitchen, home theater, and resort-style landscaping.', features: ['Infinity Pool', 'Outdoor Kitchen', 'Home Theater', 'Wine Cellar', 'Tennis Court', 'Guest House'] },
+            { id: 4, name: 'South Beach Penthouse', type: 'penthouse', price: 5600000, location: 'Miami, FL', beds: 3, baths: 3, sqft: 2400, status: 'sale', desc: 'Modern waterfront penthouse with floor-to-ceiling windows overlooking Biscayne Bay. Private boat dock, resort pool, and world-class amenities.', features: ['Waterfront Views', 'Private Boat Dock', 'Resort Pool', 'Fitness Center', 'Valet Parking', 'Spa Access'] },
+            { id: 5, name: 'Lincoln Park Apartment', type: 'apartment', price: 875000, location: 'Chicago, IL', beds: 2, baths: 2, sqft: 1400, status: 'sale', desc: 'Elegant apartment in Chicago\'s prestigious Lincoln Park neighborhood. Renovated with hardwood floors, custom cabinetry, and deeded parking.', features: ['Hardwood Floors', 'Custom Cabinetry', 'Deeded Parking', 'In-Unit Laundry', 'Storage Unit', 'Rooftop Access'] },
+            { id: 6, name: 'Pacific Heights Estate', type: 'villa', price: 7800000, location: 'San Francisco, CA', beds: 5, baths: 4, sqft: 4800, status: 'sold', desc: 'Grand Victorian estate in Pacific Heights with sweeping views of the Golden Gate Bridge. Restored with period details and modern systems.', features: ['Bay Views', 'Victorian Architecture', 'Garden Courtyard', 'Chef\'s Kitchen', 'Library', 'Garage'] },
+            { id: 7, name: 'Tribeca Loft', type: 'apartment', price: 2450000, location: 'Manhattan, NY', beds: 2, baths: 2, sqft: 1800, status: 'sale', desc: 'Industrial-chic loft in the heart of Tribeca. Soaring 14-ft ceilings, exposed brick, chef\'s kitchen, and private roof terrace.', features: ['14-ft Ceilings', 'Exposed Brick', 'Chef\'s Kitchen', 'Roof Terrace', 'Private Storage', 'Pet Friendly'] },
+            { id: 8, name: 'Miami Beach Studio', type: 'studio', price: 420000, location: 'Miami, FL', beds: 0, baths: 1, sqft: 520, status: 'sale', desc: 'Chic beachfront studio with direct ocean views. Fully furnished, resort amenities including pool, gym, and concierge services.', features: ['Ocean Views', 'Fully Furnished', 'Resort Pool', 'Fitness Center', 'Concierge', 'Beach Access'] },
+            { id: 9, name: 'Seattle Waterfront Townhouse', type: 'townhouse', price: 1890000, location: 'Seattle, WA', beds: 3, baths: 3, sqft: 2200, status: 'featured', desc: 'Modern townhouse on Seattle\'s waterfront with stunning Puget Sound views. Rooftop deck, attached garage, and smart home technology.', features: ['Waterfront Location', 'Rooftop Deck', 'Attached Garage', 'Smart Home', 'EV Charger', 'Community Garden'] },
+            { id: 10, name: 'Back Bay Condo', type: 'apartment', price: 1250000, location: 'Boston, MA', beds: 2, baths: 2, sqft: 1350, status: 'sale', desc: 'Elegant Back Bay condo with classic Boston charm. Bay windows, original fireplace, updated kitchen, and doorman building.', features: ['Bay Windows', 'Original Fireplace', 'Updated Kitchen', 'Doorman', 'Common Roof Deck', 'Bike Storage'] },
+            { id: 11, name: 'Hollywood Hills Retreat', type: 'villa', price: 4500000, location: 'Los Angeles, CA', beds: 4, baths: 3, sqft: 3500, status: 'sale', desc: 'Mid-century modern retreat in the Hollywood Hills. Walls of glass, infinity pool, and city light views from every room.', features: ['Mid-Century Design', 'Infinity Pool', 'City Lights View', 'Glass Walls', 'Outdoor Living', 'Recording Studio'] },
+            { id: 12, name: 'Gold Coast Penthouse', type: 'penthouse', price: 3200000, location: 'Chicago, IL', beds: 3, baths: 3, sqft: 2600, status: 'sale', desc: 'Luxurious Gold Coast penthouse with lake and city views. Private elevator, custom millwork, and terrace with outdoor kitchen.', features: ['Lake Views', 'Private Elevator', 'Custom Millwork', 'Terrace Kitchen', 'Wine Storage', 'Valet Parking'] }
+        ];
+
+        var grid = document.getElementById('listingsGrid');
+        var filterType = document.getElementById('listFilterType');
+        var filterBeds = document.getElementById('listFilterBeds');
+        var filterBaths = document.getElementById('listFilterBaths');
+        var sortBy = document.getElementById('listSortBy');
+        var resultCount = document.getElementById('resultCount');
+        var modal = document.getElementById('propertyModal');
+        var modalBody = document.getElementById('modalBody');
+        var modalClose = document.getElementById('modalClose');
+        var modalOverlay = document.getElementById('modalOverlay');
+
+        function getTypeIcon(type) {
+            var icons = { apartment: 'fa-building', villa: 'fa-tree', townhouse: 'fa-house-chimney', penthouse: 'fa-crown', studio: 'fa-door-open' };
+            return icons[type] || 'fa-home';
+        }
+
+        function renderListings() {
+            var filtered = properties.filter(function(p) {
+                if (filterType.value !== 'all' && p.type !== filterType.value) return false;
+                if (parseInt(filterBeds.value) > 0 && p.beds < parseInt(filterBeds.value)) return false;
+                if (parseInt(filterBaths.value) > 0 && p.baths < parseInt(filterBaths.value)) return false;
+                return true;
+            });
+
+            var sorted = filtered.slice().sort(function(a, b) {
+                if (sortBy.value === 'price-asc') return a.price - b.price;
+                if (sortBy.value === 'price-desc') return b.price - a.price;
+                if (sortBy.value === 'name') return a.name.localeCompare(b.name);
+                return 0;
+            });
+
+            grid.innerHTML = '';
+            resultCount.textContent = sorted.length + ' properties';
+
+            sorted.forEach(function(p, i) {
+                var badgeClass = p.status === 'featured' ? 'badge-featured' : p.status === 'sold' ? 'badge-sold' : 'badge-sale';
+                var badgeText = p.status === 'featured' ? 'Featured' : p.status === 'sold' ? 'Sold' : 'For Sale';
+                var card = document.createElement('div');
+                card.className = 'property-card';
+                card.style.animationDelay = (i * 0.05) + 's';
+                card.innerHTML =
+                    '<div class="property-image">' +
+                        '<div class="property-image-placeholder"><i class="fas ' + getTypeIcon(p.type) + '"></i></div>' +
+                        '<span class="property-badge ' + badgeClass + '">' + badgeText + '</span>' +
+                        '<div class="property-overlay">' +
+                            '<button class="btn-details" data-id="' + p.id + '"><i class="fas fa-eye"></i> Quick View</button>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="property-info">' +
+                        '<p class="property-location"><i class="fas fa-map-marker-alt"></i>' + p.location + '</p>' +
+                        '<h3 class="property-name">' + p.name + '</h3>' +
+                        '<p class="property-price">' + window.formatter.format(p.price) + '</p>' +
+                        '<div class="property-specs">' +
+                            '<span><i class="fas fa-bed"></i> ' + (p.beds || 'Studio') + (p.beds ? ' Beds' : '') + '</span>' +
+                            '<span><i class="fas fa-bath"></i> ' + p.baths + ' Baths</span>' +
+                            '<span><i class="fas fa-vector-square"></i> ' + p.sqft.toLocaleString() + ' sqft</span>' +
+                        '</div>' +
+                        '<a href="property-detail.html?id=' + p.id + '" class="btn btn-primary" style="display:block;text-align:center;margin-top:12px;padding:10px;font-size:0.85rem;"><i class="fas fa-info-circle"></i> View Details</a>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+
+            document.querySelectorAll('.btn-details').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = parseInt(this.getAttribute('data-id'));
+                    var prop = properties.find(function(p) { return p.id === id; });
+                    if (prop) openModal(prop);
+                });
+            });
+        }
+
+        function openModal(prop) {
+            var featuresHtml = prop.features.map(function(f) { return '<li>' + f + '</li>'; }).join('');
+            modalBody.innerHTML =
+                '<div class="modal-gallery">' +
+                    '<div class="modal-gallery-placeholder"><i class="fas ' + getTypeIcon(prop.type) + '"></i><p>Property Gallery</p></div>' +
+                '</div>' +
+                '<div class="modal-details">' +
+                    '<div class="modal-header"><h2 class="modal-title">' + prop.name + '</h2><span class="modal-price">' + window.formatter.format(prop.price) + '</span></div>' +
+                    '<div class="modal-meta">' +
+                        '<span class="modal-meta-item"><i class="fas fa-map-marker-alt"></i>' + prop.location + '</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-bed"></i> ' + (prop.beds || 'Studio') + (prop.beds ? ' Beds' : '') + '</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-bath"></i> ' + prop.baths + ' Baths</span>' +
+                        '<span class="modal-meta-item"><i class="fas fa-vector-square"></i> ' + prop.sqft.toLocaleString() + ' sqft</span>' +
+                    '</div>' +
+                    '<p class="modal-description">' + prop.desc + '</p>' +
+                    '<h3 style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:12px;">Features &amp; Amenities</h3>' +
+                    '<ul class="modal-features">' + featuresHtml + '</ul>' +
+                    '<div class="modal-actions">' +
+                        '<a href="property-detail.html?id=' + prop.id + '" class="btn btn-primary"><i class="fas fa-info-circle"></i> Full Details</a>' +
+                        '<button class="btn btn-outline" id="modalSchedule"><i class="fas fa-calendar"></i> Schedule Tour</button>' +
+                    '</div>' +
+                '</div>';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('modalSchedule').addEventListener('click', function() {
+                alert('Thank you for your interest! Our team will contact you within 24 hours.');
+            });
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        filterType.addEventListener('change', renderListings);
+        filterBeds.addEventListener('change', renderListings);
+        filterBaths.addEventListener('change', renderListings);
+        sortBy.addEventListener('change', renderListings);
+
+        renderListings();
+        window.setupObserver('.property-card');
+    })();
+    </script>
+</body>
+</html>

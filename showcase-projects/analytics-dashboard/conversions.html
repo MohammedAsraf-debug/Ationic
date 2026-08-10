@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsightPro — Conversions | Analytics Dashboard by Ationic</title>
+  <meta name="description" content="InsightPro conversion analytics by Ationic. Conversion rate tracking, goal completions, source breakdown, and funnel visualization.">
+  <meta name="keywords" content="analytics dashboard, conversion rate, goal completions, funnel analysis, conversion tracking, Ationic">
+  <meta name="author" content="Ationic Digital Agency">
+  <meta property="og:title" content="InsightPro — Conversion Analytics">
+  <meta property="og:description" content="Premium conversion analytics dashboard by Ationic with funnel visualization and source tracking.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">InsightPro<span class="loader-dot">.</span></p>
+  </div>
+
+  <div class="dashboard" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">IP</div>
+        <span class="brand-name">InsightPro</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </a>
+        <a href="traffic.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Traffic</span>
+        </a>
+        <a href="conversions.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>Conversions</span>
+        </a>
+        <a href="reports.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="realtime-counter" id="realtimeCounter">
+          <span class="realtime-dot"></span>
+          <span class="realtime-label">Live Visitors</span>
+          <span class="realtime-value" id="liveCount">247</span>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-avatar">SM</div>
+          <div class="user-info">
+            <span class="user-name">Sarah Mitchell</span>
+            <span class="user-role">Analytics Manager</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search reports, pages...">
+        </div>
+        <div class="topbar-actions">
+          <div class="date-range-picker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="dateRangeLabel">Last 30 Days</span>
+            <select id="dateRangeSelect" class="date-select">
+              <option value="7">Last 7 Days</option>
+              <option value="30" selected>Last 30 Days</option>
+              <option value="90">Last 90 Days</option>
+              <option value="365">Last Year</option>
+            </select>
+          </div>
+          <button class="btn-icon notification-btn" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="badge">5</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="section active">
+        <div class="section-header">
+          <h1>Conversion Analytics</h1>
+          <p class="section-subtitle">Track goals, conversions, and revenue attribution</p>
+        </div>
+
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="card-icon visitors-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Conversion Rate</span>
+              <span class="card-value">3.8%</span>
+              <span class="card-change positive">+0.6% vs last period</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon duration-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Goal Completions</span>
+              <span class="card-value" data-target="3220">0</span>
+              <span class="card-change positive">+22.4% vs last period</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon pageviews-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Goal Value</span>
+              <span class="card-value" data-target="482500">$0</span>
+              <span class="card-change positive">+31.7% vs last period</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="card-icon bounce-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m-4 4l-4 4 4 4m8-8l4 4-4 4"/></svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Revenue per Conversion</span>
+              <span class="card-value">$149.84</span>
+              <span class="card-change positive">+7.6% vs last period</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Conversion by Source</h3>
+              <span class="card-badge">Horizontal Bars</span>
+            </div>
+            <div class="chart-container" id="conversionBySource"></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Conversion by Source</h3>
+              <span class="card-badge">Table</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead><tr><th>Source</th><th>Visitors</th><th>Conversions</th><th>Rate</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>Organic Search</td><td>38,297</td><td>1,352</td><td>3.53%</td><td>$202,650</td></tr>
+                  <tr><td>Direct</td><td>19,318</td><td>644</td><td>3.33%</td><td>$96,500</td></tr>
+                  <tr><td>Social Media</td><td>13,218</td><td>515</td><td>3.90%</td><td>$77,200</td></tr>
+                  <tr><td>Referral</td><td>8,812</td><td>386</td><td>4.38%</td><td>$57,900</td></tr>
+                  <tr><td>Email</td><td>5,084</td><td>323</td><td>6.35%</td><td>$48,250</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Conversion Funnel</h3>
+            <span class="card-badge">4-Step Funnel</span>
+          </div>
+          <div class="funnel-container" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 0">
+            <div class="funnel-step" style="display:flex;align-items:center;gap:16px;width:100%;justify-content:center">
+              <div class="funnel-bar" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-radius:8px;background:var(--bg2);border:2px solid var(--blue);background:rgba(59,130,246,0.06);min-height:52px">
+                <span class="funnel-label" style="font-size:0.88rem;font-weight:600">Landing Page</span>
+                <span class="funnel-value" style="font-size:1rem;font-weight:700;color:var(--blue)">84,729</span>
+              </div>
+              <span class="funnel-drop" style="font-size:0.78rem;color:var(--text3);white-space:nowrap;min-width:110px;text-align:right">—</span>
+            </div>
+            <div class="funnel-step" style="display:flex;align-items:center;gap:16px;width:100%;justify-content:center">
+              <div class="funnel-bar" style="width:42%;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-radius:8px;background:var(--bg2);border:1px solid var(--bg4);min-height:52px">
+                <span class="funnel-label" style="font-size:0.88rem;font-weight:600">Sign Up</span>
+                <span class="funnel-value" style="font-size:1rem;font-weight:700;color:var(--blue)">12,418</span>
+              </div>
+              <span class="funnel-drop" style="font-size:0.78rem;color:var(--red);white-space:nowrap;min-width:110px;text-align:right">85.3% drop-off</span>
+            </div>
+            <div class="funnel-step" style="display:flex;align-items:center;gap:16px;width:100%;justify-content:center">
+              <div class="funnel-bar" style="width:22%;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-radius:8px;background:var(--bg2);border:1px solid var(--bg4);min-height:52px">
+                <span class="funnel-label" style="font-size:0.88rem;font-weight:600">Trial</span>
+                <span class="funnel-value" style="font-size:1rem;font-weight:700;color:var(--blue)">5,243</span>
+              </div>
+              <span class="funnel-drop" style="font-size:0.78rem;color:var(--red);white-space:nowrap;min-width:110px;text-align:right">57.8% drop-off</span>
+            </div>
+            <div class="funnel-step" style="display:flex;align-items:center;gap:16px;width:100%;justify-content:center">
+              <div class="funnel-bar" style="width:10%;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-radius:8px;background:var(--bg2);border:2px solid var(--green);background:rgba(34,197,94,0.06);min-height:52px">
+                <span class="funnel-label" style="font-size:0.88rem;font-weight:600">Purchase</span>
+                <span class="funnel-value" style="font-size:1rem;font-weight:700;color:var(--blue)">2,018</span>
+              </div>
+              <span class="funnel-drop" style="font-size:0.78rem;color:var(--red);white-space:nowrap;min-width:110px;text-align:right">61.5% drop-off</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card">
+            <div class="card-header">
+              <h3>Top Converting Pages</h3>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead><tr><th>Page</th><th>Conversions</th><th>Rate</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>/pricing</td><td>892</td><td>5.2%</td><td>$142,720</td></tr>
+                  <tr><td>/demo</td><td>742</td><td>11.3%</td><td>$91,250</td></tr>
+                  <tr><td>/features</td><td>645</td><td>4.8%</td><td>$103,200</td></tr>
+                  <tr><td>/home</td><td>523</td><td>3.1%</td><td>$78,450</td></tr>
+                  <tr><td>/blog/case-study</td><td>418</td><td>4.2%</td><td>$66,880</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Funnel Metrics</h3>
+            </div>
+            <div class="funnel-metrics" style="display:flex;flex-direction:column;gap:12px">
+              <div class="funnel-metric-item" style="display:flex;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px">
+                <span class="fm-label" style="font-size:0.85rem;color:var(--text2)">Overall Conversion Rate</span>
+                <span class="fm-value" style="font-weight:700;font-size:0.9rem">2.38%</span>
+              </div>
+              <div class="funnel-metric-item" style="display:flex;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px">
+                <span class="fm-label" style="font-size:0.85rem;color:var(--text2)">Avg Time to Convert</span>
+                <span class="fm-value" style="font-weight:700;font-size:0.9rem">8.4 days</span>
+              </div>
+              <div class="funnel-metric-item" style="display:flex;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px">
+                <span class="fm-label" style="font-size:0.85rem;color:var(--text2)">Drop-off (Landing &rarr; Signup)</span>
+                <span class="fm-value" style="font-weight:700;font-size:0.9rem">85.3%</span>
+              </div>
+              <div class="funnel-metric-item" style="display:flex;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px">
+                <span class="fm-label" style="font-size:0.85rem;color:var(--text2)">Drop-off (Signup &rarr; Trial)</span>
+                <span class="fm-value" style="font-weight:700;font-size:0.9rem">57.8%</span>
+              </div>
+              <div class="funnel-metric-item" style="display:flex;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px">
+                <span class="fm-label" style="font-size:0.85rem;color:var(--text2)">Drop-off (Trial &rarr; Purchase)</span>
+                <span class="fm-value" style="font-weight:700;font-size:0.9rem">61.5%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Improvement Suggestions</h3>
+          </div>
+          <div class="suggestions-list" style="display:flex;flex-direction:column;gap:16px">
+            <div class="suggestion-item" style="display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:8px">
+              <div class="suggestion-icon improvement" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;background:rgba(139,92,246,0.12);color:var(--accent)">1</div>
+              <div class="suggestion-content">
+                <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:4px">Simplify Sign-Up Form</h4>
+                <p style="font-size:0.82rem;color:var(--text2);line-height:1.5">Reduce form fields from 8 to 4 &mdash; estimated 25% improvement in sign-up conversion.</p>
+              </div>
+            </div>
+            <div class="suggestion-item" style="display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:8px">
+              <div class="suggestion-icon improvement" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;background:rgba(139,92,246,0.12);color:var(--accent)">2</div>
+              <div class="suggestion-content">
+                <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:4px">Add Live Chat During Trial</h4>
+                <p style="font-size:0.82rem;color:var(--text2);line-height:1.5">Onboarding assistance during trial period could reduce drop-off by up to 35%.</p>
+              </div>
+            </div>
+            <div class="suggestion-item" style="display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:8px">
+              <div class="suggestion-icon improvement" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;background:rgba(139,92,246,0.12);color:var(--accent)">3</div>
+              <div class="suggestion-content">
+                <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:4px">Optimize Pricing Page</h4>
+                <p style="font-size:0.82rem;color:var(--text2);line-height:1.5">A/B test showed highlighting the annual plan increases purchase rate by 18%.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="dashboard-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+        <p>&copy; 2026 Ationic Digital Agency. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    animateCounters();
+    renderConversionChart();
+    setupDateRange();
+    startRealtimeCounter();
+  </script>
+</body>
+</html>

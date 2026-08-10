@@ -13,16 +13,16 @@
 <!-- ── Open Graph / Social ── -->
 <meta property="og:title" content="Contact Ationic – Free Strategy Call | Digital Marketing Agency">
 <meta property="og:description" content="Book a free strategy call with Ationic. Let's discuss your business goals and create a custom marketing plan.">
-<meta property="og:url" content="https://ationic.com/contact.html">
+<meta property="og:url" content="https://ationic.agency/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ationic">
-<meta property="og:image" content="https://ationic.com/images/ationic.png">
+<meta property="og:image" content="https://ationic.agency/images/ationic.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact Ationic – Free Strategy Call | Digital Marketing Agency">
 <meta name="twitter:description" content="Book a free strategy call with Ationic. Expert digital marketing help for your business.">
-<meta name="twitter:image" content="https://ationic.com/images/ationic.png">
+<meta name="twitter:image" content="https://ationic.agency/images/ationic.png">
 <!-- ── Canonical & Favicon ── -->
-<link rel="canonical" href="https://ationic.com/contact.html">
+<link rel="canonical" href="https://ationic.agency/contact.html">
 <link rel="icon" href="images/ationic.png" type="image/png">
 <!-- ── Fonts & Icons ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,9 +52,10 @@
     <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
       <ul role="menubar">
         <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
-        <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
-        <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
-        <li role="none"><a href="contact.html" class="nav-link active" role="menuitem">Contact</a></li>
+          <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
+          <li role="none"><a href="portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
+          <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+          <li role="none"><a href="contact.html" class="nav-link active" role="menuitem">Contact</a></li>
       </ul>
     </nav>
     <div class="nav-actions">
@@ -99,7 +100,32 @@
             <input type="tel" id="phone" name="phone" placeholder="Your phone number" maxlength="10" inputmode="numeric" pattern="[6-9]{1}[0-9]{9}" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" required>
           </div>
           <div class="form-group">
-            <input type="text" id="subject" name="subject" placeholder="What service are you interested in?" value="">
+            <div class="custom-select" id="subjectSelect" tabindex="0" role="listbox" aria-label="Select a service">
+              <div class="custom-select__trigger" onclick="toggleSelect(this)">
+                <span class="custom-select__text">What service are you interested in?</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="custom-select__options">
+                <div class="custom-select__option" data-value="" onclick="selectOption(this)">What service are you interested in?</div>
+                <div class="custom-select__option" data-value="Performance Marketing" onclick="selectOption(this)">Performance Marketing</div>
+                <div class="custom-select__option" data-value="Meta Ads" onclick="selectOption(this)">Meta Ads</div>
+                <div class="custom-select__option" data-value="Google Ads" onclick="selectOption(this)">Google Ads</div>
+                <div class="custom-select__option" data-value="Social Media Marketing" onclick="selectOption(this)">Social Media Marketing</div>
+                <div class="custom-select__option" data-value="Branding &amp; Content" onclick="selectOption(this)">Branding &amp; Content</div>
+                <div class="custom-select__option" data-value="Web Development" onclick="selectOption(this)">Web Development</div>
+                <div class="custom-select__option" data-value="Content Creation" onclick="selectOption(this)">Content Creation</div>
+                <div class="custom-select__option" data-value="Video Editing" onclick="selectOption(this)">Video Editing</div>
+                <div class="custom-select__option" data-value="Email Marketing" onclick="selectOption(this)">Email Marketing</div>
+                <div class="custom-select__option" data-value="SEO" onclick="selectOption(this)">SEO</div>
+                <div class="custom-select__option" data-value="Lead Generation" onclick="selectOption(this)">Lead Generation</div>
+                <div class="custom-select__option" data-value="E-commerce Marketing" onclick="selectOption(this)">E-commerce Marketing</div>
+                <div class="custom-select__option custom-select__option--custom" data-value="custom" onclick="selectOption(this)">Custom Service</div>
+              </div>
+              <input type="hidden" name="subject" id="subject" value="">
+            </div>
+          </div>
+          <div class="form-group" id="custom-service-group" style="display:none">
+            <input type="text" id="subject_custom" name="subject_custom" placeholder="Type your service...">
           </div>
           <div class="form-group">
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your business and what you would like to achieve." required></textarea>
@@ -118,7 +144,7 @@
           <i class="fas fa-envelope"></i>
           <div>
             <h4>Email</h4>
-            <p><a href="mailto:ationic.it@gmail.com">ationic.it@gmail.com</a></p>
+            <p><a href="mailto:hello@ationic.agency">hello@ationic.agency</a></p>
           </div>
         </div>
         <div class="contact-info-item">
@@ -154,7 +180,7 @@
       <p>Let's hop on a 15-minute call to understand your goals and see if we are a good fit. No strings attached.</p>
       <div class="cta-final__actions">
         <a href="https://wa.me/918680060912" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer nofollow"><i class="fab fa-whatsapp"></i> Book Your Free Call</a>
-        <a href="mailto:ationic.it@gmail.com" class="btn btn-outline btn-lg">Email Us Instead</a>
+        <a href="mailto:hello@ationic.agency" class="btn btn-outline btn-lg">Email Us Instead</a>
       </div>
     </div>
   </div>
@@ -181,6 +207,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -188,21 +215,24 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="services.html">Performance Marketing</a></li>
-          <li><a href="services.html">Meta & Google Ads</a></li>
-          <li><a href="services.html">Social Media Marketing</a></li>
-          <li><a href="services.html">Branding & Content</a></li>
-          <li><a href="services.html">Content Creation</a></li>
-          <li><a href="services.html">Video Editing</a></li>
-          <li><a href="services.html">Email Marketing</a></li>
-          <li><a href="services.html">Web Development</a></li>
-          <li><a href="services.html">SEO & Lead Generation</a></li>
+          <li><a href="services/performance-marketing.html">Performance Marketing</a></li>
+          <li><a href="services/meta-ads.html">Meta Ads</a></li>
+          <li><a href="services/google-ads.html">Google Ads</a></li>
+          <li><a href="services/social-media-marketing.html">Social Media Marketing</a></li>
+          <li><a href="services/branding-content.html">Branding & Content</a></li>
+          <li><a href="services/content-creation.html">Content Creation</a></li>
+          <li><a href="services/video-editing.html">Video Editing</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/web-development.html">Web Development</a></li>
+          <li><a href="services/seo.html">SEO</a></li>
+          <li><a href="services/lead-generation.html">Lead Generation</a></li>
+          <li><a href="services/ecommerce-marketing.html">E-commerce Marketing</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul class="footer-contact">
-          <li><i class="fas fa-envelope"></i> <a href="mailto:ationic.it@gmail.com">ationic.it@gmail.com</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:hello@ationic.agency">hello@ationic.agency</a></li>
           <li><i class="fas fa-phone"></i> <a href="tel:+918680060912">+91 86800 60912</a></li>
           <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/918680060912" target="_blank" rel="noopener noreferrer nofollow">WhatsApp</a></li>
 

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velour Boutique | Premium Fashion - Redefining Elegance</title>
+    <meta name="description" content="Discover Velour Boutique - premium fashion for women, men, and accessories. Curated collections featuring designer brands, sustainable fashion, and timeless elegance.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">V</div>
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Velour Boutique</p>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="container">
+            <span>Free shipping on orders over $100 &bull; Complimentary gift wrapping</span>
+            <span>Sign up for 15% off your first order</span>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <a href="index.html" class="nav-logo">Velour</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="category.html" class="nav-link">Shop</a></li>
+                    <li><a href="product.html" class="nav-link">Product</a></li>
+                    <li><a href="wishlist.html" class="nav-link">Wishlist <span class="wishlist-count" id="wishlistCount">0</span></a></li>
+                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-count" id="cartCount">0</span></a></li>
+                    <li><a href="checkout.html" class="nav-link">Checkout</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="cart.html" class="nav-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-badge">New Season Collection</span>
+                    <h1 class="hero-title">Redefining Elegance</h1>
+                    <p class="hero-subtitle">Discover the art of refined dressing with our curated collection of premium fashion, where timeless sophistication meets modern design.</p>
+                    <div class="hero-actions">
+                        <a href="category.html?cat=women" class="btn btn-primary">Shop Women</a>
+                        <a href="category.html?cat=men" class="btn btn-outline">Shop Men</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="collection-spotlight">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Curated For You</span>
+                    <h2 class="section-title">Seasonal Collection</h2>
+                    <p class="section-desc">Luxurious fabrics, impeccable tailoring, and designs that transcend seasons.</p>
+                </div>
+                <div class="spotlight-grid">
+                    <div class="spotlight-item spotlight-large">
+                        <div class="spotlight-img"><span>Evening Wear</span></div>
+                        <div class="spotlight-overlay">
+                            <h3>Evening Collection</h3>
+                            <p>Silk gowns, tailored tuxedos, and cocktail ensembles</p>
+                            <a href="category.html?cat=women" class="btn btn-primary">Explore</a>
+                        </div>
+                    </div>
+                    <div class="spotlight-item">
+                        <div class="spotlight-img"><span>Casual Luxe</span></div>
+                        <div class="spotlight-overlay">
+                            <h3>Casual Luxe</h3>
+                            <p>Premium essentials for everyday elegance</p>
+                            <a href="category.html?cat=men" class="btn btn-primary">Explore</a>
+                        </div>
+                    </div>
+                    <div class="spotlight-item">
+                        <div class="spotlight-img"><span>Accessories</span></div>
+                        <div class="spotlight-overlay">
+                            <h3>Signature Accessories</h3>
+                            <p>Complete your look with our curated edit</p>
+                            <a href="category.html?cat=accessories" class="btn btn-primary">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trending">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Trending Now</span>
+                    <h2 class="section-title">Most Popular</h2>
+                </div>
+                <div class="products-grid" id="trendingGrid"></div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <span class="section-tag">Stay Inspired</span>
+                    <h2>Join the Velour Community</h2>
+                    <p>Subscribe for exclusive access to new collections, behind-the-scenes content, and 15% off your first order.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Velour</div>
+                    <p>Premium fashion boutique offering curated collections of designer clothing, accessories, and lifestyle pieces. We believe in timeless elegance, quality craftsmanship, and sustainable fashion.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="category.html?cat=women">Women</a></li>
+                        <li><a href="category.html?cat=men">Men</a></li>
+                        <li><a href="category.html?cat=accessories">Accessories</a></li>
+                        <li><a href="category.html?cat=sale">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="checkout.html">Shipping & Delivery</a></li>
+                        <li><a href="checkout.html">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>hello@velourboutique.com</li>
+                        <li>1 (800) 555-0199</li>
+                        <li>245 Madison Avenue<br>New York, NY 10016</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project.</p>
+                <p>&copy; 2026 Velour Boutique. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const trending = [...products].sort((a, b) => b.reviews - a.reviews).slice(0, 4);
+        document.getElementById('trendingGrid').innerHTML = trending.map(p => renderProductCard(p)).join('');
+        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Subscribed!';
+            btn.style.background = '#22c55e';
+            setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; }, 3000);
+        });
+    </script>
+</body>
+</html>

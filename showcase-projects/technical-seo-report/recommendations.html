@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="10 prioritized technical SEO recommendations with implementation steps, expected impact, and timeline for example.com.">
+  <meta name="keywords" content="SEO recommendations, technical SEO fixes, SEO implementation, SEO priorities, Ationic">
+  <meta name="author" content="Ationic">
+  <meta property="og:title" content="Technical SEO Recommendations - Ationic SEO Report">
+  <meta property="og:description" content="Prioritized recommendations to fix all 12 SEO issues found in the audit.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ationic.com/showcase/technical-seo-report/recommendations">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Technical SEO Recommendations">
+  <meta name="twitter:description" content="SEO recommendations from Ationic audit.">
+  <link rel="canonical" href="https://ationic.com/showcase/technical-seo-report/recommendations">
+  <title>SEO Recommendations - Ationic Technical SEO Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="app-loader" class="app-loader">
+    <div class="loader-spinner"></div>
+    <p>Loading Recommendations...</p>
+  </div>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Technical SEO Report</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="issues.html" class="nav-link">Issues</a>
+        <a href="recommendations.html" class="nav-link active">Recommendations</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="report-page" id="app" style="display:none;">
+    <header class="report-header">
+      <div class="header-badge">PREPARED BY ATIONIC</div>
+      <h1 class="report-title">Prioritized Recommendations</h1>
+      <div class="report-meta">
+        <div class="meta-block">
+          <span class="meta-label">Website</span>
+          <span class="meta-value">example.com</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report Date</span>
+          <span class="meta-value" id="report-date"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report ID</span>
+          <span class="meta-value" id="report-id"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Total Issues</span>
+          <span class="meta-value">12</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section recommendations-section">
+      <h2 class="section-title">04. Prioritized Recommendations</h2>
+      <table class="rec-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Recommendation</th>
+            <th>Category</th>
+            <th>Effort</th>
+            <th>Impact</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rec-critical">
+            <td>1</td>
+            <td><strong>Fix duplicate content via 301 redirects and canonicals</strong><br><span class="rec-detail">Consolidate /about, /about-us, /team into one canonical page</span></td>
+            <td>Indexation</td>
+            <td>Hard</td>
+            <td>High</td>
+            <td>2-3 days</td>
+          </tr>
+          <tr class="rec-critical">
+            <td>2</td>
+            <td><strong>Generate and submit XML sitemap</strong><br><span class="rec-detail">Dynamic sitemap covering all 1,200+ canonical pages</span></td>
+            <td>Indexation</td>
+            <td>Medium</td>
+            <td>High</td>
+            <td>1 day</td>
+          </tr>
+          <tr class="rec-critical">
+            <td>3</td>
+            <td><strong>Optimize LCP for mobile (target less than 2.5s)</strong><br><span class="rec-detail">WebP images, CDN, lazy loading, critical CSS inlining</span></td>
+            <td>Performance</td>
+            <td>Hard</td>
+            <td>Critical</td>
+            <td>4-5 days</td>
+          </tr>
+          <tr class="rec-high">
+            <td>4</td>
+            <td><strong>Fix 12 broken internal links</strong><br><span class="rec-detail">Redirect or restore; set up ongoing link monitoring</span></td>
+            <td>Crawlability</td>
+            <td>Medium</td>
+            <td>High</td>
+            <td>1-2 days</td>
+          </tr>
+          <tr class="rec-high">
+            <td>5</td>
+            <td><strong>Add alt text to 23 images</strong><br><span class="rec-detail">Descriptive, keyword-relevant alt attributes</span></td>
+            <td>Accessibility</td>
+            <td>Easy</td>
+            <td>Medium</td>
+            <td>2-3 days</td>
+          </tr>
+          <tr class="rec-high">
+            <td>6</td>
+            <td><strong>Expand thin content on 5 pages</strong><br><span class="rec-detail">300+ words per page; consolidate or noindex low-value pages</span></td>
+            <td>Site Structure</td>
+            <td>Hard</td>
+            <td>High</td>
+            <td>5-7 days</td>
+          </tr>
+          <tr class="rec-high">
+            <td>7</td>
+            <td><strong>Improve server response time (TTFB)</strong><br><span class="rec-detail">Upgrade hosting, implement server caching, optimize DB</span></td>
+            <td>Performance</td>
+            <td>Hard</td>
+            <td>High</td>
+            <td>3-5 days</td>
+          </tr>
+          <tr class="rec-medium">
+            <td>8</td>
+            <td><strong>Implement complete Open Graph tags</strong><br><span class="rec-detail">Add missing og:locale, og:site_name, og:image:width, og:image:height</span></td>
+            <td>Social</td>
+            <td>Easy</td>
+            <td>Medium</td>
+            <td>1-2 days</td>
+          </tr>
+          <tr class="rec-medium">
+            <td>9</td>
+            <td><strong>Add hreflang annotations for multi-language content</strong><br><span class="rec-detail">HTML head hreflang tags + sitemap annotations</span></td>
+            <td>Indexation</td>
+            <td>Medium</td>
+            <td>Medium</td>
+            <td>2-3 days</td>
+          </tr>
+          <tr class="rec-medium">
+            <td>10</td>
+            <td><strong>Improve text-to-HTML ratio</strong><br><span class="rec-detail">Externalize assets, minify, audit unused code</span></td>
+            <td>Performance</td>
+            <td>Medium</td>
+            <td>Low</td>
+            <td>3-4 days</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section chart-section-report">
+      <h2 class="section-title">05. Page Speed Distribution</h2>
+      <div class="dist-chart">
+        <div class="dist-bar-group">
+          <span class="dist-label">0-1s</span>
+          <div class="dist-bar-bg"><div class="dist-bar-fill good" style="width:0%"></div></div>
+          <span class="dist-value">15%</span>
+        </div>
+        <div class="dist-bar-group">
+          <span class="dist-label">1-2s</span>
+          <div class="dist-bar-bg"><div class="dist-bar-fill good" style="width:0%"></div></div>
+          <span class="dist-value">32%</span>
+        </div>
+        <div class="dist-bar-group">
+          <span class="dist-label">2-3s</span>
+          <div class="dist-bar-bg"><div class="dist-bar-fill yellow" style="width:0%"></div></div>
+          <span class="dist-value">28%</span>
+        </div>
+        <div class="dist-bar-group">
+          <span class="dist-label">3-4s</span>
+          <div class="dist-bar-bg"><div class="dist-bar-fill yellow" style="width:0%"></div></div>
+          <span class="dist-value">18%</span>
+        </div>
+        <div class="dist-bar-group">
+          <span class="dist-label">4s+</span>
+          <div class="dist-bar-bg"><div class="dist-bar-fill red" style="width:0%"></div></div>
+          <span class="dist-value">7%</span>
+        </div>
+      </div>
+
+      <div class="pie-section">
+        <h3 class="sub-title">Issue Severity Distribution</h3>
+        <div class="pie-container">
+          <svg class="pie-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#dc2626" stroke-width="16" stroke-dasharray="75 100" stroke-dashoffset="0"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#ea580c" stroke-width="16" stroke-dasharray="100 100" stroke-dashoffset="-75"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#ca8a04" stroke-width="16" stroke-dasharray="75 100" stroke-dashoffset="-175"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#64748b" stroke-width="16" stroke-dasharray="50 100" stroke-dashoffset="-250"/>
+          </svg>
+        </div>
+        <div class="pie-legend">
+          <span><span class="pie-dot" style="background:#dc2626"></span>Critical (25%)</span>
+          <span><span class="pie-dot" style="background:#ea580c"></span>High (33%)</span>
+          <span><span class="pie-dot" style="background:#ca8a04"></span>Medium (25%)</span>
+          <span><span class="pie-dot" style="background:#64748b"></span>Low (17%)</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="report-footer">
+      <div class="footer-divider"></div>
+      <p class="footer-text">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      <p class="footer-confidential">CONFIDENTIAL - This report is prepared for demonstration purposes only.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

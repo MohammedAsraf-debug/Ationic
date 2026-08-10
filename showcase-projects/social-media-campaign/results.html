@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Results — Project Aura | Ationic</title>
+    <meta name="description" content="Project Aura campaign analytics: 5.8% engagement rate, follower growth chart, top 5 posts, audience demographics, best posting time, and insights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="28" stroke="url(#loadGrad)" stroke-width="2" fill="none" class="load-circle"/>
+                    <path d="M20 38 L30 18 L40 38" stroke="url(#loadGrad)" stroke-width="2" fill="none" class="load-chevron"/>
+                    <defs>
+                        <linearGradient id="loadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff6b6b"/>
+                            <stop offset="100%" stop-color="#b197fc"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <p class="loader-text">Loading Campaign</p>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg width="24" height="24" viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="30" r="28" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    <path d="M20 38 L30 18 L40 38" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                </svg>
+                <span>Project Aura</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="feed.html">Feed</a></li>
+                <li><a href="ads.html">Ads</a></li>
+                <li><a href="stories.html">Stories</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="results.html">Results</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero-sm">
+        <div class="container">
+            <div class="section-label">07 — Campaign Results</div>
+            <h1 class="page-title-sm">Data That Tells the Story</h1>
+            <p class="page-desc-sm">Comprehensive analytics showing the measurable impact of Project Aura across all key performance indicators.</p>
+        </div>
+    </section>
+
+    <section class="section results-section">
+        <div class="container">
+            <div class="results-grid">
+                <div class="result-card highlight">
+                    <span class="result-big">5.8%</span>
+                    <span class="result-label">Engagement Rate</span>
+                    <span class="result-compare">+3.2% vs. industry avg</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-big">2.4M</span>
+                    <span class="result-label">Total Impressions</span>
+                    <span class="result-compare">+180% target</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-big">890K</span>
+                    <span class="result-label">Total Engagements</span>
+                    <span class="result-compare">Likes, comments, shares</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-big">340%</span>
+                    <span class="result-label">Return on Ad Spend</span>
+                    <span class="result-compare">$16.3K spent / $55.4K attributed</span>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h3 class="chart-title">Follower Growth — 8 Week Trend</h3>
+                <div class="line-chart" id="lineChart">
+                    <div class="chart-y-axis">
+                        <span>60K</span>
+                        <span>48K</span>
+                        <span>36K</span>
+                        <span>24K</span>
+                        <span>12K</span>
+                        <span>0</span>
+                    </div>
+                    <div class="chart-area">
+                        <svg viewBox="0 0 800 300" preserveAspectRatio="none" class="chart-svg">
+                            <defs>
+                                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.3"/>
+                                    <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <polyline fill="none" stroke="#ff6b6b" stroke-width="3" points="0,270 100,240 200,210 300,170 400,140 500,100 600,60 700,30 800,15" class="chart-line"/>
+                            <polygon fill="url(#chartGrad)" points="0,270 100,240 200,210 300,170 400,140 500,100 600,60 700,30 800,15 800,300 0,300"/>
+                            <circle cx="100" cy="240" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="200" cy="210" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="300" cy="170" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="400" cy="140" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="500" cy="100" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="600" cy="60" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="700" cy="30" r="4" fill="#ff6b6b" class="chart-dot"/>
+                            <circle cx="800" cy="15" r="5" fill="#ff6b6b" class="chart-dot-last"/>
+                        </svg>
+                        <div class="chart-x-axis">
+                            <span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-bottom-grid">
+                <div class="top-posts">
+                    <h3>Top 5 Posts by Engagement</h3>
+                    <div class="top-post-item">
+                        <span class="top-post-rank">1</span>
+                        <div class="top-post-info">
+                            <span class="top-post-caption">Transformation Reel</span>
+                            <span class="top-post-engagement">28.9K likes • 1.2K comments</span>
+                        </div>
+                        <span class="top-post-type">Reel</span>
+                    </div>
+                    <div class="top-post-item">
+                        <span class="top-post-rank">2</span>
+                        <div class="top-post-info">
+                            <span class="top-post-caption">Chasing Golden Hour</span>
+                            <span class="top-post-engagement">18.2K likes • 892 comments</span>
+                        </div>
+                        <span class="top-post-type">Photo</span>
+                    </div>
+                    <div class="top-post-item">
+                        <span class="top-post-rank">3</span>
+                        <div class="top-post-info">
+                            <span class="top-post-caption">5 Habits Carousel</span>
+                            <span class="top-post-engagement">15.2K likes • 634 comments</span>
+                        </div>
+                        <span class="top-post-type">Carousel</span>
+                    </div>
+                    <div class="top-post-item">
+                        <span class="top-post-rank">4</span>
+                        <div class="top-post-info">
+                            <span class="top-post-caption">Personal Brand Guide</span>
+                            <span class="top-post-engagement">14.7K likes • 512 comments</span>
+                        </div>
+                        <span class="top-post-type">Carousel</span>
+                    </div>
+                    <div class="top-post-item">
+                        <span class="top-post-rank">5</span>
+                        <div class="top-post-info">
+                            <span class="top-post-caption">Morning Light Ritual</span>
+                            <span class="top-post-engagement">12.4K likes • 456 comments</span>
+                        </div>
+                        <span class="top-post-type">Photo</span>
+                    </div>
+                </div>
+                <div class="audience-insights">
+                    <h3>Audience Demographics</h3>
+                    <div class="demo-charts">
+                        <div class="demo-group">
+                            <span class="demo-label">Age</span>
+                            <div class="demo-bar">
+                                <div class="demo-bar-segment" style="width:35%;background:#ff6b6b;" title="18-24: 35%">18–24</div>
+                                <div class="demo-bar-segment" style="width:42%;background:#ffa94d;" title="25-34: 42%">25–34</div>
+                                <div class="demo-bar-segment" style="width:18%;background:#b197fc;" title="35-44: 18%">35–44</div>
+                                <div class="demo-bar-segment" style="width:5%;background:#8a8a9a;" title="45+: 5%">45+</div>
+                            </div>
+                        </div>
+                        <div class="demo-group">
+                            <span class="demo-label">Gender</span>
+                            <div class="demo-bar">
+                                <div class="demo-bar-segment" style="width:62%;background:#ff6b6b;" title="Female: 62%">Female</div>
+                                <div class="demo-bar-segment" style="width:35%;background:#74c0fc;" title="Male: 35%">Male</div>
+                                <div class="demo-bar-segment" style="width:3%;background:#8a8a9a;" title="Other: 3%">Other</div>
+                            </div>
+                        </div>
+                        <div class="demo-group">
+                            <span class="demo-label">Location</span>
+                            <div class="demo-bar">
+                                <div class="demo-bar-segment" style="width:48%;background:#ff6b6b;" title="North America: 48%">N. America</div>
+                                <div class="demo-bar-segment" style="width:28%;background:#ffa94d;" title="Europe: 28%">Europe</div>
+                                <div class="demo-bar-segment" style="width:15%;background:#b197fc;" title="Asia Pacific: 15%">APAC</div>
+                                <div class="demo-bar-segment" style="width:9%;background:#8a8a9a;" title="Rest of World: 9%">RoW</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <span class="insight-icon"><i class="fas fa-clock"></i></span>
+                    <h4>Best Posting Time</h4>
+                    <p>Tuesday &amp; Thursday at 11:00 AM EST generated 34% higher engagement than other time slots. Weekend evenings (6–8 PM) performed best for Reels.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-icon"><i class="fas fa-hashtag"></i></span>
+                    <h4>Top Performing Hashtags</h4>
+                    <p>#AuraVibes (48K reach), #MinimalLuxury (32K reach), #CreativeProcess (28K reach). Niche hashtags outperformed broad ones by 3:1.</p>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <h3 class="chart-title">Client Testimonials</h3>
+                <div class="testimonial-grid">
+                    <div class="test-card">
+                        <span class="test-quote">"</span>
+                        <p>Project Aura redefined how we approach social media. The team at Ationic delivered beyond our expectations — our engagement numbers speak for themselves.</p>
+                        <span class="test-name">— Rachel Greenwald</span>
+                        <span class="test-role">CMO, Lumina Lifestyle</span>
+                    </div>
+                    <div class="test-card">
+                        <span class="test-quote">"</span>
+                        <p>The data-driven strategy combined with stunning creative execution made this our most successful campaign to date. We saw real business results, not just vanity metrics.</p>
+                        <span class="test-name">— David Okonkwo</span>
+                        <span class="test-role">CEO, Urban Haven</span>
+                    </div>
+                    <div class="test-card">
+                        <span class="test-quote">"</span>
+                        <p>Working with Ationic on Project Aura was a masterclass in social media marketing. Every post, every story, every ad was intentional and effective.</p>
+                        <span class="test-name">— Sophie Laurent</span>
+                        <span class="test-role">Brand Director, Maison Claire</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <svg width="24" height="24" viewBox="0 0 60 60" fill="none">
+                        <circle cx="30" cy="30" r="28" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                        <path d="M20 38 L30 18 L40 38" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span>Project Aura by Ationic</span>
+                </div>
+                <p class="footer-tagline">A Social Media Success Story</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-note">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+            <p class="footer-copy">&copy; 2026 Ationic. All rights reserved. This is a demonstration showcase.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

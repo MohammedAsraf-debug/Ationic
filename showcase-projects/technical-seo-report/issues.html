@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="All 12 technical SEO issues found for example.com, organized by severity with effort estimates and impact scores.">
+  <meta name="keywords" content="SEO issues, technical SEO problems, crawlability issues, SEO audit findings, Ationic">
+  <meta name="author" content="Ationic">
+  <meta property="og:title" content="Technical SEO Issues - Ationic SEO Report">
+  <meta property="og:description" content="Complete list of SEO issues organized by severity category.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ationic.com/showcase/technical-seo-report/issues">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Technical SEO Issues">
+  <meta name="twitter:description" content="SEO issues by severity from Ationic audit.">
+  <link rel="canonical" href="https://ationic.com/showcase/technical-seo-report/issues">
+  <title>Technical SEO Issues - Ationic Audit Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="app-loader" class="app-loader">
+    <div class="loader-spinner"></div>
+    <p>Loading Issues...</p>
+  </div>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Technical SEO Report</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="issues.html" class="nav-link active">Issues</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="report-page" id="app" style="display:none;">
+    <header class="report-header">
+      <div class="header-badge">PREPARED BY ATIONIC</div>
+      <h1 class="report-title">Issues by Category</h1>
+      <div class="report-meta">
+        <div class="meta-block">
+          <span class="meta-label">Website</span>
+          <span class="meta-value">example.com</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report Date</span>
+          <span class="meta-value" id="report-date"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Report ID</span>
+          <span class="meta-value" id="report-id"></span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Total Issues</span>
+          <span class="meta-value">12</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section issues-section">
+      <h2 class="section-title">03. Issues by Severity</h2>
+
+      <div class="issue-tabs">
+        <button class="issue-tab active" data-category="critical" aria-selected="true">Critical (3)</button>
+        <button class="issue-tab" data-category="high">High (4)</button>
+        <button class="issue-tab" data-category="medium">Medium (3)</button>
+        <button class="issue-tab" data-category="low">Low (2)</button>
+      </div>
+
+      <div class="issue-category active" id="issues-critical">
+        <div class="issue-card critical">
+          <div class="issue-card-header">
+            <span class="severity-badge critical">Critical</span>
+            <span class="issue-count">3 pages affected</span>
+            <span class="issue-effort hard">Hard</span>
+          </div>
+          <h4 class="issue-title">Duplicate Content Detected</h4>
+          <p class="issue-desc">Three pages contain substantially identical content with different URLs, causing search engines to split ranking signals across duplicates.</p>
+          <div class="issue-detail">
+            <strong>Technical Detail:</strong> Pages /about, /about-us, and /team share 85%+ identical body content. Canonical tags are missing on two of the three pages.
+          </div>
+          <div class="issue-recommendation">
+            <strong>Recommendation:</strong> Consolidate duplicate pages via 301 redirects to a single canonical URL. Implement self-referencing canonicals on all pages.
+          </div>
+          <div class="issue-meta">
+            <span class="impact-score">Impact: 9/10</span>
+            <span class="timeline">Timeline: 2-3 days</span>
+          </div>
+        </div>
+
+        <div class="issue-card critical">
+          <div class="issue-card-header">
+            <span class="severity-badge critical">Critical</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort medium">Medium</span>
+          </div>
+          <h4 class="issue-title">Missing XML Sitemap</h4>
+          <p class="issue-desc">No XML sitemap found at /sitemap.xml. Search engines rely on sitemaps for efficient discovery and indexing of website content.</p>
+          <div class="issue-detail">
+            <strong>Technical Detail:</strong> HTTP request to /sitemap.xml returns 404. No sitemap referenced in robots.txt. Approximately 1,200 pages are affected.
+          </div>
+          <div class="issue-recommendation">
+            <strong>Recommendation:</strong> Generate and submit a dynamic XML sitemap covering all canonical pages. Add sitemap reference to robots.txt and submit via Google Search Console.
+          </div>
+          <div class="issue-meta">
+            <span class="impact-score">Impact: 8/10</span>
+            <span class="timeline">Timeline: 1 day</span>
+          </div>
+        </div>
+
+        <div class="issue-card critical">
+          <div class="issue-card-header">
+            <span class="severity-badge critical">Critical</span>
+            <span class="issue-count">Mobile pages</span>
+            <span class="issue-effort hard">Hard</span>
+          </div>
+          <h4 class="issue-title">Core Web Vitals Fail - LCP > 4s on Mobile</h4>
+          <p class="issue-desc">Largest Contentful Paint exceeds 4 seconds on mobile devices, failing Google's Core Web Vitals assessment and potentially impacting search rankings.</p>
+          <div class="issue-detail">
+            <strong>Technical Detail:</strong> LCP measured at 4.3s on 3G connection (simulated). Primary contributor is a 2.4MB hero image served without WebP or responsive sizing.
+          </div>
+          <div class="issue-recommendation">
+            <strong>Recommendation:</strong> Implement responsive images with srcset, convert to WebP/AVIF format, enable lazy loading, and leverage a CDN. Target LCP under 2.5s.
+          </div>
+          <div class="issue-meta">
+            <span class="impact-score">Impact: 10/10</span>
+            <span class="timeline">Timeline: 4-5 days</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-category" id="issues-high">
+        <div class="issue-card high">
+          <div class="issue-card-header">
+            <span class="severity-badge high">High</span>
+            <span class="issue-count">12 links</span>
+            <span class="issue-effort medium">Medium</span>
+          </div>
+          <h4 class="issue-title">Broken Internal Links</h4>
+          <p class="issue-desc">Twelve internal links return 404 errors, creating poor user experience and wasting crawl budget.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Broken links found across 8 pages, primarily in the footer and blog archive. Target URLs return 404 status codes.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Fix or redirect all broken internal links. Implement regular link monitoring using tools like Screaming Frog or Ahrefs.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 7/10</span><span class="timeline">Timeline: 1-2 days</span></div>
+        </div>
+        <div class="issue-card high">
+          <div class="issue-card-header">
+            <span class="severity-badge high">High</span>
+            <span class="issue-count">23 images</span>
+            <span class="issue-effort easy">Easy</span>
+          </div>
+          <h4 class="issue-title">Missing Alt Text on Images</h4>
+          <p class="issue-desc">Twenty-three images lack descriptive alt attributes, harming accessibility and image search visibility.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> 23 of 41 images (56%) have missing or empty alt attributes. This violates WCAG 2.1 AA guidelines.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Add descriptive, keyword-relevant alt text to all images. Decorative images should use alt="".</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 6/10</span><span class="timeline">Timeline: 2-3 days</span></div>
+        </div>
+        <div class="issue-card high">
+          <div class="issue-card-header">
+            <span class="severity-badge high">High</span>
+            <span class="issue-count">5 pages</span>
+            <span class="issue-effort hard">Hard</span>
+          </div>
+          <h4 class="issue-title">Thin Content Pages</h4>
+          <p class="issue-desc">Five pages contain fewer than 300 words of unique content, providing minimal value to users and search engines.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Pages: /thank-you (45 words), /faq (180 words), /team/old-profile (120 words), /events/2019 (200 words), /archive/none (89 words).</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Expand thin pages with comprehensive content. Consolidate or remove pages that provide no unique value. Implement noindex for low-value pages.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 7/10</span><span class="timeline">Timeline: 5-7 days</span></div>
+        </div>
+        <div class="issue-card high">
+          <div class="issue-card-header">
+            <span class="severity-badge high">High</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort hard">Hard</span>
+          </div>
+          <h4 class="issue-title">Slow Server Response (TTFB 1.8s)</h4>
+          <p class="issue-desc">Time to First Byte averages 1.8 seconds, well above the recommended threshold of 800ms, indicating server-side performance issues.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> TTFB measured at 1.8s (desktop) and 2.1s (mobile). Contributing factors: shared hosting, no caching layer, slow database queries.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Upgrade to a faster hosting provider or dedicated server. Implement server-side caching (Varnish, Redis). Optimize database queries and enable opcode caching.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 8/10</span><span class="timeline">Timeline: 3-5 days</span></div>
+        </div>
+      </div>
+
+      <div class="issue-category" id="issues-medium">
+        <div class="issue-card medium">
+          <div class="issue-card-header">
+            <span class="severity-badge medium">Medium</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort easy">Easy</span>
+          </div>
+          <h4 class="issue-title">Missing Open Graph Tags</h4>
+          <p class="issue-desc">The site lacks comprehensive Open Graph markup, reducing control over how content appears when shared on social platforms.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Only 4 of 8 recommended OG tags are present. Missing: og:locale, og:site_name, og:image:width, og:image:height.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Implement all standard OG tags site-wide. Use a template system to dynamically populate tags from page content.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 5/10</span><span class="timeline">Timeline: 1-2 days</span></div>
+        </div>
+        <div class="issue-card medium">
+          <div class="issue-card-header">
+            <span class="severity-badge medium">Medium</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort medium">Medium</span>
+          </div>
+          <h4 class="issue-title">No Hreflang Tags (Multi-Language)</h4>
+          <p class="issue-desc">The website serves content in English, Spanish, and French but lacks hreflang annotations, risking incorrect language targeting in search results.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Language versions detected at /en/, /es/, /fr/. No hreflang link tags or sitemap annotations found.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Implement hreflang tags in the HTML head for all language versions. Include self-referencing hreflang and x-default annotations.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 6/10</span><span class="timeline">Timeline: 2-3 days</span></div>
+        </div>
+        <div class="issue-card medium">
+          <div class="issue-card-header">
+            <span class="severity-badge medium">Medium</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort easy">Easy</span>
+          </div>
+          <h4 class="issue-title">Low Text-to-HTML Ratio</h4>
+          <p class="issue-desc">The average text-to-HTML ratio is 18%, below the recommended 25-70% range, potentially signaling thin content to search engines.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Average ratio calculated across 20 sampled pages. Primary cause: excessive JavaScript bundles, inline CSS, and heavy HTML frameworks.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Externalize CSS and JavaScript. Minify all assets. Audit and remove unused code. Consider server-side rendering for content-heavy pages.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 4/10</span><span class="timeline">Timeline: 3-4 days</span></div>
+        </div>
+      </div>
+
+      <div class="issue-category" id="issues-low">
+        <div class="issue-card low">
+          <div class="issue-card-header">
+            <span class="severity-badge low">Low</span>
+            <span class="issue-count">All pages</span>
+            <span class="issue-effort easy">Easy</span>
+          </div>
+          <h4 class="issue-title">Missing Author Meta Tag</h4>
+          <p class="issue-desc">The site does not include author meta tags on blog posts or articles, reducing authorship signals.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> No meta name="author" tags found on any sampled pages. This is a minor signal but contributes to content credibility.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Add author meta tags to all content pages, linking to author bio pages where applicable.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 2/10</span><span class="timeline">Timeline: 0.5 day</span></div>
+        </div>
+        <div class="issue-card low">
+          <div class="issue-card-header">
+            <span class="severity-badge low">Low</span>
+            <span class="issue-count">3 pages</span>
+            <span class="issue-effort easy">Easy</span>
+          </div>
+          <h4 class="issue-title">Deprecated HTML Tags</h4>
+          <p class="issue-desc">Three pages still use deprecated HTML tags (center, font, marquee) that should be replaced with modern CSS equivalents.</p>
+          <div class="issue-detail"><strong>Technical Detail:</strong> Deprecated tags found on /legacy-page, /about/history, and /archive/old-press-release. These do not cause errors but indicate outdated markup.</div>
+          <div class="issue-recommendation"><strong>Recommendation:</strong> Replace deprecated tags with semantic HTML5 elements and CSS styling. Run a site-wide audit for legacy markup patterns.</div>
+          <div class="issue-meta"><span class="impact-score">Impact: 1/10</span><span class="timeline">Timeline: 0.5 day</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="report-footer">
+      <div class="footer-divider"></div>
+      <p class="footer-text">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      <p class="footer-confidential">CONFIDENTIAL - This report is prepared for demonstration purposes only.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

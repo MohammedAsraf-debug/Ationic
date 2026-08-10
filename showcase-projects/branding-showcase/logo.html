@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo System — Brand Identity Showcase | Ationic</title>
+    <meta name="description" content="Ationic logo system: primary, secondary, icon marks, usage guidelines, clear space, and minimum sizes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" stroke="#d4a373" stroke-width="1.5" fill="none" class="loader-circle"/>
+                    <path d="M16 32 L24 16 L32 32" stroke="#d4a373" stroke-width="1.5" fill="none" class="loader-chevron"/>
+                    <path d="M19 27 L24 21 L29 27" stroke="#d4a373" stroke-width="1.5" fill="none" class="loader-chevron-inner"/>
+                </svg>
+            </div>
+            <p class="loader-logo-text">Loading</p>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg width="22" height="22" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                    <path d="M16 32 L24 16 L32 32" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                    <path d="M19 27 L24 21 L29 27" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Ationic Studio</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="logo.html">Logo</a></li>
+                <li><a href="typography.html">Typography</a></li>
+                <li><a href="colors.html">Colors</a></li>
+                <li><a href="mockups.html">Mockups</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="section-label">01 — Logo System</div>
+            <h1 class="page-title">A Mark of Distinction</h1>
+            <p class="page-desc">A versatile logo system built for every touchpoint. Each variation maintains brand recognition while adapting to its environment.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="logo-toggle-bar">
+                <span>Background:</span>
+                <button class="toggle-btn active" data-bg="light">Light</button>
+                <button class="toggle-btn" data-bg="dark">Dark</button>
+            </div>
+
+            <div class="logo-grid" id="logoGrid">
+                <div class="logo-card" data-variant="primary">
+                    <div class="logo-card-bg">
+                        <div class="logo-card-bg-inner">
+                            <svg viewBox="0 0 200 60" class="logo-preview-svg">
+                                <circle cx="30" cy="30" r="28" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M15 45 L30 15 L45 45" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M22 38 L30 22 L38 38" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <text x="55" y="38" font-family="Playfair Display, serif" font-size="22" fill="#171717" font-weight="500">Ationic</text>
+                                <text x="55" y="52" font-family="Inter, sans-serif" font-size="8" fill="#737373" letter-spacing="4">CREATIVE STUDIO</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3>Primary Logo</h3>
+                        <p>Full-color horizontal lockup for most applications</p>
+                        <span class="logo-tag">Preferred</span>
+                    </div>
+                </div>
+
+                <div class="logo-card" data-variant="secondary">
+                    <div class="logo-card-bg">
+                        <div class="logo-card-bg-inner">
+                            <svg viewBox="0 0 200 60" class="logo-preview-svg">
+                                <circle cx="30" cy="30" r="28" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M15 45 L30 15 L45 45" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M22 38 L30 22 L38 38" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <text x="55" y="38" font-family="Playfair Display, serif" font-size="22" fill="#171717" font-weight="500">Ationic</text>
+                                <text x="55" y="52" font-family="Inter, sans-serif" font-size="8" fill="#737373" letter-spacing="4">CREATIVE STUDIO</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3>Secondary Logo</h3>
+                        <p>Stacked variation for square and vertical formats</p>
+                        <span class="logo-tag">Alternative</span>
+                    </div>
+                </div>
+
+                <div class="logo-card" data-variant="icon">
+                    <div class="logo-card-bg">
+                        <div class="logo-card-bg-inner icon-only">
+                            <svg viewBox="0 0 120 120" class="logo-preview-svg icon-svg">
+                                <circle cx="60" cy="60" r="55" stroke="#d4a373" stroke-width="2" fill="none"/>
+                                <path d="M30 90 L60 30 L90 90" stroke="#d4a373" stroke-width="3" fill="none"/>
+                                <path d="M42 75 L60 48 L78 75" stroke="#d4a373" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3>Icon Mark</h3>
+                        <p>Standalone icon for avatars, favicons, and app icons</p>
+                        <span class="logo-tag">Icon</span>
+                    </div>
+                </div>
+
+                <div class="logo-card" data-variant="horizontal">
+                    <div class="logo-card-bg">
+                        <div class="logo-card-bg-inner">
+                            <svg viewBox="0 0 220 50" class="logo-preview-svg">
+                                <circle cx="25" cy="25" r="23" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M12 38 L25 12 L38 38" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M18 32 L25 18 L32 32" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <text x="50" y="30" font-family="Playfair Display, serif" font-size="18" fill="#171717" font-weight="500">Ationic</text>
+                                <text x="50" y="44" font-family="Inter, sans-serif" font-size="7" fill="#737373" letter-spacing="3">CREATIVE STUDIO</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3>Horizontal Lockup</h3>
+                        <p>Wide format for website headers and documents</p>
+                        <span class="logo-tag">Wide</span>
+                    </div>
+                </div>
+
+                <div class="logo-card" data-variant="vertical">
+                    <div class="logo-card-bg">
+                        <div class="logo-card-bg-inner vertical-lockup">
+                            <svg viewBox="0 0 100 120" class="logo-preview-svg">
+                                <circle cx="50" cy="25" r="23" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M37 38 L50 12 L63 38" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <path d="M43 32 L50 18 L57 32" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                                <text x="50" y="75" font-family="Playfair Display, serif" font-size="20" fill="#171717" font-weight="500" text-anchor="middle">Ationic</text>
+                                <text x="50" y="90" font-family="Inter, sans-serif" font-size="7" fill="#737373" letter-spacing="3" text-anchor="middle">CREATIVE STUDIO</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3>Vertical Lockup</h3>
+                        <p>Stacked for social profiles and merchandise</p>
+                        <span class="logo-tag">Stacked</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guidelines-block">
+                <div class="guideline-item">
+                    <h4>Clear Space</h4>
+                    <p>Maintain clear space equal to the height of the icon mark on all sides. No other elements should intrude within this zone.</p>
+                    <div class="clear-space-demo">
+                        <div class="clear-space-box">
+                            <span class="cs-icon">A</span>
+                            <div class="cs-guide cs-guide-top"></div>
+                            <div class="cs-guide cs-guide-right"></div>
+                            <div class="cs-guide cs-guide-bottom"></div>
+                            <div class="cs-guide cs-guide-left"></div>
+                            <span class="cs-label">X</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="guideline-item">
+                    <h4>Minimum Size</h4>
+                    <p>To maintain legibility, never reproduce the logo smaller than the specified minimum sizes.</p>
+                    <div class="min-size-demo">
+                        <div class="min-size-sample">
+                            <p>Print: <strong>20mm</strong></p>
+                            <div class="min-size-box" style="width:20mm;height:20mm;"></div>
+                        </div>
+                        <div class="min-size-sample">
+                            <p>Digital: <strong>48px</strong></p>
+                            <div class="min-size-box" style="width:48px;height:48px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <svg width="22" height="22" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="22" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                        <path d="M16 32 L24 16 L32 32" stroke="#d4a373" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span>Ationic Creative Studio</span>
+                </div>
+                <p class="footer-tagline">Brand Identity That Speaks Volumes</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-note">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+            <p class="footer-copy">&copy; 2026 Ationic. All rights reserved. This is a demonstration showcase.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

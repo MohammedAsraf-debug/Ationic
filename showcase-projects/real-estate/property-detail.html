@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Madison Penthouse | Prestige Properties</title>
+    <meta name="description" content="Luxury penthouse in Manhattan, NY. 5 beds, 4 baths, 4,200 sqft. Panoramic Central Park views.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .property-gallery { display:grid;grid-template-columns:2fr 1fr;gap:12px;border-radius:var(--radius);overflow:hidden;margin-bottom:40px; }
+        .gallery-main { height:400px;background:linear-gradient(135deg,var(--bg-dark),var(--bg));display:flex;align-items:center;justify-content:center;position:relative; }
+        .gallery-side { display:grid;grid-template-rows:1fr 1fr;gap:12px; }
+        .gallery-side div { background:linear-gradient(135deg,var(--bg-dark),var(--bg));display:flex;align-items:center;justify-content:center; }
+        .gallery-main i, .gallery-side i { font-size:3rem;color:var(--accent);opacity:0.4; }
+        .gallery-main p { position:absolute;bottom:16px;left:16px;font-size:0.8rem;color:var(--text-light);background:var(--card-bg);padding:4px 12px;border-radius:50px; }
+        .detail-grid { display:grid;grid-template-columns:2fr 1fr;gap:40px; }
+        .detail-features-grid { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+        .detail-features-grid li { font-size:0.9rem;color:var(--text);padding:6px 0; }
+        .detail-features-grid li::before { content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--accent);margin-right:8px;font-size:0.75rem; }
+        .detail-specs { display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px; }
+        .detail-spec { background:var(--bg);padding:12px 20px;border-radius:var(--radius-sm);text-align:center;border:1px solid var(--border-light);flex:1;min-width:100px; }
+        .detail-spec i { color:var(--accent);font-size:1.2rem;display:block;margin-bottom:4px; }
+        .detail-spec span { display:block;font-size:0.8rem;color:var(--text-light); }
+        .detail-spec strong { display:block;font-family:var(--font-serif);font-size:1.2rem;color:var(--primary); }
+        @media (max-width:768px) {
+            .property-gallery { grid-template-columns:1fr; }
+            .gallery-side { display:none; }
+            .detail-grid { grid-template-columns:1fr; }
+            .detail-features-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Prestige Properties</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Prestige Properties Home">
+                    <span class="logo-icon"><i class="fas fa-building"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Prestige</span>
+                        <span class="logo-subtitle">Properties</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="listings.html" class="nav-link">Listings</a></li>
+                        <li><a href="property-detail.html" class="nav-link active">Property</a></li>
+                        <li><a href="agents.html" class="nav-link">Agents</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section style="padding:140px 0 0;">
+        <div class="container">
+            <a href="listings.html" class="btn btn-outline" style="margin-bottom:24px;display:inline-flex;"><i class="fas fa-arrow-left"></i> Back to Listings</a>
+            <div id="propertyContainer"></div>
+        </div>
+    </section>
+
+    <section class="calculator section" id="calculator" style="margin-top:0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Financial Tools</span>
+                <h2 class="section-title">Mortgage Calculator</h2>
+                <p class="section-desc">Estimate your monthly payments and plan your investment.</p>
+            </div>
+            <div class="calculator-grid">
+                <div class="calculator-form">
+                    <div class="calc-group">
+                        <label for="loanAmount">Loan Amount ($)</label>
+                        <input type="range" id="loanAmount" min="50000" max="5000000" value="500000" step="10000">
+                        <div class="calc-input-row">
+                            <input type="number" id="loanAmountInput" value="500000" min="50000" max="5000000" step="10000">
+                            <span class="calc-value" id="loanAmountDisplay">$500,000</span>
+                        </div>
+                    </div>
+                    <div class="calc-group">
+                        <label for="interestRate">Interest Rate (%)</label>
+                        <input type="range" id="interestRate" min="1" max="12" value="6.5" step="0.1">
+                        <div class="calc-input-row">
+                            <input type="number" id="interestRateInput" value="6.5" min="1" max="12" step="0.1">
+                            <span class="calc-value" id="interestRateDisplay">6.5%</span>
+                        </div>
+                    </div>
+                    <div class="calc-group">
+                        <label for="loanTerm">Loan Term (Years)</label>
+                        <input type="range" id="loanTerm" min="5" max="40" value="30" step="1">
+                        <div class="calc-input-row">
+                            <input type="number" id="loanTermInput" value="30" min="5" max="40" step="1">
+                            <span class="calc-value" id="loanTermDisplay">30 Years</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-calc" id="calculateMortgage">
+                        <i class="fas fa-calculator"></i> Calculate Payment
+                    </button>
+                </div>
+                <div class="calculator-result">
+                    <div class="calc-result-card">
+                        <span class="calc-result-label">Monthly Payment</span>
+                        <span class="calc-result-value" id="monthlyPayment">$3,160</span>
+                    </div>
+                    <div class="calc-result-card">
+                        <span class="calc-result-label">Total Payment</span>
+                        <span class="calc-result-value" id="totalPayment">$1,137,600</span>
+                    </div>
+                    <div class="calc-result-card">
+                        <span class="calc-result-label">Total Interest</span>
+                        <span class="calc-result-value" id="totalInterest">$637,600</span>
+                    </div>
+                    <div class="calc-chart-placeholder">
+                        <div class="calc-chart-bar" id="amortChart">
+                            <div class="chart-fill" id="chartFill" style="width:56%;"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span><i class="fas fa-square" style="color:var(--accent);"></i> Principal</span>
+                            <span><i class="fas fa-square" style="color:var(--dark);"></i> Interest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Inquire</span>
+                <h2 class="section-title">Interested in This Property?</h2>
+                <p class="section-desc">Fill out the form below and one of our agents will get back to you within 24 hours.</p>
+            </div>
+            <div style="max-width:700px;margin:0 auto;">
+                <form class="contact-form" id="inquireForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inqName">Full Name</label>
+                            <input type="text" id="inqName" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inqEmail">Email Address</label>
+                            <input type="email" id="inqEmail" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inqPhone">Phone Number</label>
+                            <input type="tel" id="inqPhone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="inqTiming">Preferred Timing</label>
+                            <select id="inqTiming">
+                                <option value="">Select timing</option>
+                                <option value="morning">Morning (9am-12pm)</option>
+                                <option value="afternoon">Afternoon (12pm-5pm)</option>
+                                <option value="evening">Evening (5pm-7pm)</option>
+                                <option value="weekend">Weekend</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inqMessage">Message</label>
+                        <textarea id="inqMessage" rows="4" placeholder="I am interested in this property and would like to schedule a viewing..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-building"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Prestige</span>
+                            <span class="logo-subtitle">Properties</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Prestige Properties is a full-service luxury real estate agency specializing in premium residential properties across the United States.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="property-detail.html">Property Detail</a></li>
+                        <li><a href="agents.html">Agents</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Property Types</h4>
+                    <ul>
+                        <li><a href="listings.html?type=apartment">Apartments</a></li>
+                        <li><a href="listings.html?type=villa">Villas</a></li>
+                        <li><a href="listings.html?type=townhouse">Townhouses</a></li>
+                        <li><a href="listings.html?type=penthouse">Penthouses</a></li>
+                        <li><a href="listings.html?type=studio">Studios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="listings.html?location=manhattan">Manhattan, NY</a></li>
+                        <li><a href="listings.html?location=brooklyn">Brooklyn, NY</a></li>
+                        <li><a href="listings.html?location=la">Los Angeles, CA</a></li>
+                        <li><a href="listings.html?location=miami">Miami, FL</a></li>
+                        <li><a href="listings.html?location=sf">San Francisco, CA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Prestige Properties. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var allProperties = [
+            { id: 1, name: 'The Madison Penthouse', type: 'penthouse', price: 8950000, location: 'Manhattan, NY', beds: 5, baths: 4, sqft: 4200, status: 'featured', desc: 'A breathtaking penthouse atop the iconic Madison Tower offering panoramic views of Central Park and the Manhattan skyline. Features include a private terrace, chef\'s kitchen, and custom Italian marble finishes throughout.', features: ['Private Terrace', 'Chef\'s Kitchen', 'Italian Marble', 'Smart Home System', 'Wine Cellar', '24/7 Concierge', 'Private Elevator', 'Valet Parking'] },
+            { id: 2, name: 'Brooklyn Heights Brownstone', type: 'townhouse', price: 3200000, location: 'Brooklyn, NY', beds: 4, baths: 3, sqft: 2800, status: 'sale', desc: 'Stunning restored brownstone in the heart of Brooklyn Heights. Original exposed brick, modern amenities, private garden, and rooftop deck with skyline views.', features: ['Private Garden', 'Rooftop Deck', 'Exposed Brick', 'Modern Kitchen', 'Fireplace', 'Wine Cellar'] },
+            { id: 3, name: 'Beverly Hills Villa', type: 'villa', price: 12400000, location: 'Los Angeles, CA', beds: 6, baths: 5, sqft: 6500, status: 'featured', desc: 'Mediterranean-inspired estate nestled in the hills of Beverly Hills. Infinity pool, outdoor kitchen, home theater, and resort-style landscaping.', features: ['Infinity Pool', 'Outdoor Kitchen', 'Home Theater', 'Wine Cellar', 'Tennis Court', 'Guest House'] },
+            { id: 4, name: 'South Beach Penthouse', type: 'penthouse', price: 5600000, location: 'Miami, FL', beds: 3, baths: 3, sqft: 2400, status: 'sale', desc: 'Modern waterfront penthouse with floor-to-ceiling windows overlooking Biscayne Bay. Private boat dock, resort pool, and world-class amenities.', features: ['Waterfront Views', 'Private Boat Dock', 'Resort Pool', 'Fitness Center', 'Valet Parking', 'Spa Access'] },
+            { id: 5, name: 'Lincoln Park Apartment', type: 'apartment', price: 875000, location: 'Chicago, IL', beds: 2, baths: 2, sqft: 1400, status: 'sale', desc: 'Elegant apartment in Chicago\'s prestigious Lincoln Park neighborhood.', features: ['Hardwood Floors', 'Custom Cabinetry', 'Deeded Parking', 'In-Unit Laundry', 'Storage Unit', 'Rooftop Access'] },
+            { id: 6, name: 'Pacific Heights Estate', type: 'villa', price: 7800000, location: 'San Francisco, CA', beds: 5, baths: 4, sqft: 4800, status: 'sold', desc: 'Grand Victorian estate in Pacific Heights with sweeping views of the Golden Gate Bridge.', features: ['Bay Views', 'Victorian Architecture', 'Garden Courtyard', 'Chef\'s Kitchen', 'Library', 'Garage'] },
+            { id: 7, name: 'Tribeca Loft', type: 'apartment', price: 2450000, location: 'Manhattan, NY', beds: 2, baths: 2, sqft: 1800, status: 'sale', desc: 'Industrial-chic loft in the heart of Tribeca. Soaring 14-ft ceilings, exposed brick, chef\'s kitchen, and private roof terrace.', features: ['14-ft Ceilings', 'Exposed Brick', 'Chef\'s Kitchen', 'Roof Terrace', 'Private Storage', 'Pet Friendly'] },
+            { id: 8, name: 'Miami Beach Studio', type: 'studio', price: 420000, location: 'Miami, FL', beds: 0, baths: 1, sqft: 520, status: 'sale', desc: 'Chic beachfront studio with direct ocean views. Fully furnished, resort amenities.', features: ['Ocean Views', 'Fully Furnished', 'Resort Pool', 'Fitness Center', 'Concierge', 'Beach Access'] },
+            { id: 9, name: 'Seattle Waterfront Townhouse', type: 'townhouse', price: 1890000, location: 'Seattle, WA', beds: 3, baths: 3, sqft: 2200, status: 'featured', desc: 'Modern townhouse on Seattle\'s waterfront with stunning Puget Sound views.', features: ['Waterfront Location', 'Rooftop Deck', 'Attached Garage', 'Smart Home', 'EV Charger', 'Community Garden'] },
+            { id: 10, name: 'Back Bay Condo', type: 'apartment', price: 1250000, location: 'Boston, MA', beds: 2, baths: 2, sqft: 1350, status: 'sale', desc: 'Elegant Back Bay condo with classic Boston charm.', features: ['Bay Windows', 'Original Fireplace', 'Updated Kitchen', 'Doorman', 'Common Roof Deck', 'Bike Storage'] },
+            { id: 11, name: 'Hollywood Hills Retreat', type: 'villa', price: 4500000, location: 'Los Angeles, CA', beds: 4, baths: 3, sqft: 3500, status: 'sale', desc: 'Mid-century modern retreat in the Hollywood Hills.', features: ['Mid-Century Design', 'Infinity Pool', 'City Lights View', 'Glass Walls', 'Outdoor Living', 'Recording Studio'] },
+            { id: 12, name: 'Gold Coast Penthouse', type: 'penthouse', price: 3200000, location: 'Chicago, IL', beds: 3, baths: 3, sqft: 2600, status: 'sale', desc: 'Luxurious Gold Coast penthouse with lake and city views.', features: ['Lake Views', 'Private Elevator', 'Custom Millwork', 'Terrace Kitchen', 'Wine Storage', 'Valet Parking'] }
+        ];
+
+        var params = new URLSearchParams(window.location.search);
+        var propId = parseInt(params.get('id')) || 1;
+        var prop = allProperties.find(function(p) { return p.id === propId; }) || allProperties[0];
+
+        document.title = prop.name + ' | Prestige Properties';
+
+        var container = document.getElementById('propertyContainer');
+        container.innerHTML =
+            '<div class="property-gallery">' +
+                '<div class="gallery-main">' +
+                    '<i class="fas ' + (prop.type === 'penthouse' ? 'fa-crown' : prop.type === 'villa' ? 'fa-tree' : prop.type === 'townhouse' ? 'fa-house-chimney' : prop.type === 'studio' ? 'fa-door-open' : 'fa-building') + '" style="font-size:5rem;"></i>' +
+                    '<p><i class="fas fa-camera"></i> View Gallery</p>' +
+                '</div>' +
+                '<div class="gallery-side">' +
+                    '<div><i class="fas fa-image"></i></div>' +
+                    '<div><i class="fas fa-image"></i></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="detail-grid">' +
+                '<div>' +
+                    '<h1 style="font-family:var(--font-serif);font-size:2.5rem;color:var(--primary);margin-bottom:8px;">' + prop.name + '</h1>' +
+                    '<p style="color:var(--text-light);margin-bottom:16px;"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> ' + prop.location + '</p>' +
+                    '<p style="font-size:2rem;font-weight:700;color:var(--accent);margin-bottom:24px;">' + window.formatter.format(prop.price) + '</p>' +
+                    '<div class="detail-specs">' +
+                        '<div class="detail-spec"><i class="fas fa-bed"></i><strong>' + (prop.beds || 'Studio') + '</strong><span>' + (prop.beds ? 'Bedrooms' : 'Studio') + '</span></div>' +
+                        '<div class="detail-spec"><i class="fas fa-bath"></i><strong>' + prop.baths + '</strong><span>Bathrooms</span></div>' +
+                        '<div class="detail-spec"><i class="fas fa-vector-square"></i><strong>' + prop.sqft.toLocaleString() + '</strong><span>Sq Ft</span></div>' +
+                        '<div class="detail-spec"><i class="fas fa-tag"></i><strong style="text-transform:capitalize;">' + prop.type + '</strong><span>Type</span></div>' +
+                    '</div>' +
+                    '<h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--primary);margin-bottom:12px;">Description</h3>' +
+                    '<p style="color:var(--text-light);line-height:1.8;margin-bottom:24px;">' + prop.desc + '</p>' +
+                    '<h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--primary);margin-bottom:12px;">Features &amp; Amenities</h3>' +
+                    '<ul class="detail-features-grid">' + prop.features.map(function(f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
+                '</div>' +
+                '<div>' +
+                    '<div class="contact-info-card" style="margin-bottom:16px;position:sticky;top:100px;">' +
+                        '<h4 style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:12px;"><i class="fas fa-user" style="color:var(--accent);"></i> Listed By</h4>' +
+                        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">' +
+                            '<div style="width:48px;height:48px;border-radius:50%;background:var(--gold-gradient);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:600;">SB</div>' +
+                            '<div><strong style="font-family:var(--font-serif);font-size:1.1rem;">Samantha Blake</strong><br><span style="font-size:0.8rem;color:var(--text-light);">Senior Luxury Specialist</span></div>' +
+                        '</div>' +
+                        '<p style="font-size:0.85rem;color:var(--text-light);margin-bottom:6px;"><i class="fas fa-phone" style="color:var(--accent);width:16px;"></i> (212) 555-0101</p>' +
+                        '<p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;"><i class="fas fa-envelope" style="color:var(--accent);width:16px;"></i> samantha@prestigeproperties.com</p>' +
+                        '<a href="contact.html" class="btn btn-primary" style="display:block;text-align:center;"><i class="fas fa-paper-plane"></i> Inquire Now</a>' +
+                        '<button class="btn btn-outline" style="display:block;text-align:center;width:100%;margin-top:8px;" onclick="alert(\'Thank you! We will schedule a tour within 24 hours.\')"><i class="fas fa-calendar"></i> Schedule Tour</button>' +
+                    '</div>' +
+                    '<div class="contact-info-card">' +
+                        '<h4 style="margin-bottom:8px;"><i class="fas fa-file-alt" style="color:var(--accent);"></i> Resources</h4>' +
+                        '<div style="display:grid;gap:8px;">' +
+                            '<button class="btn btn-outline" style="font-size:0.85rem;padding:8px;" onclick="alert(\'Floor plan PDF would be available for download.\')"><i class="fas fa-draw-polygon"></i> Floor Plan</button>' +
+                            '<button class="btn btn-outline" style="font-size:0.85rem;padding:8px;" onclick="alert(\'Location map would be displayed here.\')"><i class="fas fa-map-marked-alt"></i> Location Map</button>' +
+                            '<button class="btn btn-outline" style="font-size:0.85rem;padding:8px;" onclick="alert(\'360 virtual tour would load here.\')"><i class="fas fa-video"></i> Virtual Tour</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+        var loanAmount = document.getElementById('loanAmount');
+        var loanAmountInput = document.getElementById('loanAmountInput');
+        var loanAmountDisplay = document.getElementById('loanAmountDisplay');
+        var interestRate = document.getElementById('interestRate');
+        var interestRateInput = document.getElementById('interestRateInput');
+        var interestRateDisplay = document.getElementById('interestRateDisplay');
+        var loanTerm = document.getElementById('loanTerm');
+        var loanTermInput = document.getElementById('loanTermInput');
+        var loanTermDisplay = document.getElementById('loanTermDisplay');
+        var calcBtn = document.getElementById('calculateMortgage');
+        var monthlyPaymentEl = document.getElementById('monthlyPayment');
+        var totalPaymentEl = document.getElementById('totalPayment');
+        var totalInterestEl = document.getElementById('totalInterest');
+        var chartFill = document.getElementById('chartFill');
+
+        function syncRange(range, input, display, formatFn) {
+            range.addEventListener('input', function() { input.value = range.value; display.textContent = formatFn(range.value); });
+            input.addEventListener('input', function() { range.value = input.value; display.textContent = formatFn(input.value); });
+        }
+
+        syncRange(loanAmount, loanAmountInput, loanAmountDisplay, function(v) { return window.formatter.format(v); });
+        syncRange(interestRate, interestRateInput, interestRateDisplay, function(v) { return v + '%'; });
+        syncRange(loanTerm, loanTermInput, loanTermDisplay, function(v) { return v + ' Years'; });
+
+        function calculateMortgage() {
+            var P = parseFloat(loanAmount.value);
+            var r = parseFloat(interestRate.value) / 100 / 12;
+            var n = parseFloat(loanTerm.value) * 12;
+            var monthly = r === 0 ? P / n : P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            var total = monthly * n;
+            var interest = total - P;
+            monthlyPaymentEl.textContent = window.formatter.format(monthly);
+            totalPaymentEl.textContent = window.formatter.format(total);
+            totalInterestEl.textContent = window.formatter.format(interest);
+            chartFill.style.width = Math.min((P / total) * 100, 100) + '%';
+        }
+
+        calcBtn.addEventListener('click', calculateMortgage);
+        [loanAmount, interestRate, loanTerm, loanAmountInput, interestRateInput, loanTermInput].forEach(function(el) {
+            el.addEventListener('input', calculateMortgage);
+        });
+        calculateMortgage();
+
+        document.getElementById('inquireForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('inqName').value.trim();
+            var email = document.getElementById('inqEmail').value.trim();
+            if (!name || !email) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+            alert('Thank you, ' + name + '! Your inquiry about ' + prop.name + ' has been received. An agent will contact you within 24 hours.');
+            this.reset();
+        });
+
+        document.title = prop.name + ' | Prestige Properties';
+        window.setupObserver('.contact-info-card');
+    })();
+    </script>
+</body>
+</html>

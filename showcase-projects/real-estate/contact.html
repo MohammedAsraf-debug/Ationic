@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Prestige Properties</title>
+    <meta name="description" content="Contact Prestige Properties. Visit our New York office, call, or email our expert agents.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Prestige Properties</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Prestige Properties Home">
+                    <span class="logo-icon"><i class="fas fa-building"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Prestige</span>
+                        <span class="logo-subtitle">Properties</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="listings.html" class="nav-link">Listings</a></li>
+                        <li><a href="property-detail.html" class="nav-link">Property</a></li>
+                        <li><a href="agents.html" class="nav-link">Agents</a></li>
+                        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding:140px 0 60px;background:var(--primary);text-align:center;position:relative;">
+        <div class="container">
+            <span class="hero-badge" style="border-color:var(--accent);color:var(--accent);">Get In Touch</span>
+            <h1 style="font-family:var(--font-serif);font-size:3.5rem;color:var(--white);margin-bottom:12px;">Contact Us</h1>
+            <p style="color:rgba(255,255,255,0.7);font-size:1.1rem;max-width:600px;margin:0 auto;">Ready to find your dream home? Reach out to our team.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:40px;">
+        <div class="container">
+            <div class="contact-grid">
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" id="contactPhone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInterest">Property Interest</label>
+                            <select id="contactInterest" name="interest">
+                                <option value="">Select a property type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="villa">Villa</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="penthouse">Penthouse</option>
+                                <option value="studio">Studio</option>
+                                <option value="commercial">Commercial</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" rows="4" placeholder="Tell us about what you're looking for..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Contact Method</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="contactMethod" value="email" checked>
+                                <span>Email</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="contactMethod" value="phone">
+                                <span>Phone</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="contactMethod" value="text">
+                                <span>Text</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Visit Our Office</h4>
+                        <p>245 Park Avenue, Suite 1200<br>New York, NY 10167</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-phone"></i>
+                        <h4>Call Us</h4>
+                        <p>(212) 555-0199</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Us</h4>
+                        <p>hello@prestigeproperties.com</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-clock"></i>
+                        <h4>Office Hours</h4>
+                        <p>Mon-Fri: 9am - 7pm<br>Sat: 10am - 5pm<br>Sun: By Appointment</p>
+                    </div>
+                    <div class="contact-info-card fade-up">
+                        <i class="fas fa-map"></i>
+                        <h4>Find Us</h4>
+                        <div style="background:var(--bg);padding:20px;text-align:center;border-radius:var(--radius-sm);margin-top:8px;">
+                            <i class="fas fa-map-marked-alt" style="font-size:2rem;display:block;margin-bottom:8px;color:var(--accent);"></i>
+                            <p style="font-size:0.8rem;color:var(--text-light);">245 Park Avenue, New York, NY 10167<br>Google Maps Placeholder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-desc">Everything you need to know about buying, financing, and closing on your property.</p>
+            </div>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-building"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Prestige</span>
+                            <span class="logo-subtitle">Properties</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Prestige Properties is a full-service luxury real estate agency specializing in premium residential properties across the United States.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="property-detail.html">Property Detail</a></li>
+                        <li><a href="agents.html">Agents</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Property Types</h4>
+                    <ul>
+                        <li><a href="listings.html?type=apartment">Apartments</a></li>
+                        <li><a href="listings.html?type=villa">Villas</a></li>
+                        <li><a href="listings.html?type=townhouse">Townhouses</a></li>
+                        <li><a href="listings.html?type=penthouse">Penthouses</a></li>
+                        <li><a href="listings.html?type=studio">Studios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="listings.html?location=manhattan">Manhattan, NY</a></li>
+                        <li><a href="listings.html?location=brooklyn">Brooklyn, NY</a></li>
+                        <li><a href="listings.html?location=la">Los Angeles, CA</a></li>
+                        <li><a href="listings.html?location=miami">Miami, FL</a></li>
+                        <li><a href="listings.html?location=sf">San Francisco, CA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Prestige Properties. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var faqs = [
+            { q: 'What is the first step in the home-buying process?', a: 'The first step is to get pre-approved for a mortgage. This helps you understand your budget and shows sellers you are a serious buyer.' },
+            { q: 'How much down payment do I need?', a: 'Down payment requirements vary by loan type. Conventional loans typically require 5-20% down. FHA loans may require as little as 3.5%.' },
+            { q: 'What are closing costs and how much are they?', a: 'Closing costs typically range from 2-5% of the purchase price and include loan origination fees, appraisal, title insurance, escrow fees, and transfer taxes.' },
+            { q: 'How long does the home-buying process take?', a: 'On average, the home-buying process takes 30-60 days from accepted offer to closing. Cash purchases can close in as little as 14 days.' },
+            { q: 'Should I get a home inspection?', a: 'Absolutely. A professional home inspection is critical to identify potential issues with the property.' },
+            { q: 'What is earnest money?', a: 'Earnest money is a deposit (typically 1-3% of the purchase price) that shows the seller you are serious about buying.' },
+            { q: 'How do I determine my budget?', a: 'A general rule is that your monthly housing costs should not exceed 28-31% of your gross monthly income.' },
+            { q: 'Do I need a real estate agent?', a: 'While not legally required, working with a professional agent provides access to off-market listings, expert negotiation, and protection of your interests.' }
+        ];
+
+        var faqList = document.getElementById('faqList');
+        faqList.innerHTML = '';
+        faqs.forEach(function(faq) {
+            var item = document.createElement('div');
+            item.className = 'faq-item';
+            item.innerHTML =
+                '<button class="faq-question">' +
+                    '<span>' + faq.q + '</span>' +
+                    '<i class="fas fa-chevron-down"></i>' +
+                '</button>' +
+                '<div class="faq-answer"><p>' + faq.a + '</p></div>';
+            item.querySelector('.faq-question').addEventListener('click', function() {
+                item.classList.toggle('active');
+            });
+            faqList.appendChild(item);
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('contactName').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            if (!name || !email || !message) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert('Thank you, ' + name + '! Your message has been received. A Prestige Properties agent will respond within 24 hours.');
+            this.reset();
+        });
+
+        window.setupObserver('.fade-up');
+    })();
+    </script>
+</body>
+</html>

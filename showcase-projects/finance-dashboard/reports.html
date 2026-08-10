@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinControl — Reports | Finance Dashboard by Ationic</title>
+  <meta name="description" content="FinControl financial reports by Ationic. Transaction history, invoice management, and PDF/CSV export.">
+  <meta name="keywords" content="finance dashboard, financial reports, invoices, export PDF, export CSV, Ationic">
+  <meta name="author" content="Ationic Digital Agency">
+  <meta property="og:title" content="FinControl — Financial Reports">
+  <meta property="og:description" content="Premium financial reports by Ationic with transaction history, invoices, and export capabilities.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">FinControl<span class="loader-dot">.</span></p>
+  </div>
+
+  <div class="dashboard" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">FC</div>
+        <span class="brand-name">FinControl</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </a>
+        <a href="income.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Income</span>
+        </a>
+        <a href="expenses.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M6 13h5a3.5 3.5 0 0 1 0 7H7"/></svg>
+          <span>Expenses</span>
+        </a>
+        <a href="reports.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar">JD</div>
+          <div class="user-info">
+            <span class="user-name">James Donovan</span>
+            <span class="user-role">CFO</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search reports..." id="globalSearch">
+        </div>
+        <div class="topbar-actions">
+          <div class="export-group">
+            <button class="btn btn-sm btn-outline" id="exportPdf">PDF</button>
+            <button class="btn btn-sm btn-outline" id="exportCsv">CSV</button>
+            <button class="btn btn-sm btn-outline" id="exportPrint">Print</button>
+          </div>
+          <div class="topbar-date">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="currentDate"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="section active">
+        <div class="section-header">
+          <h1>Financial Reports</h1>
+          <p class="section-subtitle">Generate and export financial reports including transaction history and invoices</p>
+        </div>
+
+        <div class="reports-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
+          <div class="report-card" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius);padding:24px;transition:all var(--transition)">
+            <div class="report-icon" style="width:40px;height:40px;background:var(--green-bg);color:var(--green);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Transaction Report</h3>
+            <p style="font-size:0.82rem;color:var(--text3);line-height:1.5;margin-bottom:16px">Complete transaction history with filtering by type, status, and date range.</p>
+            <div class="report-meta" style="display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--bg4)">
+              <span style="font-size:0.75rem;color:var(--text3)">All transactions</span>
+              <button class="btn btn-sm btn-primary" onclick="document.getElementById('transactionsTable').scrollIntoView({behavior:'smooth'})">View</button>
+            </div>
+          </div>
+          <div class="report-card" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius);padding:24px;transition:all var(--transition)">
+            <div class="report-icon" style="width:40px;height:40px;background:rgba(234,179,8,0.1);color:var(--gold);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Profit & Loss</h3>
+            <p style="font-size:0.82rem;color:var(--text3);line-height:1.5;margin-bottom:16px">Monthly profit breakdown with income, expenses, and net profit analysis.</p>
+            <div class="report-meta" style="display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--bg4)">
+              <span style="font-size:0.75rem;color:var(--text3)">FY 2026</span>
+              <button class="btn btn-sm btn-primary" onclick="document.getElementById('profitTable').scrollIntoView({behavior:'smooth'})">View</button>
+            </div>
+          </div>
+          <div class="report-card" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius);padding:24px;transition:all var(--transition)">
+            <div class="report-icon" style="width:40px;height:40px;background:rgba(59,130,246,0.1);color:var(--blue);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Invoice Summary</h3>
+            <p style="font-size:0.82rem;color:var(--text3);line-height:1.5;margin-bottom:16px">View all invoices, track payments, and manage outstanding balances.</p>
+            <div class="report-meta" style="display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--bg4)">
+              <span style="font-size:0.75rem;color:var(--text3)">8 invoices</span>
+              <button class="btn btn-sm btn-primary" onclick="document.getElementById('invoicesTable').scrollIntoView({behavior:'smooth'})">View</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Transaction History</h3>
+            <div class="card-header-actions">
+              <div class="filter-group">
+                <input type="text" class="filter-input" id="transactionSearch" placeholder="Search transactions...">
+                <select class="filter-select" id="transactionFilter">
+                  <option value="all">All Types</option>
+                  <option value="income">Income</option>
+                  <option value="expense">Expenses</option>
+                </select>
+                <select class="filter-select" id="statusFilter">
+                  <option value="all">All Status</option>
+                  <option value="completed">Completed</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="transactionsTable">
+              <thead>
+                <tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th>Status</th></tr>
+              </thead>
+              <tbody id="transactionsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Monthly Profit Breakdown</h3>
+            <span class="card-badge">FY 2026</span>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="profitTable">
+              <thead>
+                <tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net Profit</th><th>Margin</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Jan 2026</td><td>$42,100</td><td>$29,600</td><td class="positive">$12,500</td><td>29.7%</td></tr>
+                <tr><td>Feb 2026</td><td>$45,800</td><td>$31,600</td><td class="positive">$14,200</td><td>31.0%</td></tr>
+                <tr><td>Mar 2026</td><td>$48,200</td><td>$32,400</td><td class="positive">$15,800</td><td>32.8%</td></tr>
+                <tr><td>Apr 2026</td><td>$46,500</td><td>$30,200</td><td class="positive">$16,300</td><td>35.1%</td></tr>
+                <tr><td>May 2026</td><td>$50,100</td><td>$32,800</td><td class="positive">$17,300</td><td>34.5%</td></tr>
+                <tr><td>Jun 2026</td><td>$49,800</td><td>$30,100</td><td class="positive">$19,700</td><td>39.6%</td></tr>
+                <tr><td>Jul 2026</td><td>$52,400</td><td>$32,000</td><td class="positive">$20,400</td><td>38.9%</td></tr>
+                <tr><td>Aug 2026</td><td>$51,200</td><td>$30,500</td><td class="positive">$20,700</td><td>40.4%</td></tr>
+                <tr><td>Sep 2026</td><td>$54,600</td><td>$33,200</td><td class="positive">$21,400</td><td>39.2%</td></tr>
+                <tr><td>Oct 2026</td><td>$53,900</td><td>$32,400</td><td class="positive">$21,500</td><td>39.9%</td></tr>
+                <tr><td>Nov 2026</td><td>$55,800</td><td>$33,600</td><td class="positive">$22,200</td><td>39.8%</td></tr>
+                <tr><td>Dec 2026</td><td>$57,400</td><td>$35,000</td><td class="positive">$22,400</td><td>39.0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Invoice List</h3>
+            <div class="card-header-actions">
+              <button class="btn btn-sm btn-primary">+ New Invoice</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="invoicesTable">
+              <thead>
+                <tr><th>Invoice #</th><th>Client</th><th>Amount</th><th>Issue Date</th><th>Due Date</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="invoicesBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="dashboard-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+        <p>&copy; 2026 Ationic Digital Agency. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    renderTransactions();
+    renderInvoices();
+    setupFilters();
+    setupExportButtons();
+    setupGlobalSearch();
+  </script>
+</body>
+</html>

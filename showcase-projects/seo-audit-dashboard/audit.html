@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Full SEO audit results for example.com - meta tags, headings, schema, images, technical SEO, and 10+ prioritized recommendations with severity labels.">
+  <meta name="keywords" content="SEO audit results, website analysis report, meta tags audit, technical SEO audit, SEO recommendations, Ationic">
+  <meta name="author" content="Ationic">
+  <meta property="og:title" content="Full SEO Audit Results - Ationic SEO Auditor">
+  <meta property="og:description" content="Complete SEO audit report with detailed findings and prioritized recommendations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ationic.com/showcase/seo-audit-dashboard/audit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Full SEO Audit Results">
+  <meta name="twitter:description" content="Complete SEO audit report by Ationic.">
+  <link rel="canonical" href="https://ationic.com/showcase/seo-audit-dashboard/audit">
+  <title>Full Audit Results - Ationic SEO Auditor</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="app-loader" class="app-loader">
+    <div class="loader-spinner"></div>
+    <p>&gt; Loading Audit Report...</p>
+  </div>
+
+  <div class="app-container" id="app" style="display:none;">
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">A</span>
+          <div class="logo-text">
+            <span class="logo-title">SEO Auditor</span>
+            <span class="logo-subtitle">by Ationic</span>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="audit.html" class="nav-item active" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Audit</span>
+        </a>
+        <a href="about.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>About</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <p class="sidebar-credit">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="tab-content active">
+        <header class="content-header">
+          <h1>Full Audit Report</h1>
+          <p class="header-subtitle">Comprehensive SEO analysis results for example.com</p>
+        </header>
+
+        <div id="audit-results">
+          <div class="score-overview">
+            <div class="score-card score-main">
+              <div class="progress-ring-container">
+                <svg class="progress-ring" width="140" height="140">
+                  <circle class="progress-ring-bg" cx="70" cy="70" r="60" stroke-width="10" fill="none"/>
+                  <circle class="progress-ring-fill" id="seo-score-ring" cx="70" cy="70" r="60" stroke-width="10" fill="none" stroke-dasharray="376.99" stroke-dashoffset="376.99" stroke-linecap="round"/>
+                </svg>
+                <div class="progress-ring-text">
+                  <span class="score-number" id="seo-score-value">0</span>
+                  <span class="score-total">/100</span>
+                </div>
+              </div>
+              <div class="score-info">
+                <h3>SEO Score</h3>
+                <div class="score-label" id="seo-score-label">Analyzing...</div>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-header">
+                <h4>Performance</h4>
+                <span class="score-badge" id="perf-badge">65</span>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-fill" id="perf-bar" style="width:0%"></div>
+              </div>
+              <div class="score-details">
+                <div class="detail-row"><span>First Contentful Paint</span><span>1.8s</span></div>
+                <div class="detail-row"><span>Speed Index</span><span>3.2s</span></div>
+                <div class="detail-row"><span>Time to Interactive</span><span>4.1s</span></div>
+                <div class="detail-row"><span>Total Blocking Time</span><span>210ms</span></div>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-header">
+                <h4>Accessibility</h4>
+                <span class="score-badge green" id="acc-badge">88</span>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-fill green" id="acc-bar" style="width:0%"></div>
+              </div>
+              <div class="issues-list-small">
+                <div class="issue-item warning"><span>Missing form labels (3)</span></div>
+                <div class="issue-item warning"><span>Low color contrast (5)</span></div>
+                <div class="issue-item warning"><span>Missing ARIA attributes (2)</span></div>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-header">
+                <h4>Best Practices</h4>
+                <span class="score-badge warning" id="bp-badge">79</span>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-fill yellow" id="bp-bar" style="width:0%"></div>
+              </div>
+              <div class="checklist-small">
+                <div class="check-item pass"><span>Uses HTTPS</span></div>
+                <div class="check-item fail"><span>No console errors (2 found)</span></div>
+                <div class="check-item pass"><span>Proper doctype</span></div>
+                <div class="check-item fail"><span>Uses deprecated APIs</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card">
+              <h3>Core Web Vitals</h3>
+              <div class="vitals-list">
+                <div class="vital-item">
+                  <div class="vital-header">
+                    <span class="vital-name">LCP</span>
+                    <span class="vital-value warning">2.4s</span>
+                  </div>
+                  <div class="vital-bar"><div class="vital-fill warning" style="width:60%"></div></div>
+                  <span class="vital-status">Needs Improvement</span>
+                </div>
+                <div class="vital-item">
+                  <div class="vital-header">
+                    <span class="vital-name">FID</span>
+                    <span class="vital-value good">45ms</span>
+                  </div>
+                  <div class="vital-bar"><div class="vital-fill good" style="width:25%"></div></div>
+                  <span class="vital-status">Good</span>
+                </div>
+                <div class="vital-item">
+                  <div class="vital-header">
+                    <span class="vital-name">CLS</span>
+                    <span class="vital-value warning">0.12</span>
+                  </div>
+                  <div class="vital-bar"><div class="vital-fill warning" style="width:55%"></div></div>
+                  <span class="vital-status">Needs Improvement</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Technical SEO</h3>
+              <div class="tech-grid">
+                <div class="tech-item"><span class="tech-label">Crawl Stats</span><span class="tech-val">1,247 pages</span></div>
+                <div class="tech-item"><span class="tech-label">Index Status</span><span class="tech-val good">1,183 indexed</span></div>
+                <div class="tech-item"><span class="tech-label">Sitemap</span><span class="tech-val fail">Missing</span></div>
+                <div class="tech-item"><span class="tech-label">Robots.txt</span><span class="tech-val good">Valid</span></div>
+                <div class="tech-item"><span class="tech-label">Redirects</span><span class="tech-val warning">8 detected</span></div>
+                <div class="tech-item"><span class="tech-label">Canonicals</span><span class="tech-val warning">4 issues</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Meta Tags Analysis</h3>
+              <div class="meta-tags">
+                <div class="meta-item"><span class="meta-label">Title Tag</span><span class="meta-status pass">Exists, 58 chars</span></div>
+                <div class="meta-item"><span class="meta-label">Meta Description</span><span class="meta-status pass">Exists, 148 chars</span></div>
+                <div class="meta-item"><span class="meta-label">OG Tags</span><span class="meta-status warning">4/8 present</span></div>
+                <div class="meta-item"><span class="meta-label">Twitter Cards</span><span class="meta-status warning">2/4 present</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Headings Structure</h3>
+              <div class="headings-info">
+                <div class="heading-row"><span>H1 Tags</span><span class="tag-count badgetag good">1 - Good</span></div>
+                <div class="heading-row"><span>H2 Tags</span><span class="tag-count badgetag good">4 - Good</span></div>
+                <div class="heading-row"><span>H3 Tags</span><span class="tag-count badgetag warning">6 - Needs hierarchy</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Schema Markup</h3>
+              <div class="schema-info">
+                <p class="schema-detected"><strong>Detected Types:</strong> Organization, LocalBusiness, FAQPage</p>
+                <p class="schema-missing"><strong>Missing Recommendations:</strong> Product, Review, BreadcrumbList, Article</p>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Image Optimization</h3>
+              <div class="img-opt">
+                <div class="img-stat"><span>Total Images</span><strong>18</strong></div>
+                <div class="img-stat good"><span>With Alt Text</span><strong>12</strong></div>
+                <div class="img-stat warning"><span>Missing Alt</span><strong>6</strong></div>
+                <div class="img-stat fail"><span>Oversized</span><strong>4</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header-row">
+              <h3>All Recommendations</h3>
+              <span class="rec-count">12 items</span>
+            </div>
+            <div class="recommendations-list">
+              <div class="rec-item critical">
+                <span class="rec-severity critical">Critical</span>
+                <div class="rec-content">
+                  <strong>Create and submit XML sitemap</strong>
+                  <p>Missing sitemap prevents search engines from discovering all pages efficiently.</p>
+                </div>
+                <span class="rec-priority">P1</span>
+              </div>
+              <div class="rec-item critical">
+                <span class="rec-severity critical">Critical</span>
+                <div class="rec-content">
+                  <strong>Fix Largest Contentful Paint (2.4s)</strong>
+                  <p>Optimize hero image, leverage CDN, and implement lazy loading for below-fold content.</p>
+                </div>
+                <span class="rec-priority">P1</span>
+              </div>
+              <div class="rec-item high">
+                <span class="rec-severity high">High</span>
+                <div class="rec-content">
+                  <strong>Add alt text to 6 images</strong>
+                  <p>Missing alt attributes harm accessibility and image search rankings.</p>
+                </div>
+                <span class="rec-priority">P2</span>
+              </div>
+              <div class="rec-item high">
+                <span class="rec-severity high">High</span>
+                <div class="rec-content">
+                  <strong>Fix 8 broken redirect chains</strong>
+                  <p>Redirect chains dilute link equity and slow page load times.</p>
+                </div>
+                <span class="rec-priority">P2</span>
+              </div>
+              <div class="rec-item high">
+                <span class="rec-severity high">High</span>
+                <div class="rec-content">
+                  <strong>Resolve duplicate content (3 pages)</strong>
+                  <p>Duplicate content confuses search engines and dilutes ranking signals.</p>
+                </div>
+                <span class="rec-priority">P2</span>
+              </div>
+              <div class="rec-item high">
+                <span class="rec-severity high">High</span>
+                <div class="rec-content">
+                  <strong>Optimize oversized images (4)</strong>
+                  <p>Images exceed recommended size limits, increasing page weight by ~1.2MB.</p>
+                </div>
+                <span class="rec-priority">P2</span>
+              </div>
+              <div class="rec-item medium">
+                <span class="rec-severity medium">Medium</span>
+                <div class="rec-content">
+                  <strong>Complete Open Graph tags (4 missing)</strong>
+                  <p>Missing OG tags reduce social sharing preview quality.</p>
+                </div>
+                <span class="rec-priority">P3</span>
+              </div>
+              <div class="rec-item medium">
+                <span class="rec-severity medium">Medium</span>
+                <div class="rec-content">
+                  <strong>Fix H3 heading hierarchy</strong>
+                  <p>Inconsistent H3 usage affects content structure clarity.</p>
+                </div>
+                <span class="rec-priority">P3</span>
+              </div>
+              <div class="rec-item medium">
+                <span class="rec-severity medium">Medium</span>
+                <div class="rec-content">
+                  <strong>Add Twitter Card markup</strong>
+                  <p>Only 2 of 4 Twitter Card tags are present.</p>
+                </div>
+                <span class="rec-priority">P3</span>
+              </div>
+              <div class="rec-item medium">
+                <span class="rec-severity medium">Medium</span>
+                <div class="rec-content">
+                  <strong>Fix canonical tag issues (4 pages)</strong>
+                  <p>Canonical tags are missing or self-referencing incorrectly.</p>
+                </div>
+                <span class="rec-priority">P3</span>
+              </div>
+              <div class="rec-item low">
+                <span class="rec-severity low">Low</span>
+                <div class="rec-content">
+                  <strong>Add more schema types</strong>
+                  <p>Consider adding Product and BreadcrumbList structured data.</p>
+                </div>
+                <span class="rec-priority">P4</span>
+              </div>
+              <div class="rec-item low">
+                <span class="rec-severity low">Low</span>
+                <div class="rec-content">
+                  <strong>Improve text-to-HTML ratio</strong>
+                  <p>Current ratio is 18%, below the recommended 25-70% range.</p>
+                </div>
+                <span class="rec-priority">P4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-section">
+            <div class="card chart-card">
+              <h3>Score Distribution</h3>
+              <div class="donut-chart-container">
+                <svg class="donut-chart" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#2a2d3e" stroke-width="15"/>
+                  <circle class="donut-segment" cx="50" cy="50" r="40" fill="none" stroke="#8b5cf6" stroke-width="15" stroke-dasharray="100" stroke-dashoffset="0" stroke-linecap="round" style="stroke-dashoffset: 75;"/>
+                  <circle class="donut-segment" cx="50" cy="50" r="40" fill="none" stroke="#eab308" stroke-width="15" stroke-dasharray="100" stroke-dashoffset="0" stroke-linecap="round" style="stroke-dasharray: 65; stroke-dashoffset: 25;"/>
+                  <circle class="donut-segment" cx="50" cy="50" r="40" fill="none" stroke="#22c55e" stroke-width="15" stroke-dasharray="100" stroke-dashoffset="0" stroke-linecap="round" style="stroke-dasharray: 88; stroke-dashoffset: -10;"/>
+                  <circle class="donut-segment" cx="50" cy="50" r="40" fill="none" stroke="#3b82f6" stroke-width="15" stroke-dasharray="100" stroke-dashoffset="0" stroke-linecap="round" style="stroke-dasharray: 79; stroke-dashoffset: -40;"/>
+                </svg>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>SEO (72)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#eab308"></span>Performance (65)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>Accessibility (88)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>Best Practices (79)</div>
+              </div>
+            </div>
+            <div class="card chart-card">
+              <h3>Page Speed Timeline</h3>
+              <div class="bar-chart" id="bar-chart">
+                <div class="bar-group" style="--height: 60"><span class="bar-label">Jan</span><div class="bar bar-yellow"><span class="bar-val">42</span></div></div>
+                <div class="bar-group" style="--height: 48"><span class="bar-label">Feb</span><div class="bar bar-yellow"><span class="bar-val">35</span></div></div>
+                <div class="bar-group" style="--height: 72"><span class="bar-label">Mar</span><div class="bar bar-green"><span class="bar-val">52</span></div></div>
+                <div class="bar-group" style="--height: 55"><span class="bar-label">Apr</span><div class="bar bar-yellow"><span class="bar-val">40</span></div></div>
+                <div class="bar-group" style="--height: 85"><span class="bar-label">May</span><div class="bar bar-green"><span class="bar-val">65</span></div></div>
+                <div class="bar-group" style="--height: 90"><span class="bar-label">Jun</span><div class="bar bar-green" id="bar-current"><span class="bar-val">72</span></div></div>
+              </div>
+              <p class="chart-note">Desktop speed scores over last 6 months</p>
+            </div>
+            <div class="card chart-card">
+              <h3>Issues by Severity</h3>
+              <div class="severity-chart">
+                <div class="sev-row">
+                  <span class="sev-label">Critical</span>
+                  <div class="sev-bar-bg"><div class="sev-bar-fill critical" style="width:25%"></div></div>
+                  <span class="sev-count">2</span>
+                </div>
+                <div class="sev-row">
+                  <span class="sev-label">High</span>
+                  <div class="sev-bar-bg"><div class="sev-bar-fill high" style="width:50%"></div></div>
+                  <span class="sev-count">4</span>
+                </div>
+                <div class="sev-row">
+                  <span class="sev-label">Medium</span>
+                  <div class="sev-bar-bg"><div class="sev-bar-fill medium" style="width:38%"></div></div>
+                  <span class="sev-count">3</span>
+                </div>
+                <div class="sev-row">
+                  <span class="sev-label">Low</span>
+                  <div class="sev-bar-bg"><div class="sev-bar-fill low" style="width:25%"></div></div>
+                  <span class="sev-count">2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-bar">
+            <button id="export-btn" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export PDF
+            </button>
+            <a href="index.html" class="btn-text" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Run New Audit</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

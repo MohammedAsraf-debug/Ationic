@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance — Atlas HR | Ationic Showcase</title>
+  <meta name="description" content="Attendance tracking for Atlas HR Portal: weekly charts, monthly summaries, and department rates.">
+  <meta name="author" content="Ationic Digital Agency">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-attendance">
+  <div id="loading-screen">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    <p class="loader-text">Loading Atlas HR Portal...</p>
+  </div>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-users" style="color:#fff"></i></div>
+        <div class="brand-text">
+          <span class="brand-name">Atlas</span>
+          <span class="brand-sub">HR Portal</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="employees.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-user-friends"></i></span>
+          <span class="nav-label">Employees</span>
+        </a>
+        <a href="attendance.html" class="nav-item active">
+          <span class="nav-icon"><i class="fas fa-clock"></i></span>
+          <span class="nav-label">Attendance</span>
+        </a>
+        <a href="leave.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+          <span class="nav-label">Leave</span>
+        </a>
+        <a href="payroll.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
+          <span class="nav-label">Payroll</span>
+        </a>
+        <a href="reports.html" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+          <span class="nav-label">Reports</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="dark-toggle" id="darkToggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-label">Dark Mode</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title">Attendance</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+          <div class="notification-bell"><i class="fas fa-bell"></i><span class="notification-dot"></span></div>
+          <div class="avatar">AH</div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="stats-grid">
+          <div class="stat-card" data-delay="0">
+            <div class="stat-icon present-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Avg Present</span>
+              <span class="stat-value" data-target="282">0</span>
+              <span class="stat-change positive">87.1% rate</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="100">
+            <div class="stat-icon absent-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Avg Absent</span>
+              <span class="stat-value" data-target="20">0</span>
+              <span class="stat-change negative">6.1% rate</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="200">
+            <div class="stat-icon leave-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Avg Late</span>
+              <span class="stat-value" data-target="10">0</span>
+              <span class="stat-change negative">3.1% rate</span>
+            </div>
+          </div>
+          <div class="stat-card" data-delay="300">
+            <div class="stat-icon total-icon"><i class="fas fa-calendar-week"></i></div>
+            <div class="stat-content">
+              <span class="stat-label">Working Days</span>
+              <span class="stat-value">21</span>
+              <span class="stat-change positive">July 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Weekly Attendance</h3>
+            </div>
+            <div class="chart-body">
+              <canvas id="attendanceChart" width="700" height="280"></canvas>
+            </div>
+          </div>
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Department Attendance Rates</h3>
+            </div>
+            <div class="chart-body">
+              <canvas id="deptAttendanceChart" width="700" height="280"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Monthly Summary — July 2025</h3>
+          </div>
+          <div class="card-body">
+            <div class="monthly-summary-grid">
+              <div class="summary-item">
+                <span class="summary-label">Total Working Days</span>
+                <span class="summary-value">21</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Avg Daily Present</span>
+                <span class="summary-value">282</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Best Day</span>
+                <span class="summary-value">Wednesday (290)</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Lowest Day</span>
+                <span class="summary-value">Friday (275)</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Total Late Arrivals</span>
+                <span class="summary-value">49</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Total Absences</span>
+                <span class="summary-value">100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initHRAttendancePage();
+    });
+  </script>
+</body>
+</html>

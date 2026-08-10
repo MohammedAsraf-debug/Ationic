@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Connect SMTP{% endblock %}
+{% block content %}
+<div class="auth-card">
+    <h2>Connect Your Gmail</h2>
+    <div class="info-box">
+        <strong>You need a Gmail App Password, not your normal password.</strong>
+        <ol>
+            <li>Enable 2-Step Verification on your Google account</li>
+            <li>Go to <a href="https://myaccount.google.com/apppasswords" target="_blank">myaccount.google.com/apppasswords</a></li>
+            <li>Generate a 16-character app password</li>
+            <li>Paste it below (it's encrypted before we store it)</li>
+        </ol>
+    </div>
+    <form method="POST">
+        <label>Gmail Address</label>
+        <input type="email" name="smtp_email" required placeholder="you@gmail.com">
+        <label>App Password</label>
+        <input type="password" name="smtp_password" required placeholder="16-character app password">
+        <input type="hidden" name="smtp_host" value="smtp.gmail.com">
+        <input type="hidden" name="smtp_port" value="587">
+        <button type="submit" class="btn-primary">Connect</button>
+    </form>
+</div>
+{% endblock %}

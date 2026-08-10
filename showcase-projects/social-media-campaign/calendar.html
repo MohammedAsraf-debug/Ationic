@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Calendar — Project Aura | Ationic</title>
+    <meta name="description" content="Project Aura 28-day content calendar with pillar color-coding, week filtering, and content type icons.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="28" stroke="url(#loadGrad)" stroke-width="2" fill="none" class="load-circle"/>
+                    <path d="M20 38 L30 18 L40 38" stroke="url(#loadGrad)" stroke-width="2" fill="none" class="load-chevron"/>
+                    <defs>
+                        <linearGradient id="loadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff6b6b"/>
+                            <stop offset="100%" stop-color="#b197fc"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <p class="loader-text">Loading Campaign</p>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg width="24" height="24" viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="30" r="28" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    <path d="M20 38 L30 18 L40 38" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                </svg>
+                <span>Project Aura</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="feed.html">Feed</a></li>
+                <li><a href="ads.html">Ads</a></li>
+                <li><a href="stories.html">Stories</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="results.html">Results</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero-sm">
+        <div class="container">
+            <div class="section-label">05 — Content Calendar</div>
+            <h1 class="page-title-sm">Every Post, Planned to Perfection</h1>
+            <p class="page-desc-sm">A color-coded monthly calendar showing the strategic distribution of content across all three campaign pillars. Filter by pillar or week to see the plan.</p>
+        </div>
+    </section>
+
+    <section class="section calendar-section" style="background:var(--bg);">
+        <div class="container">
+            <div class="calendar-filters">
+                <button class="cal-filter active" data-cal="all">All</button>
+                <button class="cal-filter" data-cal="inspiration">Inspiration</button>
+                <button class="cal-filter" data-cal="education">Education</button>
+                <button class="cal-filter" data-cal="community">Community</button>
+            </div>
+
+            <div class="calendar-week-selector">
+                <button class="week-btn active" data-week="1">Week 1</button>
+                <button class="week-btn" data-week="2">Week 2</button>
+                <button class="week-btn" data-week="3">Week 3</button>
+                <button class="week-btn" data-week="4">Week 4</button>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid">
+                <div class="cal-day cal-header">Mon</div>
+                <div class="cal-day cal-header">Tue</div>
+                <div class="cal-day cal-header">Wed</div>
+                <div class="cal-day cal-header">Thu</div>
+                <div class="cal-day cal-header">Fri</div>
+                <div class="cal-day cal-header">Sat</div>
+                <div class="cal-day cal-header">Sun</div>
+
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">1</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-camera"></i> Photo</div>
+                    <span class="cal-caption">Morning light ritual</span>
+                    <span class="cal-time">9:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">2</span>
+                    <div class="cal-pill education"><i class="fas fa-play"></i> Carousel</div>
+                    <span class="cal-caption">5 design tips</span>
+                    <span class="cal-time">11:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">3</span>
+                    <div class="cal-pill community"><i class="fas fa-poll"></i> Poll</div>
+                    <span class="cal-caption">Choose the palette</span>
+                    <span class="cal-time">2:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">4</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-film"></i> Reel</div>
+                    <span class="cal-caption">Day in the life</span>
+                    <span class="cal-time">6:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">5</span>
+                    <div class="cal-pill education"><i class="fas fa-book"></i> Guide</div>
+                    <span class="cal-caption">Brand building 101</span>
+                    <span class="cal-time">10:00 AM</span>
+                </div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">8</span>
+                    <div class="cal-pill community"><i class="fas fa-bullhorn"></i> Announcement</div>
+                    <span class="cal-caption">Campaign launch</span>
+                    <span class="cal-time">9:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">9</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-camera"></i> Photo</div>
+                    <span class="cal-caption">Golden hour</span>
+                    <span class="cal-time">5:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">10</span>
+                    <div class="cal-pill education"><i class="fas fa-video"></i> Video</div>
+                    <span class="cal-caption">Mindfulness minute</span>
+                    <span class="cal-time">12:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">11</span>
+                    <div class="cal-pill community"><i class="fas fa-question-circle"></i> Q&amp;A</div>
+                    <span class="cal-caption">Ask the team</span>
+                    <span class="cal-time">3:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">12</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-film"></i> Reel</div>
+                    <span class="cal-caption">Transformation</span>
+                    <span class="cal-time">7:00 PM</span>
+                </div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">15</span>
+                    <div class="cal-pill education"><i class="fas fa-play"></i> Carousel</div>
+                    <span class="cal-caption">Toolkit essentials</span>
+                    <span class="cal-time">10:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">16</span>
+                    <div class="cal-pill community"><i class="fas fa-star"></i> UGC Feature</div>
+                    <span class="cal-caption">Fan spotlight</span>
+                    <span class="cal-time">2:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">17</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-camera"></i> Photo</div>
+                    <span class="cal-caption">Workspace tour</span>
+                    <span class="cal-time">11:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">18</span>
+                    <div class="cal-pill education"><i class="fas fa-video"></i> Video</div>
+                    <span class="cal-caption">Product demo</span>
+                    <span class="cal-time">1:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">19</span>
+                    <div class="cal-pill community"><i class="fas fa-poll"></i> Poll</div>
+                    <span class="cal-caption">Feature request</span>
+                    <span class="cal-time">4:00 PM</span>
+                </div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">22</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-film"></i> Reel</div>
+                    <span class="cal-caption">Studio vibes</span>
+                    <span class="cal-time">8:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">23</span>
+                    <div class="cal-pill education"><i class="fas fa-book"></i> Guide</div>
+                    <span class="cal-caption">Hashtag strategy</span>
+                    <span class="cal-time">11:00 AM</span>
+                </div>
+                <div class="cal-day" data-pillar="community">
+                    <span class="cal-date">24</span>
+                    <div class="cal-pill community"><i class="fas fa-gift"></i> Giveaway</div>
+                    <span class="cal-caption">Win the box</span>
+                    <span class="cal-time">12:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="inspiration">
+                    <span class="cal-date">25</span>
+                    <div class="cal-pill inspiration"><i class="fas fa-camera"></i> Photo</div>
+                    <span class="cal-caption">Behind the brand</span>
+                    <span class="cal-time">3:00 PM</span>
+                </div>
+                <div class="cal-day" data-pillar="education">
+                    <span class="cal-date">26</span>
+                    <div class="cal-pill education"><i class="fas fa-play"></i> Carousel</div>
+                    <span class="cal-caption">Monthly roundup</span>
+                    <span class="cal-time">6:00 PM</span>
+                </div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <svg width="24" height="24" viewBox="0 0 60 60" fill="none">
+                        <circle cx="30" cy="30" r="28" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                        <path d="M20 38 L30 18 L40 38" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span>Project Aura by Ationic</span>
+                </div>
+                <p class="footer-tagline">A Social Media Success Story</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-note">Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+            <p class="footer-copy">&copy; 2026 Ationic. All rights reserved. This is a demonstration showcase.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

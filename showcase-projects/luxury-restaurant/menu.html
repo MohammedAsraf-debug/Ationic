@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Château Noir menu - Explore our curated selection of starters, main courses, desserts, and wine list by Chef Antoine Laurent.">
+    <meta name="author" content="Ationic Digital Agency">
+    <title>Our Menu | Le Château Noir</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">Le Château <span>Noir</span></a>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="chef.html">Chef</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="nav-cta">Reserve</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section section-dark" id="menu">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Culinary Excellence</span>
+            <h2>Our Menu</h2>
+            <p>Curated by Chef Antoine Laurent using the finest seasonal ingredients sourced from across France.</p>
+        </div>
+        <div class="menu-tabs" data-aos="fade-up">
+            <button class="menu-tab active" data-category="all">All</button>
+            <button class="menu-tab" data-category="starters">Starters</button>
+            <button class="menu-tab" data-category="mains">Main Course</button>
+            <button class="menu-tab" data-category="desserts">Desserts</button>
+            <button class="menu-tab" data-category="wines">Wine List</button>
+        </div>
+        <div class="menu-grid" id="menuGrid" data-aos="fade-up"></div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Le Château Noir</h3>
+                <p>An Unforgettable Dining Experience</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Reservations</a></li>
+                    <li><a href="events.html">Private Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li>112 Av. des Champs-Élysées</li>
+                    <li>75008 Paris, France</li>
+                    <li>+33 1 45 67 89 00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created by Ationic as a Showcase Project</p>
+            <p>&copy; 2026 Le Château Noir. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function() {
+    var menuData = {
+        starters: [
+            { name: 'Foie Gras Poêlé', desc: 'Pan-seared foie gras with fig chutney, brioche toast, and aged balsamic reduction.', price: '\u20ac32', tags: ['GF'] },
+            { name: 'Tartare de Thon Rouge', desc: 'Mediterranean bluefin tuna tartare with avocado mousse, sesame tuile, and yuzu dressing.', price: '\u20ac28', tags: ['GF'] },
+            { name: 'Soupe \u00e0 l\'Oignon Gratin\u00e9e', desc: 'Classic French onion soup with caramelized onions, Gruy\u00e8re crouton, and thyme jus.', price: '\u20ac18', tags: ['V'] },
+            { name: 'Huitres de Cancale', desc: 'Fresh Cancale oysters (6pc) with shallot vinaigrette, lemon gel, and rye bread.', price: '\u20ac36', tags: ['GF'] },
+            { name: 'Salade de Betteraves', desc: 'Roasted golden and red beets with goat cheese mousse, candied walnuts, and sherry vinaigrette.', price: '\u20ac22', tags: ['V', 'GF'] },
+            { name: 'Escargots de Bourgogne', desc: 'Burgundy snails in garlic-herb butter, served with parsley foam and toasted baguette.', price: '\u20ac24', tags: ['GF'] },
+            { name: 'Carpaccio de Saint-Jacques', desc: 'Thinly sliced diver scallops with white truffle oil, micro greens, and citrus vinaigrette.', price: '\u20ac30', tags: ['GF'] },
+            { name: 'Velout\u00e9 de Potiron', desc: 'Roasted pumpkin velout\u00e9 with cr\u00e8me fra\u00eeche, pumpkin seed oil, and sage crisp.', price: '\u20ac20', tags: ['V', 'VG'] }
+        ],
+        mains: [
+            { name: 'Confit de Canard aux Truffes', desc: 'Duck leg confit with black truffle jus, pommes pur\u00e9e, and roasted baby carrots.', price: '\u20ac48', tags: ['GF'] },
+            { name: 'Filet de Boeuf Rossini', desc: 'Beef tenderloin with foie gras, Madeira sauce, truffle potato gratin, and haricots verts.', price: '\u20ac62', tags: ['GF'] },
+            { name: 'Homard Bleu, Beurre d\'Agrumes', desc: 'Whole blue lobster with citrus butter, saffron risotto, and fennel salad.', price: '\u20ac76', tags: ['GF'] },
+            { name: 'Bar de Ligne R\u00f4ti', desc: 'Roasted line-caught sea bass with beurre blanc, ratatouille, and basil oil.', price: '\u20ac45', tags: ['GF'] },
+            { name: 'Risotto aux C\u00e8pes', desc: 'Porcini mushroom risotto with aged Parmesan, truffle oil, and wild herb gremolata.', price: '\u20ac38', tags: ['V', 'VG'] },
+            { name: 'Agneau de Lait Confit', desc: 'Confit milk-fed lamb shoulder with rosemary jus, flageolet beans, and roasted garlic.', price: '\u20ac52', tags: ['GF'] },
+            { name: 'Poulet de Bresse R\u00f4ti', desc: 'Roasted Bresse chicken with morel mushroom cream sauce, asparagus, and pommes dauphine.', price: '\u20ac44', tags: ['GF'] },
+            { name: 'Tagliatelles aux Truffes', desc: 'Fresh black truffle tagliatelle with Parmesan cream, butter-poached lobster tail, and chives.', price: '\u20ac58', tags: [] }
+        ],
+        desserts: [
+            { name: 'Souffl\u00e9 au Chocolat Valrhona', desc: 'Dark Valrhona chocolate souffl\u00e9 with vanilla bean cr\u00e8me anglaise.', price: '\u20ac24', tags: ['V'] },
+            { name: 'Tarte Tatin', desc: 'Classic caramelized apple tarte Tatin with Calvados ice cream and salted caramel.', price: '\u20ac20', tags: ['V'] },
+            { name: 'Cr\u00e8me Br\u00fbl\u00e9e \u00e0 la Vanille', desc: 'Madagascar vanilla cr\u00e8me br\u00fbl\u00e9e with caramelized sugar crust and fresh berries.', price: '\u20ac18', tags: ['V', 'GF'] },
+            { name: '\u00cele Flottante', desc: 'Floating meringue island with cr\u00e8me anglaise, almond flakes, and honey drizzle.', price: '\u20ac19', tags: ['V'] },
+            { name: 'Fromages Affin\u00e9s', desc: 'Selection of 5 artisan French cheeses with fig compote, honeycomb, and walnut bread.', price: '\u20ac28', tags: ['V'] },
+            { name: 'Mousse au Chocolat Blanc', desc: 'White chocolate mousse with passion fruit coulis, coconut sorbet, and lime zest.', price: '\u20ac22', tags: ['V', 'GF'] },
+            { name: 'Paris-Brest', desc: 'Choux pastry ring with praline mousseline cream, caramelized hazelnuts, and chocolate shards.', price: '\u20ac21', tags: ['V'] },
+            { name: 'Sorbet Assortiment', desc: 'Trio of house-made sorbets: raspberry, mango, and lychee with fresh fruit garnish.', price: '\u20ac16', tags: ['V', 'VG', 'GF'] }
+        ],
+        wines: [
+            { name: 'Ch\u00e2teau Margaux 2015', desc: 'Bordeaux, France \u2014 Deep ruby, elegant with notes of blackcurrant, cedar, and violet.', price: '\u20ac495', tags: [] },
+            { name: 'Domaine de la Roman\u00e9e-Conti 2018', desc: 'Burgundy, France \u2014 Exquisite Pinot Noir, silky texture with complex floral and earthy notes.', price: '\u20ac1,200', tags: [] },
+            { name: 'Gaja Barbaresco 2019', desc: 'Piedmont, Italy \u2014 Nebbiolo with rose petal, cherry, and licorice, full-bodied and structured.', price: '\u20ac180', tags: [] },
+            { name: 'Sassicaia 2020', desc: 'Tuscany, Italy \u2014 Super Tuscan Cabernet Sauvignon, intense dark fruit with vanilla and spice.', price: '\u20ac220', tags: [] },
+            { name: 'Cloudy Bay Sauvignon Blanc 2023', desc: 'Marlborough, New Zealand \u2014 Crisp, aromatic with citrus, passion fruit, and fresh herbs.', price: '\u20ac65', tags: [] },
+            { name: 'Ch\u00e2teau d\'Yquem 2010', desc: 'Legendary Sauternes, honeyed apricot with balanced acidity and long finish.', price: '\u20ac350', tags: [] },
+            { name: 'Dom P\u00e9rignon Vintage 2013', desc: 'Champagne, France \u2014 Elegant bubbles with brioche, white flowers, and citrus zest notes.', price: '\u20ac240', tags: [] },
+            { name: 'Opus One 2018', desc: 'Napa Valley, USA \u2014 Bordeaux-style blend, rich cassis, dark chocolate, and polished tannins.', price: '\u20ac380', tags: [] }
+        ]
+    };
+
+    var menuGrid = document.getElementById('menuGrid');
+    var currentCategory = 'all';
+
+    function renderMenu(category) {
+        var html = '';
+        var categories = category === 'all' ? Object.keys(menuData) : [category];
+
+        categories.forEach(function(cat) {
+            if (!menuData[cat]) return;
+            menuData[cat].forEach(function(item) {
+                var tagsHtml = '';
+                item.tags.forEach(function(tag) {
+                    var cls = '';
+                    if (tag === 'GF') cls = 'gf';
+                    else if (tag === 'V') cls = 'v';
+                    else if (tag === 'VG') cls = 'vg';
+                    tagsHtml += '<span class="menu-tag ' + cls + '">' + tag + '</span>';
+                });
+                html += '<div class="menu-item" data-category="' + cat + '">' +
+                    '<div class="menu-item-header">' +
+                    '<span class="menu-item-name">' + item.name + '</span>' +
+                    '<span class="menu-item-price">' + item.price + '</span>' +
+                    '</div>' +
+                    '<p class="menu-item-desc">' + item.desc + '</p>' +
+                    '<div class="menu-item-tags">' + tagsHtml + '</div>' +
+                    '</div>';
+            });
+        });
+
+        menuGrid.innerHTML = html || '<p style="color: #8a8580; text-align: center;">No items in this category.</p>';
+    }
+
+    var menuTabs = document.querySelectorAll('.menu-tab');
+    menuTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            menuTabs.forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            currentCategory = tab.getAttribute('data-category');
+            renderMenu(currentCategory);
+        });
+    });
+
+    renderMenu('all');
+})();
+</script>
+</body>
+</html>

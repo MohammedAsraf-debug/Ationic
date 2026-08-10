@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule | Iron Forge Fitness</title>
+    <meta name="description" content="View our weekly class schedule at Iron Forge Fitness. Yoga, Spinning, HIIT, Boxing, CrossFit, Pilates, and more. Over 50 classes every week.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Iron Forge Fitness</div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" aria-label="Iron Forge Fitness Home">
+                    <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                    <div class="logo-text">
+                        <span class="logo-title">Iron Forge</span>
+                        <span class="logo-subtitle">Fitness</span>
+                    </div>
+                </a>
+                <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="membership.html" class="nav-link">Membership</a></li>
+                        <li><a href="trainers.html" class="nav-link">Trainers</a></li>
+                        <li><a href="schedule.html" class="nav-link active">Schedule</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="padding:140px 0 60px;text-align:center;position:relative;background:var(--section-alt);">
+        <div class="container">
+            <span class="hero-badge">Schedule</span>
+            <h1 class="hero-title" style="font-size:4rem;">Weekly Class <span class="text-accent">Schedule</span></h1>
+            <p class="hero-desc" style="max-width:600px;margin:0 auto;">Over 50 classes every week. From 5am to 9pm, there is always something for you. Filter by day to plan your week.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;background:var(--section-alt);">
+        <div class="container">
+            <div class="schedule-controls">
+                <button class="schedule-btn active" data-day="monday">Mon</button>
+                <button class="schedule-btn" data-day="tuesday">Tue</button>
+                <button class="schedule-btn" data-day="wednesday">Wed</button>
+                <button class="schedule-btn" data-day="thursday">Thu</button>
+                <button class="schedule-btn" data-day="friday">Fri</button>
+                <button class="schedule-btn" data-day="saturday">Sat</button>
+                <button class="schedule-btn" data-day="sunday">Sun</button>
+            </div>
+            <div class="schedule-grid" id="scheduleGrid"></div>
+        </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Class Info</span>
+                <h2 class="section-title">Need Help Choosing?</h2>
+                <p class="section-desc">Not sure which class is right for you? Our trainers are happy to help you find the perfect fit.</p>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-lg" style="padding:16px 36px;font-size:1rem;">
+                <i class="fas fa-envelope"></i> Talk to a Trainer
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-dumbbell"></i></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Iron Forge</span>
+                            <span class="logo-subtitle">Fitness</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Iron Forge Fitness is a premium fitness facility in Chicago, IL. Part of the Ationic Digital Agency network.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="trainers.html">Trainers</a></li>
+                        <li><a href="schedule.html">Class Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Classes</h4>
+                    <ul>
+                        <li><a href="schedule.html">Yoga</a></li>
+                        <li><a href="schedule.html">Spinning</a></li>
+                        <li><a href="schedule.html">HIIT</a></li>
+                        <li><a href="schedule.html">Boxing</a></li>
+                        <li><a href="schedule.html">CrossFit</a></li>
+                        <li><a href="schedule.html">Pilates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Created by Ationic as a Showcase Project demonstrating our capabilities.</p>
+                <p>&copy; 2026 Iron Forge Fitness. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var scheduleData = {
+            monday: [
+                { time: '5:00 AM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Advanced' },
+                { time: '6:00 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'All Levels' },
+                { time: '7:00 AM', name: 'Spinning', trainer: 'Jessica Park', level: 'Intermediate' },
+                { time: '9:00 AM', name: 'CrossFit', trainer: 'David Kim', level: 'Advanced' },
+                { time: '10:00 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'All Levels' },
+                { time: '12:00 PM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'Intermediate' },
+                { time: '4:00 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '5:30 PM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' },
+                { time: '7:00 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'All Levels' }
+            ],
+            tuesday: [
+                { time: '5:30 AM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' },
+                { time: '6:30 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'All Levels' },
+                { time: '8:00 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '10:00 AM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'Advanced' },
+                { time: '12:00 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Intermediate' },
+                { time: '2:00 PM', name: 'Spinning', trainer: 'Jessica Park', level: 'All Levels' },
+                { time: '4:30 PM', name: 'CrossFit', trainer: 'David Kim', level: 'Advanced' },
+                { time: '6:00 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '8:00 PM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'All Levels' }
+            ],
+            wednesday: [
+                { time: '5:00 AM', name: 'CrossFit', trainer: 'David Kim', level: 'Intermediate' },
+                { time: '6:30 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'All Levels' },
+                { time: '8:00 AM', name: 'Spinning', trainer: 'Jessica Park', level: 'Intermediate' },
+                { time: '10:00 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'Beginner' },
+                { time: '12:00 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Advanced' },
+                { time: '3:00 PM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'All Levels' },
+                { time: '5:00 PM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' },
+                { time: '6:30 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '8:00 PM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'All Levels' }
+            ],
+            thursday: [
+                { time: '5:30 AM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Advanced' },
+                { time: '7:00 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'All Levels' },
+                { time: '8:30 AM', name: 'Spinning', trainer: 'Jessica Park', level: 'Intermediate' },
+                { time: '10:00 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '12:00 PM', name: 'CrossFit', trainer: 'David Kim', level: 'Intermediate' },
+                { time: '2:00 PM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'Advanced' },
+                { time: '4:30 PM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'All Levels' },
+                { time: '6:00 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '7:30 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Intermediate' }
+            ],
+            friday: [
+                { time: '5:00 AM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' },
+                { time: '6:30 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'All Levels' },
+                { time: '8:00 AM', name: 'CrossFit', trainer: 'David Kim', level: 'Advanced' },
+                { time: '10:00 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'All Levels' },
+                { time: '12:00 PM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'Intermediate' },
+                { time: '3:00 PM', name: 'Spinning', trainer: 'Jessica Park', level: 'Beginner' },
+                { time: '5:00 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'All Levels' },
+                { time: '6:30 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '8:00 PM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' }
+            ],
+            saturday: [
+                { time: '6:00 AM', name: 'CrossFit', trainer: 'David Kim', level: 'Intermediate' },
+                { time: '7:30 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'All Levels' },
+                { time: '9:00 AM', name: 'Boxing', trainer: 'Marcus Johnson', level: 'All Levels' },
+                { time: '10:30 AM', name: 'Spinning', trainer: 'Jessica Park', level: 'Intermediate' },
+                { time: '12:00 PM', name: 'HIIT Blast', trainer: 'David Kim', level: 'Advanced' },
+                { time: '2:00 PM', name: 'Pilates', trainer: 'Olivia Chen', level: 'Beginner' }
+            ],
+            sunday: [
+                { time: '7:00 AM', name: 'Yoga Flow', trainer: 'Maria Santos', level: 'Beginner' },
+                { time: '8:30 AM', name: 'Pilates', trainer: 'Olivia Chen', level: 'All Levels' },
+                { time: '10:00 AM', name: 'Strength Circuit', trainer: 'Alex Rivera', level: 'Intermediate' },
+                { time: '11:30 AM', name: 'Spinning', trainer: 'Jessica Park', level: 'Beginner' },
+                { time: '1:00 PM', name: 'Zumba', trainer: 'Maria Santos', level: 'All Levels' }
+            ]
+        };
+
+        var scheduleGrid = document.getElementById('scheduleGrid');
+        var scheduleBtns = document.querySelectorAll('.schedule-btn');
+
+        function renderSchedule(day) {
+            var classes = scheduleData[day] || [];
+            scheduleGrid.innerHTML = '';
+            if (classes.length === 0) {
+                scheduleGrid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">No classes scheduled for this day.</p>';
+                return;
+            }
+            classes.forEach(function(c) {
+                var item = document.createElement('div');
+                item.className = 'schedule-item';
+                item.innerHTML =
+                    '<span class="schedule-time">' + c.time + '</span>' +
+                    '<span class="schedule-class-name">' + c.name + '</span>' +
+                    '<span class="schedule-trainer"><i class="fas fa-user"></i> ' + c.trainer + '</span>' +
+                    '<span class="schedule-level ' + window.getLevelClass(c.level) + '">' + c.level + '</span>' +
+                    '<button class="btn-book book-class-btn"><i class="fas fa-calendar-check"></i> Book</button>';
+                scheduleGrid.appendChild(item);
+            });
+            document.querySelectorAll('.book-class-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var className = this.parentElement.querySelector('.schedule-class-name').textContent;
+                    var classTime = this.parentElement.querySelector('.schedule-time').textContent;
+                    alert('You have booked ' + className + ' at ' + classTime + '. A confirmation will be sent to your email.');
+                });
+            });
+        }
+
+        scheduleBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                scheduleBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                renderSchedule(btn.getAttribute('data-day'));
+            });
+        });
+
+        renderSchedule('monday');
+    })();
+    </script>
+</body>
+</html>
