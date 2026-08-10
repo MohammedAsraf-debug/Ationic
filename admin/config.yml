@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: MohammedAsraf-debug/Ationic
   branch: main
 
 media_folder: "images/blog"
@@ -11,7 +12,6 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{slug}}"
-
     fields:
       - label: "Title"
         name: "title"
