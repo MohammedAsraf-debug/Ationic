@@ -1,7 +1,7 @@
 # Netlify deployment configuration for the Ationic static site.
 # Headers below apply to the published site. They are tuned so they do NOT
 # break: Google Analytics, Microsoft Clarity, EmailJS, Google Fonts,
-# Font Awesome, Netlify Identity, and the Decap CMS admin app.
+# and Font Awesome. Blog content is rendered server-side from WordPress.
 
 [build]
   publish = "."
@@ -10,22 +10,8 @@
 [build.environment]
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
 
-[[redirects]]
-  from = "/admin"
-  to = "/admin/"
-  status = 301
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/uploads/*"
-  to = "/.netlify/functions/media/uploads/:splat"
-  status = 200
-  force = true
+# Set WORDPRESS_API_URL in the Netlify UI (Site settings > Environment
+# variables), e.g. https://cms.example.com/wp-json/wp/v2
 
 [[redirects]]
   from = "/sitemap.xml"
