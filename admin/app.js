@@ -100,12 +100,25 @@
       opts.body = options.rawBody;
     }
     return fetch('/api/admin/' + path, opts).then(function (res) {
-      var ct = res.headers.get('content-type') || '';
-      var parse = ct.indexOf('json') !== -1 ? res.json() : res.text().then(function (t) { return t ? JSON.parse(t) : {}; });
+      var ct = (res.headers.get('content-type') || '').toLowerCase();
+      var parse;
+      if (ct.indexOf('json') !== -1) {
+        parse = res.json().catch(function () { return {}; });
+      } else {
+        parse = res.text().then(function (bodyText) {
+          var looksHtml = /^\s*</.test(bodyText);
+          throw new ApiError(
+            res.status,
+            looksHtml
+              ? 'Server returned an HTML page instead of JSON (HTTP ' + res.status + '). The API route is misconfigured on this deployment.'
+              : 'Server returned an unexpected response format (HTTP ' + res.status + ').'
+          );
+        });
+      }
       return parse.then(function (data) {
         if (!res.ok) {
           if (res.status === 401 && path !== 'login' && path !== 'me') sessionExpired();
-          throw new ApiError(res.status, (data && data.error) || ('Request failed (' + res.status + ')'));
+          throw new ApiError(res.status, (data && data.error) || ('Request failed (HTTP ' + res.status + ')'));
         }
         return data;
       });
@@ -195,9 +208,11 @@
       passEl.value = '';
       return enterDashboard();
     }, function (err) {
-      errBox.textContent = err.status === 429
+      var msg = err.status === 429
         ? 'Too many failed attempts. Try again in 15 minutes.'
         : (err.message || 'Sign-in failed.');
+      if (err.status && err.status !== 429) msg += ' [HTTP ' + err.status + ']';
+      errBox.textContent = msg;
       errBox.hidden = false;
       passEl.value = '';
       passEl.focus();

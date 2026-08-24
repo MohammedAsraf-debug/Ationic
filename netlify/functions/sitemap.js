@@ -76,9 +76,14 @@ exports.handler = async () => {
 
     urls.push('  <url><loc>' + SITE_URL + '/blog/</loc><lastmod>' + today + '</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>');
 
-    const posts = (await store.listPosts())
-      .filter((p) => p.status === 'published' && !(p.seo && p.seo.noindex))
-      .sort((a, b) => String(b.publishedAt || b.createdAt).localeCompare(String(a.publishedAt || a.createdAt)));
+    let posts = [];
+    try {
+      posts = (await store.listPosts())
+        .filter((p) => p.status === 'published' && !(p.seo && p.seo.noindex))
+        .sort((a, b) => String(b.publishedAt || b.createdAt).localeCompare(String(a.publishedAt || a.createdAt)));
+    } catch (storeErr) {
+      console.error('[sitemap] storage unavailable, serving static URLs only:', storeErr && storeErr.message);
+    }
 
     for (const p of posts) {
       const lastmod = String(p.updatedAt || p.publishedAt || p.createdAt || today).slice(0, 10);
@@ -100,6 +105,6 @@ exports.handler = async () => {
     };
   } catch (err) {
     console.error('[sitemap] error:', err && err.message);
-    return { statusCode: 500, body: '' };
+    return { statusCode: 500, headers: { 'Content-Type': 'text/plain' }, body: 'sitemap error' };
   }
 };

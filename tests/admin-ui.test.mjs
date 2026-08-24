@@ -178,6 +178,32 @@ await ok('loads /admin/ showing injected login screen', async () => {
   await page.waitForSelector('#loginForm', { state: 'visible' });
 });
 
+let htmlInterceptArmed = false;
+await page.route('**/api/**', async (route) => {
+  const req = route.request();
+  if (htmlInterceptArmed && req.method() === 'POST' && req.url().includes('/api/admin/login')) {
+    htmlInterceptArmed = false;
+    await route.fulfill({
+      status: 404,
+      contentType: 'text/html; charset=utf-8',
+      body: '<!DOCTYPE html><html><head><title>Page Not Found</title></head><body><h1>404</h1></body></html>'
+    });
+    return;
+  }
+  await route.fallback();
+});
+
+await ok('HTML response from API shows friendly error with HTTP status (no JSON crash)', async () => {
+  htmlInterceptArmed = true;
+  await page.fill('#l-user', 'admin');
+  await page.fill('#l-pass', 'whatever');
+  await page.click('#loginBtn');
+  await page.waitForFunction(() => {
+    const e = document.getElementById('loginError');
+    return e && !e.hidden && /HTTP 404/.test(e.textContent) && /HTML/i.test(e.textContent);
+  });
+});
+
 await ok('wrong password surfaces backend error inline', async () => {
   await page.fill('#l-user', 'admin');
   await page.fill('#l-pass', 'definitely-wrong');

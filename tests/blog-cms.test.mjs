@@ -539,6 +539,22 @@ await ok('sitemap merges published posts, excludes drafts & noindex', async () =
   assert.ok(!b.includes('/blog/xss-draft-post/'), 'draft xss post leaked');
 });
 
+await ok('sitemap degrades to valid static-only XML when storage is unavailable', async () => {
+  const originalList = store.listPosts;
+  store.listPosts = async () => { throw new Error('simulated storage outage'); };
+  try {
+    const res = await sitemapFn.handler({});
+    assert.equal(res.statusCode, 200);
+    assert.match(res.headers['Content-Type'], /xml/);
+    assert.ok(res.body.startsWith('<?xml'));
+    assert.ok(res.body.includes('<urlset'), 'urlset missing');
+    assert.ok(res.body.includes('/services/seo.html'), 'static URLs missing during degradation');
+    assert.ok(!res.body.includes('/blog/filler-post'), 'stale post URLs leaked during degradation');
+  } finally {
+    store.listPosts = originalList;
+  }
+});
+
 await ok('RSS feed serves published posts only', async () => {
   const res = await blogFn.handler(blogEvent('/rss.xml'));
   assert.equal(res.statusCode, 200);
