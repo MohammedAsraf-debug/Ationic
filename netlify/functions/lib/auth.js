@@ -17,9 +17,17 @@ function scryptHashPassword(password) {
   return 's2$' + salt.toString('hex') + '$' + hash.toString('hex');
 }
 
+function normalizeStoredHash(stored) {
+  let s = String(stored == null ? '' : stored).trim();
+  if (s.length >= 2 && ((s[0] === "'" && s[s.length - 1] === "'") || (s[0] === '"' && s[s.length - 1] === '"'))) {
+    s = s.slice(1, -1).trim();
+  }
+  return s;
+}
+
 function verifyPassword(password, stored) {
   try {
-    const parts = String(stored || '').split('$');
+    const parts = normalizeStoredHash(stored).split('$');
     if (parts.length !== 3 || parts[0] !== 's2') return false;
     const salt = Buffer.from(parts[1], 'hex');
     const expected = Buffer.from(parts[2], 'hex');
