@@ -932,3 +932,14 @@
   background: var(--black-4);
   border-radius: 3px
 }
+
+/* ---- Case Studies links section ---- */
+.case-studies-head{max-width:720px;margin:0 auto 48px;text-align:center}
+.case-studies-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 16px}
+.case-studies-head p{color:var(--white-dim);font-size:1.05rem;line-height:1.7;margin:0}
+.case-studies-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding:0;margin:0}
+.case-card{display:flex;flex-direction:column;gap:8px;height:100%;padding:24px;background:var(--black-2);border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease)}
+.case-card:hover,.case-card:focus-visible{border-color:rgba(255,212,0,.45);background:var(--black-3);transform:translateY(-3px)}
+.case-card__tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFD400;background:var(--yellow-soft);border:1px solid rgba(255,212,0,.25);border-radius:999px;padding:4px 10px}
+.case-card__title{font-size:1.15rem;font-weight:700;color:var(--white)}
+.case-card__desc{font-size:.92rem;line-height:1.6;color:var(--white-dim)}

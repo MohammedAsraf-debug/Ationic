@@ -382,7 +382,7 @@ function renderPortfolio(projects) {
     card.dataset.id = project.id;
     card.innerHTML = `
       <div class="portfolio-card__image">
-        <img src="${project.image}" alt="${project.title}" class="portfolio-card__img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="${project.image}" alt="${project.title}" width="1280" height="800" class="portfolio-card__img" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="portfolio-card__placeholder">
           <i class="fas fa-image"></i>
         </div>
@@ -439,16 +439,19 @@ function initFilter() {
 }
 
 /* ── Modal ── */
+let portfolioLastFocused = null;
+
 function openModal(id) {
   const project = portfolioData.find(p => p.id === id);
   if (!project) return;
   const modal = document.getElementById('portfolioModal');
   const body = document.getElementById('modalBody');
   document.body.style.overflow = 'hidden';
+  portfolioLastFocused = document.activeElement;
 
   body.innerHTML = `
     <div class="modal-hero" style="overflow:hidden;position:relative">
-      <img src="${project.image}" alt="${project.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="${project.image}" alt="${project.title}" width="1280" height="800" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:4rem;color:var(--black-4);background:linear-gradient(135deg,var(--black-3),var(--black-4))"><i class="fas fa-image"></i></div>
       <span class="modal-hero__badge">${project.categoryLabel}</span>
     </div>
@@ -494,12 +497,16 @@ function openModal(id) {
   `;
 
   modal.classList.add('active');
+  const closeBtn = document.getElementById('modalClose');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModal() {
   const modal = document.getElementById('portfolioModal');
+  if (!modal || !modal.classList.contains('active')) return;
   modal.classList.remove('active');
   document.body.style.overflow = '';
+  if (portfolioLastFocused && portfolioLastFocused.focus) portfolioLastFocused.focus();
 }
 
 /* ── Testimonial Slider ── */

@@ -8,6 +8,10 @@ node_modules/
 
 # Local environment / editor state
 .vs/
+.env
+
+# Local blog storage (dev fallback)
+.data/
 
 # OS
 Thumbs.db

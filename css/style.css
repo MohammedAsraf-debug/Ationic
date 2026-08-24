@@ -1864,7 +1864,13 @@ p {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 28px 24px;
-  transition: all 0.3s var(--ease-out)
+  transition: all 0.3s var(--ease-out);
+  min-width: 0
+}
+
+.value-card h3,
+.value-card p {
+  overflow-wrap: break-word
 }
 
 .value-card:hover {
@@ -2471,6 +2477,10 @@ p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px
+}
+
+.features-grid--team {
+  grid-template-columns: repeat(2, 1fr)
 }
 
 .feature-card {

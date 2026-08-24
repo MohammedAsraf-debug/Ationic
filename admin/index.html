@@ -1,17 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <title>Ationic Blog Manager</title>
-
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog Admin | Ationic</title>
+  <link rel="icon" href="/images/ationic.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/style.css">
 </head>
+<body class="admin-body blog-body">
+  <div class="admin-shell">
+    <header class="admin-topbar">
+      <a class="admin-brand" href="/admin/">Ationic<span>.</span> Blog Admin</a>
+      <div class="admin-topbar-actions">
+        <span id="whoami" style="color:var(--a-muted);font-size:.9rem"></span>
+        <a class="btn btn-outline btn-sm" href="/" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View site</a>
+        <button type="button" id="logoutBtn" class="btn btn-outline btn-sm"><i class="fas fa-right-from-bracket"></i> Log out</button>
+      </div>
+    </header>
 
-<body>
+    <div id="view-dashboard" hidden>
+      <div class="stats-row" id="statsRow"></div>
+      <div class="toolbar-row">
+        <input type="search" id="searchInput" placeholder="Search posts by title or slug&hellip;" aria-label="Search posts">
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="">All statuses</option>
+          <option value="published">Published</option>
+          <option value="draft">Drafts</option>
+        </select>
+        <button type="button" class="btn" id="newPostBtn"><i class="fas fa-plus"></i> New Post</button>
+      </div>
+      <table class="posts-table">
+        <thead><tr><th>Title</th><th>Status</th><th>Category</th><th>Updated</th><th style="text-align:right">Actions</th></tr></thead>
+        <tbody id="postsTbody"></tbody>
+      </table>
+      <div id="emptyMsg" class="empty-msg" hidden>No posts found. Click &ldquo;New Post&rdquo; to write your first article.</div>
+      <div class="pager" id="pager"></div>
+    </div>
 
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <div id="view-editor" hidden>
+      <div class="save-bar" style="margin:0 0 20px">
+        <button type="button" class="btn btn-outline btn-sm" id="backBtn"><i class="fas fa-arrow-left"></i> Back to list</button>
+        <span class="status-line" id="editorStatus" style="margin:0"></span>
+      </div>
+      <form id="editorForm" autocomplete="off">
+        <input type="hidden" id="f-originalSlug" value="">
+        <div class="card">
+          <input class="title-input" id="f-title" placeholder="Post title&hellip;" maxlength="120" aria-label="Post title" required>
+          <div class="char-note" id="titleCount">0 / 120</div>
+          <div class="slug-row">
+            <label for="f-slug">URL:</label>
+            <span>/blog/</span>
+            <input id="f-slug" spellcheck="false" aria-label="Slug">
+            <span class="hint" id="slugHint" style="color:var(--a-muted);font-size:.78rem"></span>
+          </div>
+        </div>
 
+        <div class="editor-grid" style="margin-top:20px">
+          <div>
+            <div class="rte-wrap" id="rteWrap">
+              <div class="rte-toolbar" role="toolbar" aria-label="Formatting toolbar">
+                <button type="button" data-cmd="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+                <button type="button" data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+                <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+                <button type="button" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+                <button type="button" data-block="h2" title="Heading 2">H2</button>
+                <button type="button" data-block="h3" title="Heading 3">H3</button>
+                <button type="button" data-block="h4" title="Heading 4">H4</button>
+                <button type="button" data-block="p" title="Paragraph">&para;</button>
+                <button type="button" data-cmd="insertUnorderedList" title="Bullet list"><i class="fas fa-list-ul"></i></button>
+                <button type="button" data-cmd="insertOrderedList" title="Numbered list"><i class="fas fa-list-ol"></i></button>
+                <button type="button" data-cmd="formatBlock" data-value="blockquote" title="Quote"><i class="fas fa-quote-left"></i></button>
+                <button type="button" data-cmd="formatBlock" data-value="pre" title="Code block">&lt;/&gt;</button>
+                <button type="button" id="linkBtn" title="Insert link"><i class="fas fa-link"></i></button>
+                <label class="upload-label" title="Insert image from URL"><i class="fas fa-image"></i><input type="file" id="imgFileInput" accept="image/png,image/jpeg,image/gif,image/webp" hidden></label>
+                <button type="button" data-cmd="insertHorizontalRule" title="Divider">&#8213;</button>
+                <button type="button" id="srcToggle" title="Toggle HTML source" style="margin-left:auto"><i class="fas fa-code"></i> HTML</button>
+              </div>
+              <div class="rte-editor" id="rteEditor" contenteditable="true" aria-label="Post body editor" spellcheck="true"></div>
+              <textarea class="rte-source" id="rteSource" aria-label="HTML source"></textarea>
+            </div>
+            <p class="hint" style="color:var(--a-muted);font-size:.78rem;margin-top:8px">Allowed elements are sanitized on save: paragraphs, headings, links, lists, quotes, code, images, tables.</p>
+          </div>
+
+          <aside>
+            <div class="card">
+              <h3>Publish</h3>
+              <div class="field">
+                <label for="f-status">Status</label>
+                <select id="f-status">
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                </select>
+              </div>
+              <div class="status-line" id="timestamps"></div>
+              <div class="save-bar" style="margin-top:0">
+                <button type="submit" class="btn" id="saveBtn"><i class="fas fa-floppy-disk"></i> Save</button>
+                <button type="button" class="btn btn-outline" id="previewBtn" disabled><i class="fas fa-eye"></i> Preview</button>
+              </div>
+              <div class="save-bar" style="margin-top:10px">
+                <button type="button" class="btn btn-danger btn-sm" id="deleteBtn" hidden><i class="fas fa-trash"></i> Delete post</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Organization</h3>
+              <div class="field">
+                <label for="f-category">Category</label>
+                <select id="f-category"></select>
+              </div>
+              <div class="field">
+                <label for="f-tags">Tags</label>
+                <input type="text" id="f-tags" placeholder="seo, google-ads, tips">
+                <p class="hint">Comma-separated, up to 10 tags.</p>
+              </div>
+              <div class="field">
+                <label for="f-author">Author</label>
+                <input type="text" id="f-author" value="Ationic Team" maxlength="80">
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Cover Image</h3>
+              <div class="field" style="margin-bottom:10px">
+                <label for="f-coverUrl">Image URL (upload below)</label>
+                <input type="text" id="f-coverUrl" placeholder="/uploads/cover.jpg" readonly style="color:var(--a-muted)">
+              </div>
+              <button type="button" class="btn btn-outline btn-sm" id="coverUploadBtn"><i class="fas fa-upload"></i> Upload cover</button>
+              <input type="file" id="coverFileInput" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+              <img id="coverPreview" class="cover-preview" alt="Cover preview">
+              <div class="field" style="margin-top:12px">
+                <label for="f-coverAlt">Alt text</label>
+                <input type="text" id="f-coverAlt" maxlength="300" placeholder="Describe the image">
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>SEO</h3>
+              <div class="field">
+                <label for="f-seoTitle">SEO title override</label>
+                <input type="text" id="f-seoTitle" maxlength="200">
+                <div class="char-note" id="seoTitleCount">0 / 60 recommended</div>
+              </div>
+              <div class="field">
+                <label for="f-seoDesc">Meta description</label>
+                <textarea id="f-seoDesc" rows="3" maxlength="320"></textarea>
+                <div class="char-note" id="seoDescCount">0 / 160 recommended</div>
+              </div>
+              <div class="switch-row">
+                <span class="lbl">Exclude from sitemap (noindex)</span>
+                <label class="switch"><input type="checkbox" id="f-noindex"><span class="slider"></span></label>
+              </div>
+              <div class="field" style="margin-top:14px">
+                <label for="f-excerpt">Excerpt override</label>
+                <textarea id="f-excerpt" rows="3" maxlength="400" placeholder="Auto-generated from body if empty"></textarea>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal">
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmText">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="confirmCancel">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmOk">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/admin/app.js" defer></script>
 </body>
 </html>
