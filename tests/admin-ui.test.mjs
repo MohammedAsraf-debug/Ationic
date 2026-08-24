@@ -109,7 +109,10 @@ async function lambdaFromApiRequest(request) {
   if (res.statusCode >= 400) {
     console.log('    [bridge] ' + method + ' ' + event.path + ' -> ' + res.statusCode + ' ' + String(res.body).slice(0, 160));
   }
-  const rawCookies = [].concat(res.headers['Set-Cookie'] || res.headers['set-cookie'] || []);
+  const rawCookies = [].concat(
+    (res.multiValueHeaders && res.multiValueHeaders['Set-Cookie']) || [],
+    res.headers['Set-Cookie'] || res.headers['set-cookie'] || []
+  );
   let jarId = null;
   if (rawCookies.length) {
     const current = getJarCookieHeader(cookieHeader);

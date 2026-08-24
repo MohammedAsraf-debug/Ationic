@@ -58,7 +58,10 @@ function blogEvent(pathSuffix, query) {
 }
 
 function parseSetCookies(res) {
-  const raw = res.headers['Set-Cookie'] || res.headers['set-cookie'] || [];
+  const raw = [].concat(
+    (res.multiValueHeaders && res.multiValueHeaders['Set-Cookie']) || [],
+    res.headers['Set-Cookie'] || res.headers['set-cookie'] || []
+  );
   const list = Array.isArray(raw) ? raw : [raw];
   const jar = {};
   for (const c of list) {

@@ -119,7 +119,7 @@ function clearSessionCookie() {
 }
 
 function csrfCookie(value) {
-  const parts = [CSRF_COOKIE + '=' + value, 'Path=/admin', 'SameSite=Lax', 'Max-Age=' + SESSION_TTL_SECONDS];
+  const parts = [CSRF_COOKIE + '=' + value, 'Path=/admin', 'HttpOnly', 'SameSite=Lax', 'Max-Age=' + SESSION_TTL_SECONDS];
   if (process.env.NETLIFY === 'true' || process.env.CONTEXT === 'production') parts.push('Secure');
   return parts.join('; ');
 }

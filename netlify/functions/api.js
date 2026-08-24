@@ -181,7 +181,11 @@ async function handleLogin(event) {
   clearFailures(ip);
   const token = auth.signSession(secret, 'admin');
   const csrf = auth.randomToken(24);
-  return json(200, { ok: true, csrfToken: csrf }, { 'Set-Cookie': [auth.sessionCookie(token), auth.csrfCookie(csrf)] });
+  const response = json(200, { ok: true, csrfToken: csrf });
+  response.multiValueHeaders = {
+    'Set-Cookie': [auth.sessionCookie(token), auth.csrfCookie(csrf)]
+  };
+  return response;
 }
 
 async function route(event) {
