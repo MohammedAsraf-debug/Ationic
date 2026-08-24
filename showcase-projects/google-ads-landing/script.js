@@ -103,3 +103,14 @@
     animateOnScroll();
 
 })();
+
+(function () {
+  var emailLinks = document.querySelectorAll('a[data-email]');
+  for (var i = 0; i < emailLinks.length; i++) {
+    var link = emailLinks[i];
+    var email = link.getAttribute('data-email');
+    if (!email) continue;
+    link.setAttribute('href', 'mailto:' + email);
+    if (link.hasAttribute('data-email-text')) link.textContent = email;
+  }
+})();

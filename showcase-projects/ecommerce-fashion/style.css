@@ -169,7 +169,6 @@ section { padding: 80px 0; }
 }
 .hero-bg {
     position: absolute; inset: 0;
-    background: url('assets/hero-campaign.jpg') center/cover no-repeat;
     background-color: #f0ebe3;
     opacity: 0.4;
 }

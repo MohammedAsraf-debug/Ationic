@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0B">
-<title>Contact Ationic – Free Strategy Call | Digital Marketing Agency</title>
+<title>Contact Ationic | Free Digital Marketing Strategy Call</title>
 <meta name="description" content="Contact Ationic for a free strategy session. Get expert digital marketing advice — performance marketing, Meta & Google Ads, SEO, branding, and web development.">
 <meta name="keywords" content="contact digital marketing agency, free strategy call, marketing consultation, Ationic contact, performance marketing inquiry">
 <meta name="author" content="Ationic Digital Agency">
@@ -35,8 +35,8 @@
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
   <!-- ── Google Analytics ── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMY0RW5Z3X"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JMY0RW5Z3X');</script>
 </head>
 <body>
 
@@ -91,43 +91,42 @@
         <h2 style="margin-bottom:24px">Send Us a Message</h2>
         <form id="ationic-contact-form">
           <div class="form-group">
-            <input type="text" id="from_name" name="from_name" placeholder="Your full name" required>
+            <label class="sr-only" for="from_name">Your full name</label>
+            <input type="text" id="from_name" name="from_name" placeholder="Your full name" autocomplete="name" required>
           </div>
           <div class="form-group">
-            <input type="email" id="from_email" name="from_email" placeholder="Your email address" required>
+            <label class="sr-only" for="from_email">Your email address</label>
+            <input type="email" id="from_email" name="from_email" placeholder="Your email address" autocomplete="email" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number" maxlength="10" inputmode="numeric" pattern="[6-9]{1}[0-9]{9}" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" required>
+            <label class="sr-only" for="phone">Your phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" maxlength="10" inputmode="numeric" pattern="[6-9]{1}[0-9]{9}" autocomplete="tel-national" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" required>
           </div>
           <div class="form-group">
-            <div class="custom-select" id="subjectSelect" tabindex="0" role="listbox" aria-label="Select a service">
-              <div class="custom-select__trigger" onclick="toggleSelect(this)">
-                <span class="custom-select__text">What service are you interested in?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="custom-select__options">
-                <div class="custom-select__option" data-value="" onclick="selectOption(this)">What service are you interested in?</div>
-                <div class="custom-select__option" data-value="Performance Marketing" onclick="selectOption(this)">Performance Marketing</div>
-                <div class="custom-select__option" data-value="Meta Ads" onclick="selectOption(this)">Meta Ads</div>
-                <div class="custom-select__option" data-value="Google Ads" onclick="selectOption(this)">Google Ads</div>
-                <div class="custom-select__option" data-value="Social Media Marketing" onclick="selectOption(this)">Social Media Marketing</div>
-                <div class="custom-select__option" data-value="Branding &amp; Content" onclick="selectOption(this)">Branding &amp; Content</div>
-                <div class="custom-select__option" data-value="Web Development" onclick="selectOption(this)">Web Development</div>
-                <div class="custom-select__option" data-value="Content Creation" onclick="selectOption(this)">Content Creation</div>
-                <div class="custom-select__option" data-value="Video Editing" onclick="selectOption(this)">Video Editing</div>
-                <div class="custom-select__option" data-value="Email Marketing" onclick="selectOption(this)">Email Marketing</div>
-                <div class="custom-select__option" data-value="SEO" onclick="selectOption(this)">SEO</div>
-                <div class="custom-select__option" data-value="Lead Generation" onclick="selectOption(this)">Lead Generation</div>
-                <div class="custom-select__option" data-value="E-commerce Marketing" onclick="selectOption(this)">E-commerce Marketing</div>
-                <div class="custom-select__option custom-select__option--custom" data-value="custom" onclick="selectOption(this)">Custom Service</div>
-              </div>
-              <input type="hidden" name="subject" id="subject" value="">
-            </div>
+            <label class="sr-only" for="subject">Service</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>What service are you interested in?</option>
+              <option value="Performance Marketing">Performance Marketing</option>
+              <option value="Meta Ads">Meta Ads</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Social Media Marketing">Social Media Marketing</option>
+              <option value="Branding &amp; Content">Branding &amp; Content</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Content Creation">Content Creation</option>
+              <option value="Video Editing">Video Editing</option>
+              <option value="Email Marketing">Email Marketing</option>
+              <option value="SEO">SEO</option>
+              <option value="Lead Generation">Lead Generation</option>
+              <option value="E-commerce Marketing">E-commerce Marketing</option>
+              <option value="custom">Custom Service</option>
+            </select>
           </div>
           <div class="form-group" id="custom-service-group" style="display:none">
+            <label class="sr-only" for="subject_custom">Type your service</label>
             <input type="text" id="subject_custom" name="subject_custom" placeholder="Type your service...">
           </div>
           <div class="form-group">
+            <label class="sr-only" for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your business and what you would like to achieve." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" id="form-submit-btn">
@@ -144,7 +143,7 @@
           <i class="fas fa-envelope"></i>
           <div>
             <h4>Email</h4>
-            <p><a href="mailto:hello@ationic.agency">hello@ationic.agency</a></p>
+            <p><a href="contact.html" data-email="hello@ationic.agency" data-email-text>Email us</a></p>
           </div>
         </div>
         <div class="contact-info-item">
@@ -180,7 +179,7 @@
       <p>Let's hop on a 15-minute call to understand your goals and see if we are a good fit. No strings attached.</p>
       <div class="cta-final__actions">
         <a href="https://wa.me/918680060912" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer nofollow"><i class="fab fa-whatsapp"></i> Book Your Free Call</a>
-        <a href="mailto:hello@ationic.agency" class="btn btn-outline btn-lg">Email Us Instead</a>
+        <a href="contact.html" data-email="hello@ationic.agency" class="btn btn-outline btn-lg">Email Us Instead</a>
       </div>
     </div>
   </div>
@@ -232,7 +231,7 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul class="footer-contact">
-          <li><i class="fas fa-envelope"></i> <a href="mailto:hello@ationic.agency">hello@ationic.agency</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="contact.html" data-email="hello@ationic.agency" data-email-text>Email us</a></li>
           <li><i class="fas fa-phone"></i> <a href="tel:+918680060912">+91 86800 60912</a></li>
           <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/918680060912" target="_blank" rel="noopener noreferrer nofollow">WhatsApp</a></li>
 
@@ -255,7 +254,7 @@
 </div>
 
 <!-- ── Back to Top ── -->
-<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
 
 <!-- ── Scripts ── -->

@@ -16,11 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Navbar Scroll Effect ──
   const navbar = document.getElementById('navbar');
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 60);
-    lastScroll = y;
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
   // ── Mobile Menu Toggle ──
@@ -110,7 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Form Handler ──
-  function handleFormSubmit(formEl, successMsg) {
+  function setFormMessage(container, html) {
+    if (!container) return;
+    container.innerHTML = html;
+    const msg = container.querySelector('[role="status"], [role="alert"]');
+    if (msg) msg.focus({ preventScroll: true });
+  }
+
+  function handleFormSubmit(formEl, successMsg, statusElId) {
     if (!formEl) return;
     formEl.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const original = btn.innerHTML;
       btn.innerHTML = 'Sending...';
       btn.disabled = true;
+      const status = document.getElementById(statusElId);
       document.getElementById('time') && (document.getElementById('time').value = new Date().toLocaleString());
       const subj = document.getElementById('subject');
       const custom = document.getElementById('subject_custom');
@@ -127,61 +132,108 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof emailjs !== 'undefined') {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
           .then(() => {
-            this.innerHTML = '<p style="color:var(--yellow);text-align:center;font-size:1rem;">' + successMsg + '</p>';
+            this.innerHTML = '<p role="status" tabindex="-1" style="color:var(--yellow);text-align:center;font-size:1rem;outline:none;">' + successMsg + '</p>';
+            const msg = this.querySelector('[role="status"]');
+            if (msg) msg.focus({ preventScroll: true });
           })
           .catch(() => {
             btn.innerHTML = original;
             btn.disabled = false;
-            const status = document.getElementById('form-status');
-            if (status) status.innerHTML = '<p style="color:#ff6b6b;">Failed to send. Please email us directly at hello@ationic.agency.</p>';
+            setFormMessage(status, '<p role="alert" style="color:#ff6b6b;">Failed to send. Please email us directly at hello@ationic.agency.</p>');
           });
       } else {
         btn.innerHTML = original;
         btn.disabled = false;
+        setFormMessage(status, '<p role="alert" style="color:#ff6b6b;">Email service is unavailable right now. Please email us directly at hello@ationic.agency.</p>');
       }
     });
   }
 
   // ── Contact Form ──
-  handleFormSubmit(document.getElementById('ationic-contact-form'), 'Thank you! We\'ll reach out within 2 hours.');
+  handleFormSubmit(document.getElementById('ationic-contact-form'), 'Thank you! We\'ll reach out within 2 hours.', 'form-status');
 
   // ── Popup ──
   let popupTimer = null;
+  let lastFocused = null;
   const contactPopup = document.getElementById('contactPopup');
   const popupBg = document.getElementById('popupBg');
   const popupCloseBtn = document.getElementById('popupClose');
 
-  function showPopup() {
-    if (contactPopup) contactPopup.classList.add('active');
-  }
-  function hidePopup() {
-    if (contactPopup) contactPopup.classList.remove('active');
+  function getFocusable(el) {
+    return Array.from(el.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+      .filter(n => n.offsetParent !== null);
   }
 
-  if (contactPopup && !sessionStorage.getItem('popupShown')) {
-    popupTimer = setTimeout(() => { showPopup(); sessionStorage.setItem('popupShown', '1'); }, 10000);
-    function dismissPopup() { hidePopup(); clearTimeout(popupTimer); sessionStorage.setItem('popupShown', '1'); }
+  function showPopup() {
+    if (!contactPopup) return;
+    lastFocused = document.activeElement;
+    contactPopup.classList.add('active');
+    contactPopup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const focusable = getFocusable(contactPopup);
+    (focusable[0] || contactPopup).focus();
+  }
+  function hidePopup() {
+    if (!contactPopup) return;
+    contactPopup.classList.remove('active');
+    contactPopup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  function dismissPopup() { hidePopup(); clearTimeout(popupTimer); sessionStorage.setItem('popupShown', '1'); }
+
+  if (contactPopup) {
+    contactPopup.setAttribute('aria-hidden', 'true');
+    if (!sessionStorage.getItem('popupShown')) {
+      popupTimer = setTimeout(() => { showPopup(); sessionStorage.setItem('popupShown', '1'); }, 10000);
+    }
     popupBg?.addEventListener('click', dismissPopup);
     popupCloseBtn?.addEventListener('click', dismissPopup);
+    document.addEventListener('keydown', function(e) {
+      if (!contactPopup.classList.contains('active')) return;
+      if (e.key === 'Escape') { dismissPopup(); return; }
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable(contactPopup);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
     document.getElementById('popup-contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('.btn');
       const original = btn.innerHTML;
       btn.innerHTML = 'Sending...';
       btn.disabled = true;
+      const btnWrap = btn.parentElement;
       if (typeof emailjs !== 'undefined') {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
           .then(() => {
-            this.innerHTML = '<p style="color:var(--yellow);text-align:center;font-size:1rem;">Thank you! We\'ll reach out within 2 hours.</p>';
+            this.innerHTML = '<p role="status" tabindex="-1" style="color:var(--yellow);text-align:center;font-size:1rem;outline:none;">Thank you! We\'ll reach out within 2 hours.</p>';
+            const msg = this.querySelector('[role="status"]');
+            if (msg) msg.focus({ preventScroll: true });
             setTimeout(hidePopup, 3000);
           })
           .catch(() => {
             btn.innerHTML = original;
             btn.disabled = false;
+            if (btnWrap) {
+              let err = btnWrap.querySelector('.popup-error');
+              if (!err) {
+                err = document.createElement('p');
+                err.className = 'popup-error';
+                err.setAttribute('role', 'alert');
+                btnWrap.appendChild(err);
+              }
+              err.textContent = 'Failed to send. Please email us directly at hello@ationic.agency.';
+            }
           });
       } else {
         btn.innerHTML = original;
         btn.disabled = false;
+        alert('Email service is unavailable right now. Please email us directly at hello@ationic.agency.');
       }
     });
   }
@@ -210,44 +262,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ── Custom Select ── */
-function toggleSelect(el) {
-  const parent = el.closest('.custom-select');
-  if (!parent) return;
-  const isOpen = parent.classList.contains('open');
-  document.querySelectorAll('.custom-select.open').forEach(s => s.classList.remove('open'));
-  if (!isOpen) parent.classList.add('open');
-}
-
-function selectOption(el) {
-  const parent = el.closest('.custom-select');
-  if (!parent) return;
-  const val = el.dataset.value;
-  const text = el.textContent.trim();
-  parent.querySelectorAll('.custom-select__option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  const trigger = parent.querySelector('.custom-select__text');
-  if (trigger) {
-    trigger.textContent = text;
-    if (val === '') {
-      trigger.classList.add('placeholder');
-    } else {
-      trigger.classList.remove('placeholder');
-    }
-  }
-  const hidden = parent.querySelector('input[type="hidden"]');
-  if (hidden) hidden.value = val;
-  parent.classList.remove('open');
-  const customGroup = document.getElementById('custom-service-group');
-  const customInput = document.getElementById('subject_custom');
-  if (customGroup && customInput) {
-    customGroup.style.display = val === 'custom' ? 'block' : 'none';
-    if (val !== 'custom') customInput.value = '';
-  }
-}
-
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.custom-select')) {
-    document.querySelectorAll('.custom-select.open').forEach(s => s.classList.remove('open'));
+// ── Native Service Select ├─ Custom Service reveal ──
+document.addEventListener('change', function(e) {
+  if (e.target && e.target.id === 'subject') {
+    const showCustom = e.target.value === 'custom';
+    const customGroup = document.getElementById('custom-service-group');
+    const customInput = document.getElementById('subject_custom');
+    if (customGroup) customGroup.style.display = showCustom ? 'block' : 'none';
+    if (customInput && !showCustom) customInput.value = '';
   }
 });
+
+(function () {
+  var emailLinks = document.querySelectorAll('a[data-email]');
+  for (var i = 0; i < emailLinks.length; i++) {
+    var link = emailLinks[i];
+    var email = link.getAttribute('data-email');
+    if (!email) continue;
+    link.setAttribute('href', 'mailto:' + email);
+    if (link.hasAttribute('data-email-text')) link.textContent = email;
+  }
+})();

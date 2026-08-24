@@ -1,3 +1,14 @@
+# Project-level ignore rules (keep)
 /bloom-cosmetics/*
 /nexus/*
 fintech.html
+
+# Dependencies
+node_modules/
+
+# Local environment / editor state
+.vs/
+
+# OS
+Thumbs.db
+.DS_Store
