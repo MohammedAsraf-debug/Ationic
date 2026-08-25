@@ -17,7 +17,7 @@
                 ${o?`<div class="color-swatches">${o}</div>`:""}
             </div>
         </div>
-    `}function applyPromo(){const e=document.querySelector(".cart-promo input"),t=document.querySelector(".promo-msg");if(!e)return;e.value.trim().toUpperCase()==="VELOUR15"?(state.appliedPromo=.15,t&&(t.textContent="15% discount applied!",t.className="promo-msg success"),renderCartPage()):t&&(t.textContent="Invalid promo code",t.className="promo-msg error"),e.value=""}function renderCartPage(){const e=document.getElementById("cartPageContent");if(!e)return;if(state.cart.length===0){e.innerHTML='<div class="cart-empty-page"><p>Your cart is empty</p><a href="category.html" class="btn btn-outline">Start Shopping</a></div>';return}let t=0;const a=state.cart.map((i,n)=>{const l=i.sale||i.price;return t+=l*i.qty,`
+    `}function applyPromo(){const e=document.querySelector(".cart-promo input"),t=document.querySelector(".promo-msg");e&&(e.value.trim().toUpperCase()==="VELOUR15"?(state.appliedPromo=.15,t&&(t.textContent="15% discount applied!",t.className="promo-msg success"),renderCartPage()):t&&(t.textContent="Invalid promo code",t.className="promo-msg error"),e.value="")}function renderCartPage(){const e=document.getElementById("cartPageContent");if(!e)return;if(state.cart.length===0){e.innerHTML='<div class="cart-empty-page"><p>Your cart is empty</p><a href="category.html" class="btn btn-outline">Start Shopping</a></div>';return}let t=0;const a=state.cart.map((i,n)=>{const l=i.sale||i.price;return t+=l*i.qty,`
             <div class="cart-page-item">
                 <div class="cart-page-item-img">${i.img}</div>
                 <div class="cart-page-item-info">
