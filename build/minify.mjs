@@ -14,7 +14,7 @@ function collect(dir, ext, out = []) {
     if (name === 'node_modules' || name.startsWith('.')) continue;
     const full = join(dir, name);
     if (statSync(full).isDirectory()) {
-      if (['admin', 'bulkmailer', 'content'].includes(name) && dir === ROOT) continue;
+      if (['admin', 'bulkmailer', 'content', 'netlify'].includes(name) && dir === ROOT) continue;
       collect(full, ext, out);
     } else if (name.endsWith(ext)) {
       out.push(full);

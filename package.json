@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "node build/minify.mjs"
+    "build": "node build/minify.mjs",
+    "test": "node tests/wordpress-blog.test.mjs && node tests/qa-check.mjs && node tests/qa-functional.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.25.12",
