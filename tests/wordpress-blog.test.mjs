@@ -68,6 +68,26 @@ const POSTS = [
     modified_gmt: OLDEST,
     title: { rendered: 'Oldest Post' },
     content: { rendered: '<p>Fine content.</p><script>alert("xss")</script><p onclick="evil()">Click</p>' }
+  }),
+  wpPost({
+    id: 104,
+    slug: 'why-your-website-gets-traffic-but-no-leads',
+    date: '2026-08-25T09:00:00',
+    date_gmt: '2026-08-25T09:00:00',
+    modified: '2026-08-25T09:00:00',
+    modified_gmt: '2026-08-25T09:00:00',
+    title: { rendered: 'Why Your Website Gets Traffic but No Leads' },
+    excerpt: { rendered: '<p>Here&#8217;s how to turn visitors into enquiries.</p>' },
+    content: {
+      rendered: '**Here&#8217;s the problem:** your website gets traffic but no leads. It&#8217;s frustrating.\n\n' +
+        '1. Your Website Doesn&#8217;t Clearly Explain What You Do\n\n' +
+        'Here&#8217;s why that matters. The goal should not simply be: **More Traffic**.\n\n' +
+        '- What you offer\n- Who you help\n- What problem you solve\n\n' +
+        'Key Takeaway:\nA clear value proposition turns visitors into leads.\n\n' +
+        'Why Is My Website Getting Traffic but No Leads?\nYour website may have issues with traffic quality and page experience.\n\n' +
+        'Need a Website That Works as a Lead-Generation System?\nAtionic helps businesses grow and convert.'
+    },
+    categories: [7]
   })
 ];
 
@@ -212,6 +232,70 @@ await ok('WP HTML is sanitized: script tags and inline handlers stripped', async
   assert.ok(!res.body.includes('<script>alert', 'script tag survived'), 'script tag survived sanitization');
   assert.ok(!res.body.includes('onclick='), 'inline handler survived');
   assert.ok(res.body.includes('Fine content.'), 'legit content lost');
+});
+
+// ----------------------- entity decoding & smart formatting ------------------
+
+await ok('HTML entities are decoded end-to-end (Here&#8217;s -> Here\u2019s)', async () => {
+  const res = await blogFn.handler(event('/why-your-website-gets-traffic-but-no-leads'));
+  assert.equal(res.statusCode, 200);
+  const b = res.body;
+  assert.ok(!b.includes('Here&#8217;s'), 'raw numeric entity &#8217; leaked into rendered HTML');
+  assert.ok(!b.includes('&amp;#8217;'), 'double-encoded entity leaked');
+  assert.ok(!b.includes('Doesn&#8217;t'), 'Doesn&#8217;t leaked');
+  assert.ok(b.includes('Here\u2019s the problem'), 'smart quote not decoded to right single quote');
+  assert.ok(b.includes('Doesn\u2019t'), 'doesn\u2019t not decoded');
+  assert.ok(b.includes('It\u2019s frustrating'), 'It\u2019s not decoded');
+});
+
+await ok('plain/AI content is auto-formatted into semantic HTML', async () => {
+  const res = await blogFn.handler(event('/why-your-website-gets-traffic-but-no-leads'));
+  const b = res.body;
+  assert.ok(b.includes('<strong>Here\u2019s the problem:</strong>'), 'bold paragraph not formatted');
+  assert.ok(b.includes('<strong>More Traffic</strong>'), 'inline bold not applied');
+  assert.ok(b.includes('<li>What you offer</li>'), 'bullet list item missing');
+  assert.ok(b.includes('<ul>'), 'bullet list not detected');
+  assert.ok(b.includes('key-takeaway'), 'key takeaway callout not rendered');
+  assert.ok(b.includes('cta-block'), 'CTA block not rendered');
+  assert.ok(b.includes('h3'), 'FAQ heading not rendered as h3');
+  assert.ok(b.includes('<h3>1. Your Website Doesn\u2019t Clearly Explain What You Do</h3>'), 'numbered section not an h3');
+});
+
+await ok('consecutive numbered steps render as an ordered <ol>', async () => {
+  const { normalizePost } = require('../netlify/functions/lib/wp.js');
+  const p = normalizePost({
+    id: 901, slug: 'steps', title: { rendered: 'T' },
+    content: { rendered: '1. Open the file\n2. Edit the content\n3. Publish' },
+    date: '2026-01-01', date_gmt: '2026-01-01T00:00:00',
+    modified: '2026-01-01', modified_gmt: '2026-01-01T00:00:00',
+    categories: [], tags: [], _embedded: {}
+  });
+  assert.ok(p.bodyHtml.includes('<ol>'), 'ordered list not rendered');
+  assert.ok(p.bodyHtml.includes('<li>Open the file</li>'), 'ordered list item missing');
+  assert.ok(!/\bh3\b/.test(p.bodyHtml), 'step list wrongly escaped into headings');
+});
+
+await ok('already-formatted WordPress HTML is NOT double-processed', async () => {
+  // "full article" post has real <h2>/<strong> HTML; it must pass through intact
+  const res = await blogFn.handler(event('/10-digital-marketing-strategies-to-grow-your-business-in-2026'));
+  const b = res.body;
+  assert.ok(b.includes('<h2>Strategy One</h2>'), 'existing h2 corrupted');
+  assert.ok(b.includes('<strong>', 'existing strong tag lost'), 'existing strong not preserved');
+  assert.ok(!b.includes('&lt;h2&gt;'), 'existing HTML escaped into visible text');
+});
+
+await ok('markdown table is rendered as an HTML table in plain-text posts', async () => {
+  const raw = '| Mistake | Fix |\n|---|---|\n| No CTA | Add one |';
+  const { normalizePost } = require('../netlify/functions/lib/wp.js');
+  const p = normalizePost({
+    id: 900, slug: 'table-test', title: { rendered: 'T' },
+    content: { rendered: raw }, date: '2026-01-01', date_gmt: '2026-01-01T00:00:00',
+    modified: '2026-01-01', modified_gmt: '2026-01-01T00:00:00',
+    categories: [], tags: [], _embedded: {}
+  });
+  assert.ok(p.bodyHtml.includes('<table>'), 'table not rendered');
+  assert.ok(p.bodyHtml.includes('<th>Mistake</th>'), 'table header missing');
+  assert.ok(p.bodyHtml.includes('<td>Add one</td>'), 'table cell missing');
 });
 
 // ------------------------------ slug routing ---------------------------------

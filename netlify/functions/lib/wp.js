@@ -10,6 +10,7 @@
 // Only published posts are returned by default (WordPress unauthenticated API filter).
 
 const sanitize = require('./sanitize');
+const { smartFormat } = require('./formatter');
 const { isValidSlug, slugify } = require('./util');
 
 const FRESH_MS = 60 * 1000;        // cache fresh window: new WP posts appear within ~60s
@@ -102,7 +103,11 @@ function normalizePost(raw) {
   const title = cleanText(sanitize.decodeEntities(raw.title && raw.title.rendered)) || '(Untitled)';
   const excerptHtml = raw.excerpt && raw.excerpt.rendered ? String(raw.excerpt.rendered) : '';
   const bodyHtmlRaw = raw.content && raw.content.rendered ? String(raw.content.rendered) : '';
-  const bodyHtml = sanitize.sanitizeHtml(bodyHtmlRaw);
+  // Content flows through the smart formatter: it decodes HTML entities
+  // (fixing literal &#8217; etc.), detects Markdown vs. already-valid HTML
+  // (never double-processing), and converts plain/AI text into semantic HTML.
+  // The formatter returns only sanitized output.
+  const bodyHtml = smartFormat(bodyHtmlRaw);
 
   const { stripTags, makeExcerpt } = require('./util');
   const bodyText = stripTags(bodyHtml);
