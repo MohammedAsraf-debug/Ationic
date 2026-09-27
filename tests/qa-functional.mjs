@@ -44,9 +44,10 @@ const browser = await chromium.launch();
   await p.close();
 }
 
-// ── Index: popup dialog behavior ──
+// ── Index: popup dialog behavior (45s timer; test uses a fast override) ──
 {
   const p = await browser.newPage();
+  await p.addInitScript(() => { window.ATONIC_POPUP_DELAY_MS = 600; });
   await p.goto(url('index.html'), { waitUntil: 'load' });
   await p.evaluate(() => sessionStorage.clear());
   await p.reload({ waitUntil: 'load' });
@@ -56,10 +57,13 @@ const browser = await chromium.launch();
   ok('popup: aria-modal=true', (await p.locator('#contactPopup .popup-modal').getAttribute('aria-modal')) === 'true');
   ok('popup: hidden on load', await popup.isHidden());
 
-  // force open via timer path: emulate by calling showPopup through re-add class
-  await p.waitForTimeout(10600); // auto-open after 10s
+  // production script defaults to a 45s non-intrusive delay (override only in test)
+  const fs = await import('fs');
+  const scriptSrc = fs.readFileSync(new URL('../js/script.js', import.meta.url), 'utf8');
+  ok('popup: auto-open delay defaults to 45s (non-intrusive)', scriptSrc.includes('ATONIC_POPUP_DELAY_MS||45e3'));
+  await p.waitForTimeout(1500); // fast override fires the real open path
   const opened = await popup.evaluate(el => el.classList.contains('active'));
-  ok('popup: auto-opens after ~10s', opened);
+  ok('popup: opens on schedule', opened);
 
   // focus lands inside dialog
   const focusInPopup = await p.evaluate(() => document.getElementById('contactPopup').contains(document.activeElement));

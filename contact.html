@@ -7,7 +7,6 @@
 <meta name="theme-color" content="#0B0B0B">
 <title>Contact Ationic | Free Digital Marketing Strategy Call</title>
 <meta name="description" content="Contact Ationic for a free strategy session. Get expert digital marketing advice — performance marketing, Meta & Google Ads, SEO, branding, and web development.">
-<meta name="keywords" content="contact digital marketing agency, free strategy call, marketing consultation, Ationic contact, performance marketing inquiry">
 <meta name="author" content="Ationic Digital Agency">
 <meta name="robots" content="index, follow">
 <!-- ── Open Graph / Social ── -->
@@ -16,14 +15,14 @@
 <meta property="og:url" content="https://ationic.agency/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ationic">
-<meta property="og:image" content="https://ationic.agency/images/ationic.png">
+<meta property="og:image" content="https://ationic.agency/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact Ationic – Free Strategy Call | Digital Marketing Agency">
 <meta name="twitter:description" content="Book a free strategy call with Ationic. Expert digital marketing help for your business.">
-<meta name="twitter:image" content="https://ationic.agency/images/ationic.png">
+<meta name="twitter:image" content="https://ationic.agency/images/og-image.jpg">
 <!-- ── Canonical & Favicon ── -->
 <link rel="canonical" href="https://ationic.agency/contact.html">
-<link rel="icon" href="images/ationic.png" type="image/png">
+<link rel="icon" href="images/A.png" type="image/png">
 <!-- ── Fonts & Icons ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +33,7 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-  <!-- ── Google Analytics ── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMY0RW5Z3X"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JMY0RW5Z3X');</script>
+  
 </head>
 <body>
 
@@ -90,7 +87,39 @@
     <div class="contact-grid">
       <div class="contact-form">
         <h2 style="margin-bottom:24px">Send Us a Message</h2>
+        <div class="package-selected" id="package-selected" hidden>
+          <div class="package-selected__body">
+            <span class="package-selected__tag">Selected Package</span>
+            <h3 id="package-card-name">Package</h3>
+            <p class="package-selected__category" id="package-card-category">Category</p>
+            <p class="package-selected__price" id="package-card-price">Price</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="package-change-btn" aria-expanded="false" aria-controls="package-change-wrap">Change Package</button>
+          <div class="package-selected__change" id="package-change-wrap" hidden>
+            <label class="sr-only" for="package-change-select">Choose a package</label>
+            <select id="package-change-select">
+              <option value="">General enquiry (no package)</option>
+              <optgroup label="Digital Marketing — monthly">
+                <option value="starter">Starter — ₹14,999/month</option>
+                <option value="growth-partner">Growth Partner — ₹21,999/month</option>
+                <option value="full-scale">Full Scale — ₹29,999/month</option>
+              </optgroup>
+              <optgroup label="Web Development — one time">
+                <option value="business-website">Business Website — ₹7,000</option>
+                <option value="custom-web-development">Custom Web Development — ₹14,999</option>
+                <option value="enterprise-web-development">Enterprise Web Development — ₹29,999</option>
+              </optgroup>
+            </select>
+            <p class="package-selected__links"><a href="services.html#digital-marketing-packages">Digital Marketing Packages</a> · <a href="services/web-development.html#web-packages">Web Development Packages</a></p>
+          </div>
+        </div>
         <form id="ationic-contact-form">
+          <input type="hidden" name="package_name" id="package_name" value="">
+          <input type="hidden" name="package_category" id="package_category" value="">
+          <input type="hidden" name="package_price" id="package_price" value="">
+          <input type="hidden" name="package_billing" id="package_billing" value="">
+          <input type="hidden" name="package_id" id="package_id" value="">
+          <input type="hidden" name="package_source" id="package_source" value="">
           <div class="form-group">
             <label class="sr-only" for="from_name">Your full name</label>
             <input type="text" id="from_name" name="from_name" placeholder="Your full name" autocomplete="name" required>
@@ -101,7 +130,7 @@
           </div>
           <div class="form-group">
             <label class="sr-only" for="phone">Your phone number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number" maxlength="10" inputmode="numeric" pattern="[6-9]{1}[0-9]{9}" autocomplete="tel-national" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" required>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" inputmode="tel" minlength="7" maxlength="20" autocomplete="tel" required>
           </div>
           <div class="form-group">
             <label class="sr-only" for="subject">Service</label>
@@ -127,9 +156,24 @@
             <input type="text" id="subject_custom" name="subject_custom" placeholder="Type your service...">
           </div>
           <div class="form-group">
+            <label class="sr-only" for="website">Your website URL (for free audit)</label>
+            <input type="url" id="website" name="website" placeholder="Your website URL — for a free audit (optional)" inputmode="url" autocomplete="url">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="preferred_time">Preferred contact time</label>
+            <select id="preferred_time" name="preferred_time">
+              <option value="" selected>Preferred contact time (optional)</option>
+              <option value="Morning IST">Morning IST (9am–12pm)</option>
+              <option value="Afternoon IST">Afternoon IST (12–5pm)</option>
+              <option value="Evening IST">Evening IST (5–7pm)</option>
+              <option value="WhatsApp anytime">WhatsApp anytime</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="sr-only" for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your business and what you would like to achieve." required></textarea>
           </div>
+          <p style="font-size:.8rem;color:var(--white-muted);margin-bottom:16px"><i class="fas fa-lock"></i> No spam, no sharing your data. We reply within 2 business hours (Mon–Sat, 9am–7pm IST).</p>
           <button type="submit" class="btn btn-primary" id="form-submit-btn">
             <span>Send Message</span>
             <i class="fas fa-paper-plane" style="margin-left:10px"></i>
@@ -144,7 +188,7 @@
           <i class="fas fa-envelope"></i>
           <div>
             <h4>Email</h4>
-            <p><a href="contact.html" data-email="hello@ationic.agency" data-email-text>Email us</a></p>
+            <p><a href="mailto:hello@ationic.agency" data-email="hello@ationic.agency">hello@ationic.agency</a></p>
           </div>
         </div>
         <div class="contact-info-item">
@@ -159,6 +203,20 @@
           <div>
             <h4>WhatsApp</h4>
             <p><a href="https://wa.me/918680060912" target="_blank" rel="noopener noreferrer nofollow">Chat with us</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon–Sat, 9:00am–7:00pm IST<br>Replies within 2 business hours</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Service Area</h4>
+            <p>Based in India · working with clients worldwide (remote-first)</p>
           </div>
         </div>
         <div class="contact-cta-box">
@@ -207,7 +265,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li><li><a href="/blog/">Blog</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -232,7 +290,7 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul class="footer-contact">
-          <li><i class="fas fa-envelope"></i> <a href="contact.html" data-email="hello@ationic.agency" data-email-text>Email us</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:hello@ationic.agency" data-email="hello@ationic.agency">hello@ationic.agency</a></li>
           <li><i class="fas fa-phone"></i> <a href="tel:+918680060912">+91 86800 60912</a></li>
           <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/918680060912" target="_blank" rel="noopener noreferrer nofollow">WhatsApp</a></li>
 
@@ -259,6 +317,9 @@
 
 
 <!-- ── Scripts ── -->
+<script src="js/analytics.js" defer data-clarity-off></script>
+<script src="js/enhancements.js" defer></script>
+<script src="js/packages.js" defer></script>
 <script src="js/script.js" defer></script>
 </body>
 </html>

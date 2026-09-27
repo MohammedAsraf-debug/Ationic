@@ -39,7 +39,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-    # NOTE: 'unsafe-inline' for script-src is required today because the site
-    # ships inline GA/Clarity config plus inline oninput handlers. Migrating
-    # these to hashes/nonces would allow a stricter policy.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://api.emailjs.com https://*.clarity.ms wss://*.clarity.ms https://identity.netlify.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://api.emailjs.com; upgrade-insecure-requests"
+    # Inline analytics/oninput handlers migrated to js/analytics.js +
+    # js/enhancements.js, so script-src no longer needs 'unsafe-inline'.
+    # style-src keeps it (many scoped inline styles + Font Awesome).
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://api.emailjs.com https://*.clarity.ms wss://*.clarity.ms https://identity.netlify.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://api.emailjs.com; upgrade-insecure-requests"

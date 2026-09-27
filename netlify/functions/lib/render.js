@@ -84,7 +84,7 @@ function layout(opts) {
   const articleMeta =
     (opts.articlePublished ? '<meta property="article:published_time" content="' + escapeHtml(opts.articlePublished) + '">\n' : '') +
     (opts.articleModified ? '<meta property="article:modified_time" content="' + escapeHtml(opts.articleModified) + '">\n<meta property="og:updated_time" content="' + escapeHtml(opts.articleModified) + '">\n' : '');
-  const ogImage = opts.ogImage ? (opts.ogImage.startsWith('http') ? opts.ogImage : SITE_URL + opts.ogImage) : SITE_URL + '/images/ationic.png';
+  const ogImage = opts.ogImage ? (opts.ogImage.startsWith('http') ? opts.ogImage : SITE_URL + opts.ogImage) : SITE_URL + '/images/og-image.jpg';
   const jsonLd = opts.jsonLd ? '<script type="application/ld+json">' + JSON.stringify(opts.jsonLd).replace(/</g, '\\u003c') + '</script>' : '';
 
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
@@ -96,7 +96,7 @@ function layout(opts) {
     '<meta name="author" content="Ationic Digital Agency">\n' +
     robots + '\n' +
     '<link rel="canonical" href="' + escapeHtml(canonical) + '">\n' +
-    '<link rel="icon" href="/images/ationic.png" type="image/png">\n' +
+    '<link rel="icon" href="/images/A.png" type="image/png">\n' +
     '<meta property="og:title" content="' + title + '">\n' +
     '<meta property="og:description" content="' + description + '">\n' +
     '<meta property="og:url" content="' + escapeHtml(canonical) + '">\n' +
@@ -116,12 +116,12 @@ function layout(opts) {
     '<link rel="stylesheet" href="/css/blog.css">\n' +
     '<link rel="alternate" type="application/rss+xml" title="Ationic Blog RSS" href="' + SITE_URL + '/blog/rss.xml">\n' +
     jsonLd + '\n' +
-    '<script async src="https://www.googletagmanager.com/gtag/js?id=G-JMY0RW5Z3X"></script>\n' +
-    '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JMY0RW5Z3X");</script>\n' +
+    '<script src="/js/analytics.js" defer data-clarity-off></script>\n' +
     '</head>\n<body class="blog-body">\n' +
     nav(opts.active || 'blog') +
     '<main>\n' + opts.content + '\n</main>\n' +
     footer() +
+    '<script src="/js/enhancements.js" defer></script>\n' +
     '<script src="/js/script.js" defer></script>\n' +
     '</body>\n</html>';
 }
