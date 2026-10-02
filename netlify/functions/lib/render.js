@@ -18,9 +18,11 @@ function nav(active) {
     link('/blog/', 'Blog', 'blog') +
     link('/about.html', 'About', 'about') +
     link('/contact.html', 'Contact', 'contact') +
+    '<li class="theme-menu-item" role="none"><button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i><span class="theme-toggle__text">Light mode</span></button></li>' +
     '</ul></nav>' +
     '<div class="nav-actions">' +
     '<a href="/contact.html" class="btn btn-primary btn-sm">Free Consultation</a>' +
+    '<button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i></button>' +
     '<button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>' +
     '</div>' +
     '</div>' +
@@ -91,6 +93,7 @@ function layout(opts) {
     '<meta charset="UTF-8">\n' +
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
     '<meta name="theme-color" content="#0B0B0B">\n' +
+    '<script src="/js/theme-init.js"></script>\n' +
     '<title>' + title + '</title>\n' +
     '<meta name="description" content="' + description + '">\n' +
     '<meta name="author" content="Ationic Digital Agency">\n' +
@@ -122,6 +125,7 @@ function layout(opts) {
     '<main>\n' + opts.content + '\n</main>\n' +
     footer() +
     '<script src="/js/enhancements.js" defer></script>\n' +
+    '<script src="/js/theme.js" defer></script>\n' +
     '<script src="/js/script.js" defer></script>\n' +
     '</body>\n</html>';
 }

@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0B">
+  <script src="js/theme-init.js"></script>
 <title>Contact Ationic | Free Digital Marketing Strategy Call</title>
 <meta name="description" content="Contact Ationic for a free strategy session. Get expert digital marketing advice — performance marketing, Meta & Google Ads, SEO, branding, and web development.">
 <meta name="author" content="Ationic Digital Agency">
@@ -54,11 +55,13 @@
           <li role="none"><a href="/blog/" class="nav-link" role="menuitem">Blog</a></li>
           <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
           <li role="none"><a href="contact.html" class="nav-link active" role="menuitem">Contact</a></li>
+          <li class="theme-menu-item" role="none"><button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i><span class="theme-toggle__text">Light mode</span></button></li>
       </ul>
     </nav>
     <div class="nav-actions">
       <a href="contact.html" class="btn btn-primary btn-sm">Free Consultation</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i></button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
     </div>
@@ -173,7 +176,7 @@
             <label class="sr-only" for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your business and what you would like to achieve." required></textarea>
           </div>
-          <p style="font-size:.8rem;color:var(--white-muted);margin-bottom:16px"><i class="fas fa-lock"></i> No spam, no sharing your data. We reply within 2 business hours (Mon–Sat, 9am–7pm IST).</p>
+          <p style="font-size:.8rem;color:var(--white-muted);margin-bottom:16px"><i class="fas fa-lock"></i> No spam, no sharing your data. We are open 24/7 and reply within 2 hours.</p>
           <button type="submit" class="btn btn-primary" id="form-submit-btn">
             <span>Send Message</span>
             <i class="fas fa-paper-plane" style="margin-left:10px"></i>
@@ -209,7 +212,7 @@
           <i class="fas fa-clock"></i>
           <div>
             <h4>Business Hours</h4>
-            <p>Mon–Sat, 9:00am–7:00pm IST<br>Replies within 2 business hours</p>
+            <p>Open 24/7, every day<br>Replies within 2 hours</p>
           </div>
         </div>
         <div class="contact-info-item">
@@ -319,6 +322,7 @@
 <!-- ── Scripts ── -->
 <script src="js/analytics.js" defer data-clarity-off></script>
 <script src="js/enhancements.js" defer></script>
+<script src="js/theme.js" defer></script>
 <script src="js/packages.js" defer></script>
 <script src="js/script.js" defer></script>
 </body>

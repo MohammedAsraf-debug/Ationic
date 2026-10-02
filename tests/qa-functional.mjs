@@ -47,10 +47,10 @@ const browser = await chromium.launch();
 // ── Index: popup dialog behavior (45s timer; test uses a fast override) ──
 {
   const p = await browser.newPage();
-  await p.addInitScript(() => { window.ATONIC_POPUP_DELAY_MS = 600; });
-  await p.goto(url('index.html'), { waitUntil: 'load' });
-  await p.evaluate(() => sessionStorage.clear());
-  await p.reload({ waitUntil: 'load' });
+  await p.addInitScript(() => { window.ATONIC_POPUP_DELAY_MS = 2500; });
+  // Fresh context: domcontentloaded returns right after the 2.5s test timer
+  // is scheduled, so the hidden assertion is deterministic (load timing varies).
+  await p.goto(url('index.html'), { waitUntil: 'domcontentloaded' });
   const popup = p.locator('#contactPopup');
 
   ok('popup: role=dialog present', (await p.locator('#contactPopup .popup-modal').getAttribute('role')) === 'dialog');
@@ -61,7 +61,7 @@ const browser = await chromium.launch();
   const fs = await import('fs');
   const scriptSrc = fs.readFileSync(new URL('../js/script.js', import.meta.url), 'utf8');
   ok('popup: auto-open delay defaults to 45s (non-intrusive)', scriptSrc.includes('ATONIC_POPUP_DELAY_MS||45e3'));
-  await p.waitForTimeout(1500); // fast override fires the real open path
+  await p.waitForFunction(() => document.getElementById('contactPopup').classList.contains('active'), null, { timeout: 15000 });
   const opened = await popup.evaluate(el => el.classList.contains('active'));
   ok('popup: opens on schedule', opened);
 

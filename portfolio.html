@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0B0B">
+  <script src="js/theme-init.js"></script>
   <title>Portfolio – Our Work | Ationic Digital Marketing Agency</title>
   <meta name="description" content="Explore Ationic's portfolio of digital projects — web design, development, branding, SEO, and marketing campaigns that drive measurable results.">
   <meta name="author" content="Ationic Digital Agency">
@@ -46,11 +47,13 @@
           <li role="none"><a href="/blog/" class="nav-link" role="menuitem">Blog</a></li>
         <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
         <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+          <li class="theme-menu-item" role="none"><button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i><span class="theme-toggle__text">Light mode</span></button></li>
       </ul>
     </nav>
     <div class="nav-actions">
       <a href="contact.html" class="btn btn-primary btn-sm">Free Consultation</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button type="button" class="theme-toggle" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i></button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
     </div>
@@ -234,6 +237,7 @@
 
 <script src="js/analytics.js" defer data-clarity-off></script>
 <script src="js/enhancements.js" defer></script>
+<script src="js/theme.js" defer></script>
 <script src="js/script.js" defer></script>
 <script src="js/portfolio.js" defer></script>
 </body>
